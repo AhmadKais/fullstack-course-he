@@ -728,6 +728,7 @@ for (let i = 0; i < 3; i++) {
   <h3>כותרת הכרטיס</h3>
   <p>טקסט עם <span class="highlight">מילה מודגשת</span> באמצע.</p>
 </div>
+
 ```
 
 <div dir="rtl" align="right">

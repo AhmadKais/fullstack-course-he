@@ -654,6 +654,7 @@ CSS, קובצי JavaScript, ועשרות תמונות. דף חדשות "אחד" 
 <div>
   <p>שלום <strong>עולם</p></strong>
 </div>
+
 ```
 
 <details dir="rtl">
@@ -663,6 +664,7 @@ CSS, קובצי JavaScript, ועשרות תמונות. דף חדשות "אחד" 
 <div>
   <p>שלום <strong>עולם</strong></p>
 </div>
+
 ```
 
 <div dir="rtl" align="right">
