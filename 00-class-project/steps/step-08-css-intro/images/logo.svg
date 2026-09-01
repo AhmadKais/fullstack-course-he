@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" role="img" aria-label="קפה עתיד">
+  <rect width="200" height="60" rx="10" fill="#4a2c17"/>
+  <path d="M28 20h22a10 10 0 0 1 0 20H28z" fill="#e8d5b7"/>
+  <rect x="24" y="18" width="30" height="24" rx="4" fill="#c9a227"/>
+  <text x="70" y="38" font-family="system-ui, sans-serif" font-size="20" fill="#f5efe6">Cafe Atid</text>
+</svg>
