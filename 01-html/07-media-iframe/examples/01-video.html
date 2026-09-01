@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>וידאו ואודיו</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 780px; margin: 20px auto;
+           line-height: 1.75; padding: 0 18px; }
+    video, audio { max-width: 100%; border-radius: 8px; }
+    .fallback { background: #fff8e1; border-right: 4px solid #f0b429;
+                padding: 12px 16px; border-radius: 6px; }
+    .note { background: #f0f7ff; border-right: 4px solid #2b6cb0;
+            padding: 12px 16px; margin: 16px 0; border-radius: 6px; }
+    pre { background: #f7f7f7; padding: 12px; border-radius: 6px;
+          overflow-x: auto; direction: ltr; text-align: left; font-size: 0.88rem; }
+  </style>
+</head>
+<body>
+
+  <h1>וידאו ואודיו ב-HTML</h1>
+
+  <div class="note">
+    <strong>שימו לב:</strong> קובצי המדיה עצמם אינם כלולים בריפו.
+    לכן תראו כאן את <strong>תוכן הגיבוי</strong> – וזו בדיוק ההדגמה
+    למה שקורה כשהמדיה אינה זמינה. ראו הוראות ב-<code>media/README.md</code>.
+  </div>
+
+  <h2>1. וידאו בסיסי</h2>
+
+  <video controls width="640" poster="../../../assets/img/placeholder-800x400.svg" preload="metadata">
+    <source src="media/sample.webm" type="video/webm">
+    <source src="media/sample.mp4" type="video/mp4">
+
+    <!-- כתוביות: חובה לנגישות -->
+    <track src="media/captions-he.vtt" kind="captions" srclang="he" label="עברית" default>
+    <track src="media/captions-en.vtt" kind="captions" srclang="en" label="English">
+
+    <!-- תוכן גיבוי: מוצג אם הדפדפן לא תומך או הקובץ חסר -->
+    <p class="fallback">
+      ⚠️ הדפדפן שלך אינו תומך בווידאו, או שקובץ הווידאו אינו זמין.
+      <a href="media/sample.mp4">הורדת הסרטון</a>
+    </p>
+  </video>
+
+  <h3>הקוד</h3>
+<pre>&lt;video controls width="640" poster="thumb.jpg" preload="metadata"&gt;
+  &lt;source src="movie.webm" type="video/webm"&gt;
+  &lt;source src="movie.mp4"  type="video/mp4"&gt;
+  &lt;track src="subs-he.vtt" kind="captions"
+         srclang="he" label="עברית" default&gt;
+  &lt;p&gt;הדפדפן אינו תומך. &lt;a href="movie.mp4"&gt;הורדה&lt;/a&gt;&lt;/p&gt;
+&lt;/video&gt;</pre>
+
+  <h3>מה כל חלק עושה?</h3>
+  <dl>
+    <dt><code>controls</code></dt>
+    <dd>מציג את כפתורי הנגן. <strong>כמעט תמיד רצוי</strong> – בלעדיו המשתמש חסר אונים.</dd>
+
+    <dt><code>poster</code></dt>
+    <dd>תמונה שמוצגת לפני שהמשתמש לוחץ Play.</dd>
+
+    <dt><code>preload="metadata"</code></dt>
+    <dd>
+      טוען רק את אורך הסרטון ואת ממדיו, לא את התוכן.
+      חוסך רוחב פס אדיר בדף עם כמה סרטונים.
+    </dd>
+
+    <dt>שני <code>&lt;source&gt;</code></dt>
+    <dd>
+      הדפדפן בוחר את הראשון שהוא יודע לנגן.
+      WebM קל יותר, MP4 נתמך בכל מקום – ולכן WebM ראשון.
+    </dd>
+
+    <dt><code>&lt;track&gt;</code></dt>
+    <dd>
+      כתוביות. זה הרכיב שהכי שוכחים והוא הכי חשוב לנגישות.
+      ה-<code>default</code> קובע איזו שפה מופעלת מלכתחילה.
+    </dd>
+
+    <dt>הפסקה בסוף</dt>
+    <dd>תוכן גיבוי. מוצג רק אם שום source לא נתמך.</dd>
+  </dl>
+
+  <hr>
+
+  <h2>2. ⚠️ autoplay – מלכודת נפוצה</h2>
+
+  <div class="note">
+    <p>
+      <strong>הקוד הזה לא יעבוד ברוב הדפדפנים:</strong>
+    </p>
+<pre>&lt;video src="movie.mp4" autoplay&gt;&lt;/video&gt;</pre>
+    <p>
+      דפדפנים חוסמים ניגון אוטומטי <strong>עם קול</strong>.
+      זו החלטה מכוונת: משתמשים שנאו סרטונים שמתחילים לצעוק בעצמם.
+    </p>
+    <p>
+      <strong>הדרך היחידה שעובדת</strong> – סרטון רקע מושתק:
+    </p>
+<pre>&lt;video src="bg.mp4" autoplay muted loop playsinline&gt;&lt;/video&gt;</pre>
+    <p>
+      <code>playsinline</code> חשוב במיוחד: בלעדיו, ב-iPhone הסרטון
+      יקפוץ למסך מלא במקום לנגן בתוך הדף.
+    </p>
+  </div>
+
+  <hr>
+
+  <h2>3. אודיו</h2>
+
+  <audio controls preload="metadata">
+    <source src="media/sample.ogg" type="audio/ogg">
+    <source src="media/sample.mp3" type="audio/mpeg">
+    <p class="fallback">
+      ⚠️ הדפדפן שלך אינו תומך באודיו, או שהקובץ אינו זמין.
+      <a href="media/sample.mp3">הורדת קובץ השמע</a>
+    </p>
+  </audio>
+
+  <p>
+    התכונות זהות ל-<code>&lt;video&gt;</code>, למעט
+    <code>poster</code>, <code>width</code> ו-<code>height</code>.
+  </p>
+
+  <h3>נגישות באודיו</h3>
+  <p>
+    לפודקאסט או להקלטה מדוברת – <strong>הוסיפו תמליל טקסטואלי</strong>
+    מתחת לנגן. זה מועיל למשתמשים חירשים, לאנשים בסביבה רועשת,
+    וגם למנועי חיפוש שאינם יכולים "להאזין".
+  </p>
+
+  <details>
+    <summary>תמליל הפרק (דוגמה)</summary>
+    <p>
+      <strong>[00:00]</strong> שלום וברוכים הבאים לשיעור הראשון.<br>
+      <strong>[00:04]</strong> היום נלמד על תגיות HTML בסיסיות.<br>
+      <strong>[00:11]</strong> נתחיל מהמבנה של מסמך HTML תקין.
+    </p>
+  </details>
+
+  <hr>
+
+  <h2>4. מבנה קובץ WebVTT</h2>
+  <p>
+    כתוביות נשמרות בקובץ <code>.vtt</code>.
+    <a href="media/captions-he.vtt">פתחו את הקובץ שלנו</a> כדי לראות אותו.
+  </p>
+<pre>WEBVTT
+
+00:00:00.000 --> 00:00:03.500
+שלום וברוכים הבאים לשיעור הראשון
+
+00:00:03.500 --> 00:00:07.200
+היום נלמד על תגיות HTML בסיסיות
+
+00:00:07.200 --> 00:00:11.000
+[מוזיקת רקע שקטה]</pre>
+
+  <p>
+    <strong>שלושה כללים:</strong>
+  </p>
+  <ol>
+    <li>השורה <code>WEBVTT</code> בתחילת הקובץ היא <strong>חובה</strong>.</li>
+    <li>הפורמט של הזמן: <code>שעות:דקות:שניות.מילישניות</code>.</li>
+    <li>
+      ב-<code>kind="captions"</code> מתארים גם צלילים
+      (<code>[דלת נטרקת]</code>) – זה ההבדל מ-<code>subtitles</code>.
+    </li>
+  </ol>
+
+</body>
+</html>

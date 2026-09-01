@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>שיעור 4: טפסים ב-HTML | קורס Full Stack</title>
+  <meta name="description"
+        content="שיעור 4 בקורס Full Stack: בניית טפסים נגישים ב-HTML. וידאו, תרגול, לוח זמנים והרשמה לשיעור הבא.">
+  <meta name="author" content="מכללת עתיד">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://example.com/course/lesson-4">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="קורס Full Stack">
+  <meta property="og:title" content="שיעור 4: טפסים ב-HTML">
+  <meta property="og:description" content="בניית טפסים נגישים: input, label, ולידציה מובנית.">
+  <meta property="og:image" content="https://example.com/images/lesson-4.jpg">
+  <meta property="og:image:alt" content="מסך עם קוד HTML של טופס">
+  <meta property="og:url" content="https://example.com/course/lesson-4">
+  <meta property="og:locale" content="he_IL">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="theme-color" content="#2b6cb0">
+
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, sans-serif; margin: 0;
+           line-height: 1.75; color: #1a202c; background: #fdfdfd; }
+
+    .skip-link { position: absolute; right: -9999px; top: 0; background: #2b6cb0;
+                 color: #fff; padding: 12px 20px; z-index: 100; }
+    .skip-link:focus { right: 0; }
+    :focus-visible { outline: 3px solid #2b6cb0; outline-offset: 2px; }
+
+    header { background: #1a365d; color: #fff; padding: 20px 24px; }
+    header a { color: #90cdf4; }
+    header h1 { margin: 0 0 6px; }
+    nav ul { list-style: none; display: flex; gap: 18px; padding: 0;
+             margin: 12px 0 0; flex-wrap: wrap; }
+
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+    .layout { display: grid; grid-template-columns: 3fr 1fr; gap: 30px; margin: 28px auto; }
+
+    section { margin-bottom: 34px; }
+    aside { background: #f7fafc; border-radius: 10px; padding: 18px; align-self: start; }
+
+    video, audio { max-width: 100%; border-radius: 8px; }
+    video { background: #000; }
+    figure { margin: 0 0 18px; }
+    img { max-width: 100%; height: auto; border-radius: 8px; display: block; }
+    figcaption { font-size: 0.9rem; color: #4a5568; margin-top: 8px; }
+
+    .ratio { position: relative; padding-top: 56.25%; height: 0; }
+    .ratio iframe { position: absolute; inset: 0; width: 100%; height: 100%;
+                    border: 1px solid #ddd; border-radius: 8px; }
+
+    table { border-collapse: collapse; width: 100%; }
+    caption { font-weight: 700; padding: 10px; text-align: right; }
+    th, td { border: 1px solid #cbd5e0; padding: 8px 12px; text-align: right; }
+    thead th { background: #edf2f7; }
+    tfoot td { background: #f7fafc; font-style: italic; }
+
+    details { border-bottom: 1px solid #e2e8f0; padding: 10px 0; }
+    summary { cursor: pointer; font-weight: 600; }
+
+    fieldset { border: 1px solid #cbd5e0; border-radius: 8px;
+               padding: 14px 18px; margin-bottom: 16px; }
+    legend { font-weight: 700; padding: 0 8px; }
+    label { display: block; margin-top: 12px; font-weight: 600; }
+    .opt label { display: inline; font-weight: normal; }
+    input[type="text"], input[type="email"], input[type="tel"],
+    select, textarea { width: 100%; padding: 8px; margin-top: 4px;
+                       border: 1px solid #b3bfcc; border-radius: 5px;
+                       font-size: 1rem; font-family: inherit; }
+    button { margin-top: 16px; padding: 11px 26px; font-size: 1rem; cursor: pointer;
+             background: #2b6cb0; color: #fff; border: none; border-radius: 6px; }
+
+    .fallback { background: #fff8e1; border-right: 4px solid #f0b429;
+                padding: 12px 16px; border-radius: 6px; }
+    .ts { font-family: monospace; color: #2b6cb0; direction: ltr; display: inline-block; }
+
+    footer { background: #1a202c; color: #e2e8f0; padding: 24px; margin-top: 40px; }
+    footer a { color: #90cdf4; }
+    address { font-style: normal; }
+
+    @media (max-width: 800px) { .layout { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">דלגו לתוכן הראשי</a>
+
+  <!-- ================= HEADER ================= -->
+  <header>
+    <div class="wrap">
+      <h1>קורס Full Stack</h1>
+      <p>שיעור 4 מתוך 28 · <time datetime="2026-03-22">22 במרץ 2026</time></p>
+
+      <nav aria-label="ניווט ראשי">
+        <ul>
+          <li><a href="#main">השיעור</a></li>
+          <li><a href="#video">וידאו</a></li>
+          <li><a href="#schedule">לוח זמנים</a></li>
+          <li><a href="#faq">שאלות</a></li>
+          <li><a href="#register">הרשמה</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap layout">
+
+    <!-- ================= MAIN ================= -->
+    <main id="main">
+
+      <article>
+
+        <header>
+          <h2>שיעור 4: טפסים ב-HTML</h2>
+          <p>
+            מרצה: דנה כהן ·
+            משך: 4 שעות ·
+            רמה: מתחילים
+          </p>
+        </header>
+
+        <!-- ===== SECTION: נושאי השיעור ===== -->
+        <section>
+          <h3>מה נלמד היום</h3>
+          <ol>
+            <li>מבנה תגית <code>&lt;form&gt;</code> וההבדל בין GET ל-POST</li>
+            <li>כל סוגי <code>&lt;input&gt;</code> ומתי משתמשים בכל אחד</li>
+            <li>התגית <code>&lt;label&gt;</code> ולמה היא קריטית לנגישות</li>
+            <li>בחירה מרובה מול בחירה יחידה: checkbox ו-radio</li>
+            <li>ולידציה מובנית: <code>required</code>, <code>pattern</code>, <code>min</code>/<code>max</code></li>
+            <li>ארגון טופס גדול עם <code>&lt;fieldset&gt;</code></li>
+          </ol>
+        </section>
+
+        <!-- ===== SECTION: וידאו ===== -->
+        <section id="video">
+          <h3>הקלטת השיעור</h3>
+
+          <video controls
+                 width="720"
+                 poster="../../../assets/img/placeholder-800x400.svg"
+                 preload="metadata">
+            <source src="../examples/media/sample.webm" type="video/webm">
+            <source src="../examples/media/sample.mp4" type="video/mp4">
+
+            <track src="../examples/media/captions-he.vtt"
+                   kind="captions" srclang="he" label="עברית" default>
+            <track src="../examples/media/captions-en.vtt"
+                   kind="captions" srclang="en" label="English">
+
+            <p class="fallback">
+              ⚠️ הדפדפן שלך אינו תומך בווידאו.
+              <a href="../examples/media/sample.mp4" download>הורדת ההקלטה</a>
+            </p>
+          </video>
+
+          <details>
+            <summary>תמליל ההקלטה</summary>
+            <p><span class="ts">[00:00]</span> שלום וברוכים הבאים לשיעור הרביעי.</p>
+            <p><span class="ts">[00:04]</span> היום נעסוק בטפסים.</p>
+            <p><span class="ts">[00:11]</span> נתחיל מהשאלה: מה בעצם קורה כשלוחצים "שלח"?</p>
+          </details>
+        </section>
+
+        <!-- ===== SECTION: תמונה ===== -->
+        <section>
+          <h3>אנטומיה של שדה קלט</h3>
+
+          <figure>
+            <img src="../../../assets/img/placeholder-800x400.svg"
+                 alt="דיאגרמה המראה שדה קלט עם חצים המצביעים על התווית, ה-placeholder, גבול השדה והודעת השגיאה"
+                 width="800" height="400" loading="lazy">
+            <figcaption>
+              איור 1: חמשת חלקיו של שדה קלט נגיש — תווית, שדה,
+              רמז, סימון מיקוד והודעת שגיאה.
+            </figcaption>
+          </figure>
+
+          <p>
+            שימו לב לחלק החמישי: <strong>הודעת השגיאה</strong>.
+            רוב המפתחים המתחילים שוכחים אותה לגמרי, וזו בדיוק הנקודה
+            שבה משתמשים נוטשים טפסים.
+          </p>
+
+          <!-- SVG inline נגיש -->
+          <p>
+            <svg width="140" height="80" viewBox="0 0 140 80"
+                 role="img" aria-label="גרף: 68 אחוז מהמשתמשים נוטשים טופס עם שגיאה לא ברורה">
+              <rect x="10" y="20" width="40" height="50" fill="#c53030"/>
+              <rect x="70" y="50" width="40" height="20" fill="#2f855a"/>
+              <line x1="5" y1="70" x2="135" y2="70" stroke="#2d3748" stroke-width="2"/>
+              <text x="30" y="15" text-anchor="middle" font-size="11" fill="#2d3748">68%</text>
+              <text x="90" y="45" text-anchor="middle" font-size="11" fill="#2d3748">12%</text>
+            </svg>
+            <br>
+            <small>שיעור נטישה: שגיאה סתומה מול שגיאה מוסברת.</small>
+          </p>
+        </section>
+
+        <!-- ===== SECTION: תרגול חי ===== -->
+        <section>
+          <h3>תרגול חי</h3>
+          <p>הדוגמה שנעבור עליה בכיתה, מוטמעת כאן:</p>
+
+          <div class="ratio">
+            <iframe src="../../05-forms/examples/01-basic-form.html"
+                    title="דוגמה אינטראקטיבית: טופס יצירת קשר בסיסי"
+                    loading="lazy"
+                    sandbox="allow-forms allow-popups">
+            </iframe>
+          </div>
+
+          <p>
+            <a href="../../05-forms/examples/01-basic-form.html"
+               target="_blank" rel="noopener noreferrer">
+              פתיחת הדוגמה בחלון נפרד
+            </a>
+          </p>
+        </section>
+
+        <!-- ===== SECTION: אודיו ===== -->
+        <section>
+          <h3>סיכום קולי (5 דקות)</h3>
+
+          <audio controls preload="metadata">
+            <source src="../examples/media/sample.ogg" type="audio/ogg">
+            <source src="../examples/media/sample.mp3" type="audio/mpeg">
+            <p class="fallback">
+              ⚠️ הדפדפן אינו תומך באודיו.
+              <a href="../examples/media/sample.mp3" download>הורדת הסיכום</a>
+            </p>
+          </audio>
+
+          <details>
+            <summary>תמליל הסיכום</summary>
+            <p>
+              שלושת הדברים שחייבים לזכור מהשיעור:
+              ראשית, לכל שדה חייב להיות <code>name</code> — אחרת הוא לא נשלח.
+              שנית, לכל שדה חייבת להיות <code>&lt;label&gt;</code> מקושרת.
+              שלישית, ולידציה בדפדפן היא נוחות בלבד — האבטחה נעשית בשרת.
+            </p>
+          </details>
+        </section>
+
+        <!-- ===== SECTION: לוח זמנים ===== -->
+        <section id="schedule">
+          <h3>לוח הזמנים של המפגש</h3>
+
+          <table>
+            <caption>מפגש 4 · יום ראשון, 22 במרץ 2026</caption>
+
+            <thead>
+              <tr>
+                <th colspan="3">מהלך המפגש</th>
+              </tr>
+              <tr>
+                <th scope="col">שעה</th>
+                <th scope="col">נושא</th>
+                <th scope="col">סוג פעילות</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <th scope="row"><time datetime="09:00">09:00</time></th>
+                <td>חזרה על המפגש הקודם</td>
+                <td>דיון</td>
+              </tr>
+              <tr>
+                <th scope="row"><time datetime="09:15">09:15</time></th>
+                <td>מבנה טופס וסוגי input</td>
+                <td>הרצאה + קידוד חי</td>
+              </tr>
+              <tr>
+                <th scope="row"><time datetime="11:00">11:00</time></th>
+                <td>label ונגישות</td>
+                <td>הרצאה</td>
+              </tr>
+              <tr>
+                <th scope="row"><time datetime="12:00">12:00</time></th>
+                <td>תרגילים 1–3</td>
+                <td>תרגול עצמאי</td>
+              </tr>
+              <tr>
+                <th scope="row"><time datetime="13:30">13:30</time></th>
+                <td>ולידציה מובנית</td>
+                <td>הרצאה + הדגמה</td>
+              </tr>
+            </tbody>
+
+            <tfoot>
+              <tr>
+                <td colspan="3">
+                  שיעורי בית: תרגיל 4 (טופס הזמנת פיצה) + חידון המודול.
+                  הגשה עד יום חמישי.
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </section>
+
+        <!-- ===== SECTION: FAQ ===== -->
+        <section id="faq">
+          <h3>שאלות נפוצות מהשיעור</h3>
+
+          <details open>
+            <summary>למה השדה שלי לא נשלח?</summary>
+            <p>
+              ב-99% מהמקרים: שכחתם <code>name</code>.
+              שדה בלי <code>name</code> נראה ומתפקד בדיוק כמו שדה רגיל,
+              אבל הדפדפן פשוט לא כולל אותו בנתונים.
+            </p>
+          </details>
+
+          <details>
+            <summary>מה ההבדל בין id ל-name?</summary>
+            <p>
+              <code>id</code> משמש בתוך הדף: לקישור עם <code>&lt;label for&gt;</code>,
+              ל-CSS ול-JavaScript.
+              <code>name</code> משמש בשליחה לשרת. שניהם נחוצים, לרוב עם אותו ערך.
+            </p>
+          </details>
+
+          <details>
+            <summary>למה הכפתור שלי מרענן את הדף?</summary>
+            <p>
+              כי ברירת המחדל של <code>&lt;button&gt;</code> בתוך
+              <code>&lt;form&gt;</code> היא <code>type="submit"</code>.
+              אם רציתם כפתור רגיל — הוסיפו <code>type="button"</code>.
+            </p>
+          </details>
+
+          <details>
+            <summary>אם יש ולידציה בדפדפן, למה צריך גם בשרת?</summary>
+            <p>
+              כי ולידציה בדפדפן היא בסך הכול נוחות למשתמש.
+              אפשר למחוק <code>required</code> בכלי המפתחים תוך שתי שניות,
+              ואפשר לשלוח בקשה לשרת בלי דפדפן בכלל.
+              <strong>כל בדיקה שמשנה משהו חייבת להיעשות גם בשרת.</strong>
+            </p>
+          </details>
+        </section>
+
+        <!-- ===== SECTION: הרשמה ===== -->
+        <section id="register">
+          <h3>הרשמה לשיעור התגבור</h3>
+
+          <form action="" method="post">
+
+            <fieldset>
+              <legend>הפרטים שלכם</legend>
+
+              <label for="r-name">שם מלא</label>
+              <input type="text" id="r-name" name="name"
+                     autocomplete="name" required>
+
+              <label for="r-email">כתובת אימייל</label>
+              <input type="email" id="r-email" name="email"
+                     autocomplete="email" dir="ltr" required
+                     placeholder="you@example.com">
+
+              <label for="r-phone">טלפון נייד</label>
+              <input type="tel" id="r-phone" name="phone"
+                     pattern="05[0-9]{8}"
+                     title="מספר נייד ישראלי: 10 ספרות שמתחילות ב-05"
+                     autocomplete="tel" dir="ltr" required>
+            </fieldset>
+
+            <fieldset>
+              <legend>מה הכי קשה לכם בנושא?</legend>
+
+              <div class="opt">
+                <input type="radio" id="d-labels" name="difficulty" value="labels" required>
+                <label for="d-labels">קישור label ל-input</label>
+              </div>
+              <div class="opt">
+                <input type="radio" id="d-radio" name="difficulty" value="radio">
+                <label for="d-radio">ההבדל בין radio ל-checkbox</label>
+              </div>
+              <div class="opt">
+                <input type="radio" id="d-pattern" name="difficulty" value="pattern">
+                <label for="d-pattern">ביטויים רגולריים ב-pattern</label>
+              </div>
+              <div class="opt">
+                <input type="radio" id="d-other" name="difficulty" value="other">
+                <label for="d-other">אחר</label>
+              </div>
+            </fieldset>
+
+            <label for="r-notes">הערות (עד 300 תווים)</label>
+            <textarea id="r-notes" name="notes" rows="3" maxlength="300"></textarea>
+
+            <input type="hidden" name="lessonId" value="lesson-04">
+
+            <button type="submit">שליחת ההרשמה</button>
+          </form>
+        </section>
+
+      </article>
+
+    </main>
+
+    <!-- ================= ASIDE ================= -->
+    <aside>
+      <h2>ניווט בקורס</h2>
+      <ul>
+        <li><a href="../../04-links-images/">⬅ שיעור 3: קישורים ותמונות</a></li>
+        <li><a href="../../06-semantic/">שיעור 5: HTML סמנטי ➡</a></li>
+      </ul>
+
+      <h2>חומרי עזר</h2>
+      <ul>
+        <li>
+          <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms"
+             target="_blank" rel="noopener noreferrer">
+            מדריך הטפסים של MDN
+          </a>
+        </li>
+        <li>
+          <a href="https://validator.w3.org/"
+             target="_blank" rel="noopener noreferrer">
+            בודק תקינות HTML
+          </a>
+        </li>
+        <li><a href="../../05-forms/quiz.md">חידון המודול</a></li>
+      </ul>
+
+      <h2>המפגש הבא</h2>
+      <p>
+        <time datetime="2026-03-29">29 במרץ 2026</time><br>
+        <span dir="ltr">09:00–13:30</span><br>
+        נושא: HTML סמנטי ונגישות
+      </p>
+    </aside>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="wrap">
+      <h2>יצירת קשר</h2>
+
+      <address>
+        מכללת עתיד · רחוב הברזל 12, תל אביב–יפו<br>
+        מזכירות: <a href="tel:+97231234567" dir="ltr">03-123-4567</a><br>
+        תמיכה: <a href="mailto:support@example.com">support@example.com</a>
+      </address>
+
+      <p><a href="#main">⬆ חזרה לראש הדף</a></p>
+      <p><small>&copy; 2026 מכללת עתיד. כל הזכויות שמורות.</small></p>
+    </div>
+  </footer>
+
+</body>
+</html>

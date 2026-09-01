@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>תמונות רספונסיביות</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 900px; margin: 20px auto; line-height: 1.8; }
+    img { max-width: 100%; height: auto; display: block; border-radius: 8px; }
+    .note { background: #fff8e1; border-right: 4px solid #f0b429; padding: 12px 16px; margin: 1rem 0; }
+  </style>
+</head>
+<body>
+
+  <h1>תמונות רספונסיביות</h1>
+
+  <div class="note">
+    <strong>איך בודקים?</strong> פתחו את כלי המפתחים (F12), הפעילו מצב מכשיר
+    (Ctrl+Shift+M), ושנו את רוחב החלון. שימו לב לתמונה שמתחלפת.
+  </div>
+
+  <h2>1. picture – תמונות שונות לגמרי</h2>
+  <p>
+    בנייד (עד 600 פיקסל) תוצג תמונה מרובעת. בדסקטופ – תמונה רחבה.
+    זהו "Art Direction": חיתוך שונה למסך שונה, לא רק גודל שונה.
+  </p>
+
+  <picture>
+    <source media="(max-width: 600px)"
+            srcset="../../../assets/img/placeholder-square.svg">
+    <source media="(min-width: 601px)"
+            srcset="../../../assets/img/hero-wide.svg">
+    <!-- תגית img היא חובה: היא הגיבוי ומקור ה-alt -->
+    <img src="../../../assets/img/hero-wide.svg"
+         alt="תמונת נושא: שמיים בגווני כחול וסגול מעל צללית הרים">
+  </picture>
+
+  <hr>
+
+  <h2>2. picture לפורמטים מודרניים</h2>
+  <p>
+    הדפדפן ינסה קודם WebP. אם אינו תומך – ייפול חזרה ל-JPG.
+    השורה האחרונה תמיד <code>&lt;img&gt;</code>.
+  </p>
+<pre dir="ltr">&lt;picture&gt;
+  &lt;source srcset="photo.avif" type="image/avif"&gt;
+  &lt;source srcset="photo.webp" type="image/webp"&gt;
+  &lt;img src="photo.jpg" alt="תיאור התמונה"&gt;
+&lt;/picture&gt;</pre>
+
+  <hr>
+
+  <h2>3. srcset – אותה תמונה, רזולוציות שונות</h2>
+  <p>
+    כאן לא מחליפים חיתוך אלא רק גודל. הדפדפן בוחר בעצמו
+    את הקובץ המשתלם ביותר לפי רוחב המסך וצפיפות הפיקסלים.
+  </p>
+<pre dir="ltr">&lt;img
+  src="photo-800.jpg"
+  srcset="photo-400.jpg   400w,
+          photo-800.jpg   800w,
+          photo-1600.jpg 1600w"
+  sizes="(max-width: 600px) 100vw, 50vw"
+  alt="נוף הרים בשקיעה"&gt;</pre>
+
+  <h3>מה המשמעות של כל חלק?</h3>
+  <dl>
+    <dt><code>srcset</code></dt>
+    <dd>רשימת הקבצים הזמינים והרוחב האמיתי של כל אחד (ביחידת <code>w</code>).</dd>
+
+    <dt><code>sizes</code></dt>
+    <dd>
+      כמה מקום התמונה תתפוס בפועל על המסך.
+      בדוגמה: במסך צר – 100% מרוחב החלון, אחרת – 50%.
+    </dd>
+
+    <dt><code>src</code></dt>
+    <dd>גיבוי לדפדפנים ישנים שאינם מכירים <code>srcset</code>.</dd>
+  </dl>
+
+  <div class="note">
+    <strong>למה זה חשוב?</strong> תמונה של 2MB שנטענת בנייד ברשת סלולרית
+    היא הסיבה מספר 1 לאתרים איטיים. srcset יכול לחסוך 80% מנפח ההורדה.
+  </div>
+
+</body>
+</html>

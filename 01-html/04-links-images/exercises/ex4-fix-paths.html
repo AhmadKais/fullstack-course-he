@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>תרגיל 4 – תיקון נתיבים</title>
+</head>
+<body>
+
+<!--
+  ============================================
+  מבנה התיקיות של האתר הזה:
+
+  site/
+  ├── index.html
+  ├── about.html
+  ├── assets/
+  │   ├── img/
+  │   │   ├── logo.svg
+  │   │   └── team.jpg
+  │   └── docs/
+  │       └── brochure.pdf
+  └── pages/
+      ├── this-file.html   <-- אתם נמצאים כאן!
+      ├── contact.html
+      └── services.html
+
+  משימה: תקנו את 6 הנתיבים השגויים למטה.
+  ============================================
+-->
+
+  <h1>תיקון נתיבים</h1>
+
+  <!-- שגיאה 1: רוצים להגיע ל-index.html שבשורש -->
+  <p><a href="index.html">דף הבית</a></p>
+
+  <!-- שגיאה 2: רוצים להגיע ל-about.html שבשורש -->
+  <p><a href="pages/about.html">אודות</a></p>
+
+  <!-- שגיאה 3: רוצים להגיע ל-contact.html שבאותה תיקייה -->
+  <p><a href="../pages/contact.html">צור קשר</a></p>
+
+  <!-- שגיאה 4: רוצים להציג את הלוגו -->
+  <p><img src="assets/img/logo.svg" alt="לוגו החברה" width="200" height="60"></p>
+
+  <!-- שגיאה 5: רוצים להציג את תמונת הצוות -->
+  <p><img src="../img/team.jpg" alt="צוות החברה" width="400" height="300"></p>
+
+  <!-- שגיאה 6: רוצים לאפשר הורדה של החוברת -->
+  <p><a href="docs/brochure.pdf" download>הורדת החוברת</a></p>
+
+</body>
+</html>

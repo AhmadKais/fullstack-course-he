@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>פתרון תרגיל 1 – מגזין הבישול</title>
+</head>
+<body>
+
+  <!-- div.page-header  ->  header -->
+  <header>
+    <!-- div.site-title  ->  h1 (זו הכותרת הראשית של האתר) -->
+    <h1>מגזין הבישול</h1>
+
+    <!-- div.menu  ->  nav + ul + li -->
+    <nav aria-label="ניווט ראשי">
+      <ul>
+        <li><a href="#">בית</a></li>
+        <li><a href="#">מתכונים</a></li>
+        <li><a href="#">כתבות</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- div.content  ->  main (התוכן הייחודי של הדף) -->
+  <main>
+
+    <!-- div.recipe  ->  article (מתכון עומד בפני עצמו) -->
+    <article>
+      <!-- div.recipe-header  ->  header (בתוך article - מותר ותקין) -->
+      <header>
+        <!-- div.recipe-title  ->  h2 -->
+        <h2>עוגת שוקולד פשוטה</h2>
+        <!-- div.meta  ->  p + time -->
+        <p>
+          פורסם ב-<time datetime="2026-03-15">15 במרץ 2026</time>
+          · מאת יעל כהן
+        </p>
+      </header>
+
+      <!-- div.wrapper  ->  נשאר div!
+           הוא קיים אך ורק לצורכי עיצוב ואין לו משמעות תוכנית. -->
+      <div class="wrapper">
+        <!-- div.ingredients  ->  section (קטע נושאי עם כותרת) -->
+        <section>
+          <!-- div.subtitle  ->  h3 -->
+          <h3>מצרכים</h3>
+          <!-- שורות הרשימה  ->  ul + li -->
+          <ul>
+            <li>200 גרם שוקולד מריר</li>
+            <li>3 ביצים</li>
+            <li>150 גרם סוכר</li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- div.steps  ->  section -->
+      <section>
+        <h3>אופן ההכנה</h3>
+        <!-- כאן הסדר קריטי  ->  ol ולא ul -->
+        <ol>
+          <li>ממיסים את השוקולד</li>
+          <li>מקציפים ביצים עם סוכר</li>
+          <li>אופים 25 דקות</li>
+        </ol>
+      </section>
+
+      <!-- div.image-block  ->  figure -->
+      <figure>
+        <img src="../../../assets/img/placeholder-400x300.svg"
+             alt="עוגת שוקולד עגולה מקושטת באבקת סוכר על צלחת לבנה"
+             width="400" height="300">
+        <!-- div.caption  ->  figcaption -->
+        <figcaption>העוגה המוכנה, מקושטת באבקת סוכר</figcaption>
+      </figure>
+
+      <!-- div.recipe-footer  ->  footer (של ה-article) -->
+      <footer>
+        <p><small>תגיות: קינוחים, שוקולד, קל להכנה</small></p>
+      </footer>
+    </article>
+
+    <!-- מתכון שני -->
+    <article>
+      <header>
+        <h2>סלט יווני</h2>
+        <p>פורסם ב-<time datetime="2026-03-10">10 במרץ 2026</time></p>
+      </header>
+      <p>סלט קיצי מרענן עם גבינת פטה וזיתים.</p>
+    </article>
+
+  </main>
+
+  <!-- div.sidebar  ->  aside (תוכן משני) -->
+  <aside>
+    <h2>המתכונים הפופולריים</h2>
+    <ul>
+      <li><a href="#">חלה קלועה</a></li>
+      <li><a href="#">שקשוקה</a></li>
+      <li><a href="#">מרק עדשים</a></li>
+    </ul>
+  </aside>
+
+  <!-- div.page-footer  ->  footer -->
+  <footer>
+    <!-- div.contact  ->  address (פרטי קשר!) -->
+    <address>
+      צרו קשר: <a href="mailto:info@example.com">info@example.com</a><br>
+      טלפון: <a href="tel:+97231234567" dir="ltr">03-1234567</a>
+    </address>
+    <!-- div.copy  ->  p + small -->
+    <p><small>&copy; 2026 מגזין הבישול</small></p>
+  </footer>
+
+<!--
+  =====================================================================
+  טבלת ההמרות
+  =====================================================================
+
+  | ה-div המקורי       | התגית החדשה  | הנימוק                                    |
+  |--------------------|--------------|-------------------------------------------|
+  | .page-header       | header       | ראש האתר                                  |
+  | .site-title        | h1           | הכותרת הראשית - יש רק אחת בדף             |
+  | .menu              | nav + ul     | תפריט ניווט = רשימת קישורים               |
+  | .content           | main         | התוכן הייחודי לדף. אחד בלבד!              |
+  | .recipe            | article      | מתכון הגיוני בפני עצמו גם מחוץ לדף        |
+  | .recipe-header     | header       | header מותר גם בתוך article               |
+  | .recipe-title      | h2           | כותרת המאמר, רמה אחת מתחת ל-h1            |
+  | .meta              | p + time     | time נותן תאריך במבנה שמכונה מבינה        |
+  | .wrapper           | div (נשאר!) | קיים רק לעיצוב, אין לו משמעות תוכנית      |
+  | .ingredients       | section      | קטע נושאי בעל כותרת בתוך המאמר            |
+  | .steps             | section      | קטע נושאי בעל כותרת                       |
+  | .subtitle          | h3           | רמה אחת מתחת ל-h2                         |
+  | שורות המצרכים      | ul + li      | רשימה שהסדר בה לא משנה                    |
+  | שורות ההכנה        | ol + li      | רשימה שהסדר בה קריטי                      |
+  | .image-block       | figure       | מדיה עם כיתוב                             |
+  | .caption           | figcaption   | הכיתוב של ה-figure                        |
+  | .recipe-footer     | footer       | תחתית המאמר                               |
+  | .sidebar           | aside        | תוכן משני, קשור אך לא מרכזי               |
+  | .page-footer       | footer       | תחתית האתר                                |
+  | .contact           | address      | address מיועד בדיוק לפרטי קשר             |
+  | .copy              | p + small    | טקסט משני של זכויות יוצרים                |
+
+  💡 השורה הכי חשובה בטבלה: .wrapper נשאר div.
+     לא כל div צריך להפוך למשהו. div שנועד אך ורק לעיצוב - הוא בדיוק
+     מה שהתגית div נועדה לו.
+  =====================================================================
+-->
+
+</body>
+</html>

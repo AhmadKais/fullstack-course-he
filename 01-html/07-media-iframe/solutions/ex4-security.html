@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>פתרון תרגיל 4 – אבטחת iframe</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 840px; margin: 20px auto;
+           line-height: 1.75; padding: 0 18px; }
+    .case { border: 1px solid #e2e8f0; border-radius: 10px;
+            padding: 16px 20px; margin-bottom: 24px; }
+    .case h2 { margin-top: 0; }
+    pre { background: #f7f7f7; padding: 12px; border-radius: 6px;
+          overflow-x: auto; direction: ltr; text-align: left; font-size: 0.88rem; }
+    .why { background: #f0fff4; border-right: 4px solid #2f855a;
+           padding: 10px 14px; border-radius: 6px; }
+    .danger { background: #fff5f5; border-right: 4px solid #c53030;
+              padding: 14px 18px; border-radius: 8px; margin: 24px 0; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+    th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: right; }
+    th { background: #eee; }
+  </style>
+</head>
+<body>
+
+  <h1>ניתוח אבטחה: ארבעה תרחישי iframe</h1>
+
+  <p>
+    <strong>עיקרון מנחה:</strong> תנו ל-iframe את
+    <strong>ההרשאות המינימליות</strong> שהוא צריך כדי לעבוד. לא יותר.
+    זהו עקרון ההרשאה המצומצמת (Principle of Least Privilege).
+  </p>
+
+  <!-- ============ מקרה 1 ============ -->
+  <div class="case">
+    <h2>1. סרטון יוטיוב</h2>
+    <p><strong>מקור:</strong> מהימן (גוגל). <strong>צריך:</strong> מסך מלא, ניגון.</p>
+
+<pre>&lt;iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID"
+        title="שם הסרטון"
+        allow="accelerometer; autoplay; clipboard-write;
+               encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"&gt;
+&lt;/iframe&gt;</pre>
+
+    <div class="why">
+      <strong>הנימוק:</strong> <strong>לא</strong> משתמשים ב-<code>sandbox</code> כאן.
+      נגן יוטיוב זקוק ל-JavaScript, ל-cookies ולגישה למקור שלו כדי לעבוד,
+      ו-sandbox פשוט ישבור אותו. אנחנו סומכים על גוגל.
+      במקום זאת אנחנו מגבילים בדרכים אחרות:
+      <code>youtube-nocookie</code> מונע מעקב לפני הניגון,
+      <code>allow</code> מגדיר בדיוק אילו יכולות מותרות,
+      ו-<code>referrerpolicy</code> מצמצם את המידע שנחשף.
+    </div>
+  </div>
+
+  <!-- ============ מקרה 2 ============ -->
+  <div class="case">
+    <h2>2. HTML שמשתמש העלה לאתר שלכם</h2>
+    <p><strong>מקור:</strong> <strong style="color:#c53030">לא מהימן בכלל.</strong> <strong>צריך:</strong> להציג בלבד.</p>
+
+<pre>&lt;iframe src="/uploads/user-123/page.html"
+        title="תצוגה מקדימה של קובץ שהועלה על ידי משתמש"
+        sandbox
+        referrerpolicy="no-referrer"
+        loading="lazy"&gt;
+&lt;/iframe&gt;</pre>
+
+    <div class="why">
+      <strong>הנימוק:</strong> <code>sandbox</code> <strong>ריק לגמרי</strong> —
+      זו רמת ההגבלה המקסימלית. הוא מבטל: הרצת JavaScript, שליחת טפסים,
+      פתיחת חלונות, ניווט של הדף החיצוני, גישה ל-cookies, ואפילו גישה
+      ל-localStorage. התוכן מוצג כטקסט ותמונות בלבד.
+      <br><br>
+      זה בדיוק המצב שבו אתם <strong>חייבים</strong> sandbox:
+      תוכן שנכתב על ידי מישהו שאין לכם שום סיבה לסמוך עליו.
+      בלעדיו, כל משתמש יכול להעלות דף שגונב את ה-cookies
+      של כל מי שצופה בו.
+    </div>
+  </div>
+
+  <!-- ============ מקרה 3 ============ -->
+  <div class="case">
+    <h2>3. ווידג׳ט תשלומים של חברת סליקה</h2>
+    <p><strong>מקור:</strong> מהימן חלקית (ספק חיצוני). <strong>צריך:</strong> טפסים ו-JavaScript.</p>
+
+<pre>&lt;iframe src="https://payments.provider.example/widget"
+        title="טופס תשלום מאובטח"
+        sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
+        allow="payment"
+        referrerpolicy="strict-origin"&gt;
+&lt;/iframe&gt;</pre>
+
+    <div class="why">
+      <strong>הנימוק:</strong> ווידג׳ט תשלומים חייב טפסים
+      (<code>allow-forms</code>), JavaScript (<code>allow-scripts</code>),
+      גישה למקור שלו כדי לתקשר עם השרת (<code>allow-same-origin</code>),
+      ולעיתים חלון קופץ לאימות תלת-ממדי (<code>allow-popups</code>).
+      <br><br>
+      <strong>מה עדיין חסום:</strong> <code>allow-top-navigation</code> —
+      הווידג׳ט <em>לא</em> יכול לשנות את כתובת הדף שלכם ולהעיף את המשתמש
+      לאתר דיוג. זו ההגנה החשובה ביותר כאן.
+      <br><br>
+      <strong>הערה:</strong> כאן אכן משלבים <code>allow-scripts</code>
+      עם <code>allow-same-origin</code> — וזה מקובל <em>רק</em> משום
+      שמדובר בספק סליקה מוסדר שעברתם איתו התקשרות חוזית.
+      זהו בדיוק סוג ההחלטה שדורשת שיקול דעת.
+    </div>
+  </div>
+
+  <!-- ============ מקרה 4 ============ -->
+  <div class="case">
+    <h2>4. מסמך HTML סטטי לתצוגה</h2>
+    <p><strong>מקור:</strong> מהימן (שלכם). <strong>צריך:</strong> תצוגה וקישורים.</p>
+
+<pre>&lt;iframe src="docs/terms.html"
+        title="תנאי השימוש של האתר"
+        sandbox="allow-popups allow-popups-to-escape-sandbox"
+        loading="lazy"&gt;
+&lt;/iframe&gt;</pre>
+
+    <div class="why">
+      <strong>הנימוק:</strong> מסמך סטטי לא צריך JavaScript ולא צריך טפסים.
+      ההרשאה היחידה שנוסיף היא פתיחת קישורים בלשונית חדשה.
+      <br><br>
+      גם כשהתוכן שלכם — אין סיבה לתת הרשאות שאינן נחוצות.
+      אם מחר מישהו יפרוץ לשרת ויחליף את הקובץ, ה-sandbox
+      עדיין יגן על שאר הדף.
+    </div>
+  </div>
+
+  <!-- ============ השאלה על השילוב המסוכן ============ -->
+  <div class="danger">
+    <h2>⚠️ למה <code>allow-scripts</code> + <code>allow-same-origin</code> מסוכן?</h2>
+
+    <p>
+      כשמשלבים את שני הערכים האלה עבור תוכן <strong>מאותו מקור</strong>
+      שאינכם סומכים עליו, נוצר מצב אבסורדי:
+    </p>
+
+    <ol>
+      <li>
+        <code>allow-same-origin</code> אומר: "התוכן הזה נחשב לאותו מקור
+        כמו הדף המארח".
+      </li>
+      <li>
+        <code>allow-scripts</code> אומר: "מותר לו להריץ JavaScript".
+      </li>
+      <li>
+        המשמעות המשולבת: הקוד בתוך ה-iframe יכול לגשת ל-DOM של הדף
+        <strong>המארח</strong> — ובכלל זה לאלמנט ה-iframe של עצמו.
+      </li>
+      <li>
+        הוא פשוט מריץ שורה כמו
+        <code>parent.document.querySelector('iframe').removeAttribute('sandbox')</code>,
+        ואז טוען את עצמו מחדש — <strong>בלי sandbox</strong>.
+      </li>
+    </ol>
+
+    <p>
+      <strong>התוצאה:</strong> ה-sandbox הפך לקישוט חסר ערך.
+      מכאן ואילך הקוד יכול לגנוב cookies, לקרוא סיסמאות שהוקלדו בדף,
+      ולשנות את כתובת הדף.
+    </p>
+
+    <p>
+      <strong>הכלל המעשי:</strong> אם התוכן אינו מהימן —
+      אל תשלבו את השניים. הגישו אותו מדומיין נפרד
+      (למשל <code>user-content.example.com</code>) כדי ש-<code>allow-same-origin</code>
+      לא ייתן לו שום גישה לדף שלכם.
+    </p>
+  </div>
+
+  <!-- ============ טבלת סיכום ============ -->
+  <h2>טבלת סיכום</h2>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">התרחיש</th>
+        <th scope="col">רמת אמון</th>
+        <th scope="col">ה-sandbox</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">יוטיוב</th>
+        <td>גבוהה</td>
+        <td>ללא sandbox, אבל עם <code>allow</code> ו-<code>referrerpolicy</code></td>
+      </tr>
+      <tr>
+        <th scope="row">תוכן משתמשים</th>
+        <td>אפס</td>
+        <td><code>sandbox</code> ריק + דומיין נפרד</td>
+      </tr>
+      <tr>
+        <th scope="row">ווידג׳ט תשלומים</th>
+        <td>בינונית (חוזית)</td>
+        <td><code>allow-scripts allow-forms allow-same-origin allow-popups</code></td>
+      </tr>
+      <tr>
+        <th scope="row">מסמך סטטי שלכם</th>
+        <td>גבוהה</td>
+        <td><code>allow-popups</code> בלבד</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

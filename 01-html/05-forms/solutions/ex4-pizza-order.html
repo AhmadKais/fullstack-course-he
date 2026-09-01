@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הזמנת פיצה</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 20px auto;
+           line-height: 1.7; padding: 0 16px; }
+    fieldset { border: 1px solid #ddd; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; }
+    legend { font-weight: 700; padding: 0 10px; color: #c05621; }
+    label { display: block; margin-top: 12px; font-weight: 600; }
+    .opt label { display: inline; font-weight: normal; }
+    .opt { margin: 5px 0; }
+    .cols { columns: 2; }
+    input[type="text"], input[type="tel"], input[type="number"],
+    input[type="date"], input[type="time"], select, textarea {
+      width: 100%; padding: 8px; box-sizing: border-box; margin-top: 4px;
+      border: 1px solid #bbb; border-radius: 4px; font-size: 1rem;
+    }
+    button { padding: 11px 26px; font-size: 1rem; border-radius: 6px; cursor: pointer; }
+    .primary { background: #c05621; color: #fff; border: none; }
+    .hint { font-weight: normal; font-size: 0.85rem; color: #666; }
+  </style>
+</head>
+<body>
+
+  <h1>🍕 הזמנת פיצה</h1>
+
+  <form action="" method="post">
+
+    <!-- ============ אזור 1 ============ -->
+    <fieldset>
+      <legend>1. פרטי הלקוח</legend>
+
+      <label for="p-name">שם מלא</label>
+      <input type="text" id="p-name" name="customerName"
+             autocomplete="name" required autofocus>
+
+      <label for="p-phone">
+        טלפון <span class="hint">(10 ספרות, ללא מקפים)</span>
+      </label>
+      <input type="tel" id="p-phone" name="phone"
+             pattern="0[0-9]{8,9}"
+             title="מספר טלפון ישראלי: 9 או 10 ספרות שמתחילות ב-0"
+             autocomplete="tel" dir="ltr" required>
+
+      <label for="p-address">כתובת למשלוח</label>
+      <input type="text" id="p-address" name="address"
+             placeholder="רחוב, מספר, עיר"
+             autocomplete="street-address" required>
+    </fieldset>
+
+    <!-- ============ אזור 2 ============ -->
+    <fieldset>
+      <legend>2. ההזמנה</legend>
+
+      <span style="font-weight:600">גודל הפיצה:</span>
+      <div class="opt">
+        <input type="radio" id="sz-personal" name="size" value="personal" required>
+        <label for="sz-personal">אישית (20 ס״מ) — 39&#8362;</label>
+      </div>
+      <div class="opt">
+        <input type="radio" id="sz-family" name="size" value="family">
+        <label for="sz-family">משפחתית (32 ס״מ) — 69&#8362;</label>
+      </div>
+      <div class="opt">
+        <input type="radio" id="sz-giant" name="size" value="giant">
+        <label for="sz-giant">ענקית (45 ס״מ) — 99&#8362;</label>
+      </div>
+
+      <p style="font-weight:600; margin-top:16px">תוספות:</p>
+      <div class="cols">
+        <div class="opt">
+          <input type="checkbox" id="t-olives" name="toppings" value="olives">
+          <label for="t-olives">זיתים</label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="t-mushroom" name="toppings" value="mushroom">
+          <label for="t-mushroom">פטריות</label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="t-onion" name="toppings" value="onion">
+          <label for="t-onion">בצל</label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="t-corn" name="toppings" value="corn">
+          <label for="t-corn">תירס</label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="t-tuna" name="toppings" value="tuna">
+          <label for="t-tuna">טונה</label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="t-pepper" name="toppings" value="pepper">
+          <label for="t-pepper">פלפל חריף</label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="t-extra" name="toppings" value="extra-cheese">
+          <label for="t-extra">גבינה כפולה</label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="t-basil" name="toppings" value="basil">
+          <label for="t-basil">בזיליקום טרי</label>
+        </div>
+      </div>
+
+      <label for="p-qty">כמות</label>
+      <input type="number" id="p-qty" name="quantity"
+             min="1" max="10" step="1" value="1" required>
+
+      <label for="p-dough">סוג הבצק</label>
+      <select id="p-dough" name="dough" required>
+        <option value="">-- בחרו בצק --</option>
+        <optgroup label="קלאסי">
+          <option value="thin">דק ופריך</option>
+          <option value="regular" selected>רגיל</option>
+          <option value="thick">עבה ואוורירי</option>
+        </optgroup>
+        <optgroup label="מיוחד">
+          <option value="wholewheat">מקמח מלא</option>
+          <option value="glutenfree">ללא גלוטן (+12&#8362;)</option>
+          <option value="stuffed">עם מילוי גבינה בשוליים (+15&#8362;)</option>
+        </optgroup>
+      </select>
+    </fieldset>
+
+    <!-- ============ אזור 3 ============ -->
+    <fieldset>
+      <legend>3. פרטי משלוח</legend>
+
+      <label for="p-date">תאריך המשלוח</label>
+      <input type="date" id="p-date" name="deliveryDate"
+             min="2026-01-01" required>
+      <span class="hint">אי אפשר להזמין לתאריך שעבר.</span>
+
+      <label for="p-time">שעה מבוקשת</label>
+      <input type="time" id="p-time" name="deliveryTime"
+             min="11:00" max="23:00" required>
+
+      <label for="p-notes">
+        הערות לשליח <span class="hint">(עד 200 תווים)</span>
+      </label>
+      <textarea id="p-notes" name="deliveryNotes" rows="3" maxlength="200"
+                placeholder="קומה, קוד בניין, לא לצלצל בפעמון..."></textarea>
+    </fieldset>
+
+    <!-- ============ אזור 4 ============ -->
+    <fieldset>
+      <legend>4. תשלום</legend>
+
+      <span style="font-weight:600">אמצעי תשלום:</span>
+      <div class="opt">
+        <input type="radio" id="pay-cash" name="payment" value="cash" required checked>
+        <label for="pay-cash">מזומן לשליח</label>
+      </div>
+      <div class="opt">
+        <input type="radio" id="pay-card" name="payment" value="card">
+        <label for="pay-card">כרטיס אשראי</label>
+      </div>
+
+      <div class="opt" style="margin-top:14px">
+        <input type="checkbox" id="p-terms" name="terms" value="yes" required>
+        <label for="p-terms">
+          אישרתי את תנאי ההזמנה ואת מדיניות הביטולים
+          <span style="color:#c53030">*</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <input type="hidden" name="branchId" value="branch-tlv-01">
+
+    <p>
+      <button type="submit" class="primary">שליחת ההזמנה</button>
+      <button type="reset">איפוס</button>
+    </p>
+
+  </form>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>תמונות ו-alt</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 820px; margin: 20px auto; line-height: 1.8; }
+    img { max-width: 100%; height: auto; }
+    figure { margin: 1.5rem 0; border: 1px solid #ddd; padding: 12px; border-radius: 8px; }
+    figcaption { font-size: 0.9rem; color: #555; margin-top: 8px; }
+    .bad { border-right: 4px solid #c00; padding-right: 12px; }
+    .good { border-right: 4px solid #0a0; padding-right: 12px; }
+  </style>
+</head>
+<body>
+
+  <h1>תמונות ב-HTML</h1>
+
+  <h2>1. תמונה בסיסית</h2>
+  <img src="../../../assets/img/placeholder-400x300.svg"
+       alt="איור של שמש כתומה על רקע בהיר"
+       width="400" height="300">
+
+  <p>
+    שימו לב ל-<code>width</code> ו-<code>height</code>: הם מונעים
+    "קפיצה" של התוכן בזמן שהתמונה נטענת. זו אחת ההמלצות
+    החשובות ביותר לביצועים.
+  </p>
+
+  <hr>
+
+  <h2>2. תכונת alt – טוב מול רע</h2>
+
+  <div class="bad">
+    <p><strong>❌ רע:</strong></p>
+    <pre dir="ltr">&lt;img src="IMG_2043.jpg" alt="תמונה"&gt;</pre>
+    <p>קורא מסך יכריז "תמונה" – מידע חסר ערך.</p>
+  </div>
+
+  <div class="good">
+    <p><strong>✅ טוב:</strong></p>
+    <pre dir="ltr">&lt;img src="IMG_2043.jpg"
+     alt="שלושה מפתחים עובדים יחד סביב שולחן עם מחשבים ניידים"&gt;</pre>
+    <p>קורא מסך מתאר את התמונה בפועל.</p>
+  </div>
+
+  <h3>תמונה דקורטיבית</h3>
+  <p>
+    כשהתמונה היא קישוט בלבד, משאירים <code>alt=""</code> ריק.
+    זה אומר לקורא המסך "דלג עליי".
+  </p>
+  <pre dir="ltr">&lt;img src="divider.png" alt=""&gt;</pre>
+  <p>
+    <strong>אזהרה:</strong> להשמיט את <code>alt</code> לגמרי זה לא אותו דבר!
+    אז קורא המסך יקריא את שם הקובץ – חוויה גרועה מאוד.
+  </p>
+
+  <hr>
+
+  <h2>3. figure ו-figcaption</h2>
+
+  <figure>
+    <img src="../../../assets/img/placeholder-800x400.svg"
+         alt="מלבן אפור עם מסגרת מקווקוות ובמרכזו הכיתוב 800 על 400"
+         width="800" height="400">
+    <figcaption>
+      איור 1: תמונת מציין מקום בגודל 800×400 פיקסלים.
+    </figcaption>
+  </figure>
+
+  <p>
+    היתרון של <code>&lt;figure&gt;</code>: הקשר בין התמונה לכיתוב
+    מוצהר סמנטית, כך שכלים אוטומטיים יודעים שהכיתוב שייך לתמונה הזו.
+  </p>
+
+  <hr>
+
+  <h2>4. תמונה כקישור</h2>
+  <a href="01-links.html">
+    <img src="../../../assets/img/logo.svg"
+         alt="לוגו MySite – מעבר לדף הקישורים"
+         width="200" height="60">
+  </a>
+  <p>
+    <small>
+      כשתמונה היא קישור, ה-alt מתאר את <strong>יעד הקישור</strong>,
+      לא רק את מה שרואים בתמונה.
+    </small>
+  </p>
+
+  <hr>
+
+  <h2>5. טעינה עצלה</h2>
+  <p>
+    <code>loading="lazy"</code> אומר לדפדפן לטעון את התמונה
+    רק כשהמשתמש מתקרב אליה בגלילה. מומלץ לכל תמונה
+    שנמצאת מתחת לקו הקיפול.
+  </p>
+  <img src="../../../assets/img/placeholder-square.svg"
+       alt="משולש ירוק כהה על רקע ירוק בהיר"
+       width="300" height="300"
+       loading="lazy">
+
+</body>
+</html>

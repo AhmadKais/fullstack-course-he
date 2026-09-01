@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!-- ✅ תיקון 1: הוספת lang ו-dir -->
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <!-- ✅ תיקון 2: הוספת meta viewport (הדף לא היה מותאם לנייד) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="סטודיו יוגה נשימה - שיעורי יוגה לכל הרמות בבוקר ובערב">
+  <title>סטודיו יוגה נשימה | שיעורים לכל הרמות</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 700px; margin: 20px auto;
+           line-height: 1.7; padding: 0 18px; }
+
+    /* ✅ תיקון 3: הוסר outline:none.
+       במקומו - סימון מיקוד ברור ואפילו טוב יותר מברירת המחדל. */
+    :focus-visible {
+      outline: 3px solid #2b6cb0;
+      outline-offset: 2px;
+    }
+
+    /* ✅ תיקון 4: הטבלה לפריסה הוחלפה ב-Grid */
+    .classes { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .card { background: #f7fafc; padding: 14px; border-radius: 8px; }
+
+    /* ✅ תיקון 5: צבע טקסט בניגודיות תקינה (היה #ccc) */
+    .intro { color: #2d3748; }
+
+    button { padding: 9px 18px; font-size: 1rem; cursor: pointer;
+             background: #2b6cb0; color: #fff; border: none; border-radius: 4px; }
+    label { display: block; margin-top: 12px; font-weight: 600; }
+    input { width: 100%; padding: 8px; box-sizing: border-box; margin-top: 4px; }
+    .fix { background: #f0fff4; border-right: 4px solid #2f855a;
+           padding: 6px 12px; font-size: 0.85rem; margin: 6px 0; }
+    @media (max-width: 600px) { .classes { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ תיקון 6: הוספת קישור דילוג ו-main -->
+  <a href="#main" class="skip-link" style="position:absolute; right:-9999px"
+     onfocus="this.style.right='0'">דלגו לתוכן</a>
+
+  <header>
+    <h1>סטודיו יוגה &quot;נשימה&quot;</h1>
+  </header>
+
+  <main id="main">
+
+    <!-- ✅ תיקון 7: h4 -> h2. אין לדלג על רמות כותרת. -->
+    <h2>השיעורים שלנו</h2>
+    <p class="fix">תוקן: <code>h4</code> אחרי <code>h1</code> → <code>h2</code>. דילוג על רמות שובר את תוכן העניינים שקורא המסך בונה.</p>
+
+    <!-- ✅ תיקון 8: הוספת alt תיאורי (היה חסר לגמרי) -->
+    <figure>
+      <img src="../../../assets/img/placeholder-400x300.svg"
+           alt="מתאמנת מבצעת תנוחת יוגה על מזרן באולם מואר"
+           width="400" height="300"
+           style="max-width:100%; height:auto">
+      <figcaption>שיעור בוקר בסטודיו</figcaption>
+    </figure>
+    <p class="fix">תוקן: נוסף <code>alt</code>. בלעדיו קורא המסך מקריא את שם הקובץ.</p>
+
+    <p class="intro">שיעורי יוגה לכל הרמות, בבוקר ובערב.</p>
+    <p class="fix">תוקן: צבע הטקסט שונה מ-<code>#ccc</code> לצבע כהה. יחס הניגודיות עלה מ-1.6:1 ל-11:1.</p>
+
+    <!-- ✅ תיקון 9: טבלה שהייתה לפריסה הוחלפה ב-div + Grid -->
+    <div class="classes">
+      <section class="card">
+        <h3>יוגה למתחילים</h3>
+        <p>שיעור רגוע להיכרות עם התרגול.</p>
+      </section>
+      <section class="card">
+        <h3>יוגה מתקדמים</h3>
+        <p>תרגול אינטנסיבי לבעלי ניסיון.</p>
+      </section>
+    </div>
+    <p class="fix">תוקן: <code>&lt;table class="layout"&gt;</code> → <code>div</code> עם CSS Grid. קורא מסך הכריז "טבלה בת שורה אחת ושתי עמודות" ואז ניסה לקרוא נתונים שלא היו קיימים.</p>
+
+    <!-- ✅ תיקון 10: טקסט קישור משמעותי במקום "לחצו כאן" -->
+    <p><a href="#">קראו על לוח השיעורים המלא</a></p>
+    <p class="fix">תוקן: "לחצו כאן" → טקסט שמתאר את היעד. קורא מסך שמקריא רשימת קישורים בלבד ישמע כעת משהו בעל משמעות.</p>
+
+    <h2>הרשמה</h2>
+
+    <form action="" method="post">
+
+      <!-- ✅ תיקון 11: הוספת label, id ו-name לכל שדה -->
+      <label for="reg-name">שם מלא</label>
+      <input type="text" id="reg-name" name="name"
+             autocomplete="name" required>
+
+      <!-- ✅ תיקון 12: type="text" -> type="email" -->
+      <label for="reg-email">כתובת אימייל</label>
+      <input type="email" id="reg-email" name="email"
+             autocomplete="email" dir="ltr" required
+             placeholder="you@example.com">
+
+      <p class="fix">תוקן: <code>placeholder</code> אינו תווית. נוספו <code>&lt;label for&gt;</code>, <code>id</code> ו-<code>name</code>, וסוג השדה שונה ל-<code>email</code>.</p>
+
+      <!-- ✅ תיקון 13: div שמתפקד ככפתור -> button אמיתי -->
+      <p><button type="submit">שליחת הרשמה</button></p>
+      <p class="fix">תוקן: <code>&lt;div class="fake-btn" onclick&gt;</code> → <code>&lt;button&gt;</code>. ה-div לא היה נגיש במקלדת, לא הגיב ל-Enter, ולא הוכרז ככפתור.</p>
+
+    </form>
+
+    <!-- ✅ תיקון 14: כפתור אייקון בלי שם נגיש -->
+    <p><button aria-label="סגירת ההודעה">✕</button></p>
+    <p class="fix">תוקן: נוסף <code>aria-label</code>. קורא מסך הכריז קודם "כפתור" בלי שום מידע על תפקידו.</p>
+
+  </main>
+
+  <footer>
+    <p><small>&copy; 2026 סטודיו נשימה</small></p>
+  </footer>
+
+<!--
+  =====================================================================
+  סיכום 10 הבעיות שתוקנו
+  =====================================================================
+   1. חסר lang ו-dir בתגית html
+   2. חסר meta viewport
+   3. outline: none מחק את סימון המיקוד במקלדת
+   4. טבלה שימשה לפריסה במקום לנתונים
+   5. ניגודיות צבעים נמוכה (#ccc על לבן)
+   6. חסרה תגית main וחסר קישור דילוג
+   7. דילוג בהיררכיית הכותרות (h1 ואז h4)
+   8. תמונה ללא alt
+   9. טקסט קישור "לחצו כאן"
+  10. טופס ללא label / id / name, ו-type שגוי
+  11. div עם onclick במקום button
+  12. כפתור אייקון ✕ ללא aria-label
+
+  (12 תיקונים בסך הכול - יותר מ-10 שהובטחו)
+  =====================================================================
+-->
+
+</body>
+</html>

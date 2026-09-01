@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkbox, Radio ו-Select</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 620px; margin: 20px auto; line-height: 1.8; }
+    fieldset { margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; padding: 14px 18px; }
+    legend { font-weight: 700; padding: 0 8px; }
+    .opt { display: block; margin: 6px 0; }
+    .opt label { font-weight: normal; cursor: pointer; }
+    select { padding: 6px; font-size: 1rem; min-width: 220px; }
+    .warn { background: #fff4f4; border-right: 4px solid #c00; padding: 10px 14px; }
+  </style>
+</head>
+<body>
+
+  <h1>בחירה מרובה ובחירה יחידה</h1>
+
+  <form action="" method="get">
+
+    <!-- ============ CHECKBOX ============ -->
+    <fieldset>
+      <legend>תחומי עניין (אפשר לבחור כמה)</legend>
+
+      <!-- אותו name לכולם => נשלחים כמערך -->
+      <div class="opt">
+        <input type="checkbox" id="c-html" name="interests" value="html" checked>
+        <label for="c-html">HTML</label>
+      </div>
+      <div class="opt">
+        <input type="checkbox" id="c-css" name="interests" value="css">
+        <label for="c-css">CSS</label>
+      </div>
+      <div class="opt">
+        <input type="checkbox" id="c-js" name="interests" value="js">
+        <label for="c-js">JavaScript</label>
+      </div>
+      <div class="opt">
+        <input type="checkbox" id="c-sql" name="interests" value="sql">
+        <label for="c-sql">SQL</label>
+      </div>
+    </fieldset>
+
+    <!-- ============ RADIO ============ -->
+    <fieldset>
+      <legend>רמת הניסיון שלכם (בחירה אחת)</legend>
+
+      <!-- אותו name = אותה שאלה. value שונה = תשובה שונה. -->
+      <div class="opt">
+        <input type="radio" id="r-none" name="level" value="none" checked>
+        <label for="r-none">ללא ניסיון</label>
+      </div>
+      <div class="opt">
+        <input type="radio" id="r-basic" name="level" value="basic">
+        <label for="r-basic">בסיסי</label>
+      </div>
+      <div class="opt">
+        <input type="radio" id="r-adv" name="level" value="advanced">
+        <label for="r-adv">מתקדם</label>
+      </div>
+    </fieldset>
+
+    <div class="warn">
+      <strong>נסו את זה:</strong> פתחו את הקוד ושנו את ה-<code>name</code>
+      של אחד מכפתורי הרדיו לערך אחר. פתאום תוכלו לסמן שניים בו-זמנית –
+      כי הדפדפן כבר לא רואה בהם אותה שאלה.
+    </div>
+
+    <!-- ============ SELECT ============ -->
+    <fieldset>
+      <legend>העדפות</legend>
+
+      <p>
+        <label for="s-city">עיר מגורים:</label><br>
+        <select id="s-city" name="city" required>
+          <option value="">-- בחרו עיר --</option>
+          <option value="tlv">תל אביב</option>
+          <option value="jlm" selected>ירושלים</option>
+          <option value="hfa">חיפה</option>
+          <option value="bsh">באר שבע</option>
+        </select>
+      </p>
+
+      <p>
+        <label for="s-course">קורס מבוקש:</label><br>
+        <select id="s-course" name="course">
+          <optgroup label="צד לקוח">
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="js">JavaScript</option>
+          </optgroup>
+          <optgroup label="צד שרת ונתונים">
+            <option value="sql">SQL</option>
+            <option value="node">Node.js</option>
+          </optgroup>
+        </select>
+      </p>
+
+      <p>
+        <label for="s-skills">כישורים (Ctrl + לחיצה לבחירה מרובה):</label><br>
+        <select id="s-skills" name="skills" multiple size="5">
+          <option value="git">Git</option>
+          <option value="figma">Figma</option>
+          <option value="excel">Excel</option>
+          <option value="photoshop">Photoshop</option>
+          <option value="english">אנגלית ברמה גבוהה</option>
+        </select>
+      </p>
+    </fieldset>
+
+    <button type="submit">שליחה &mdash; בדקו את שורת הכתובת</button>
+
+  </form>
+
+  <hr>
+
+  <h2>סיכום ההבדלים</h2>
+  <table border="1" cellpadding="8" style="border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th>&nbsp;</th>
+        <th>Checkbox</th>
+        <th>Radio</th>
+        <th>Select</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">בחירות</th>
+        <td>כמה</td>
+        <td>אחת</td>
+        <td>אחת (או כמה עם <code>multiple</code>)</td>
+      </tr>
+      <tr>
+        <th scope="row">name</th>
+        <td>יכול לחזור</td>
+        <td><strong>חייב</strong> לחזור</td>
+        <td>אחד לרשימה</td>
+      </tr>
+      <tr>
+        <th scope="row">מתי משתמשים</th>
+        <td>2–7 אפשרויות, בחירה מרובה</td>
+        <td>2–5 אפשרויות, בחירה יחידה</td>
+        <td>יותר מ-5 אפשרויות</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

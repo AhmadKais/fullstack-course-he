@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מיזוג תאים – colspan ו-rowspan</title>
+  <style>
+    table { border-collapse: collapse; margin-bottom: 2rem; }
+    th, td { border: 1px solid #999; padding: 8px 14px; text-align: center; }
+    th { background: #eee; }
+    caption { font-weight: bold; padding: 8px; }
+    .merged { background: #d8f0ff; }
+  </style>
+</head>
+<body>
+
+  <h1>מיזוג תאים</h1>
+
+  <!-- ============ colspan ============ -->
+  <h2>colspan – מיזוג לרוחב</h2>
+  <table>
+    <caption>כרטיס עובד</caption>
+    <tr>
+      <!-- תא אחד שתופס את מקומם של 2 -->
+      <th colspan="2" class="merged">פרטים אישיים</th>
+    </tr>
+    <tr>
+      <td>שם פרטי</td>
+      <td>דנה</td>
+    </tr>
+    <tr>
+      <td>שם משפחה</td>
+      <td>כהן</td>
+    </tr>
+    <tr>
+      <th colspan="2" class="merged">פרטי העסקה</th>
+    </tr>
+    <tr>
+      <td>מחלקה</td>
+      <td>פיתוח</td>
+    </tr>
+  </table>
+
+  <p>
+    <strong>כלל הספירה:</strong> בשורה הראשונה יש תא אחד בלבד,
+    אבל הוא "שווה" ל-2 – ולכן מספר העמודות בכל השורות נשמר.
+  </p>
+
+  <hr>
+
+  <!-- ============ rowspan ============ -->
+  <h2>rowspan – מיזוג לגובה</h2>
+  <table>
+    <caption>מערכת שעות</caption>
+    <thead>
+      <tr>
+        <th>יום</th>
+        <th>שעה</th>
+        <th>מקצוע</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <!-- תא אחד שנמתח על 2 שורות -->
+        <td rowspan="2" class="merged">ראשון</td>
+        <td>08:00</td>
+        <td>HTML</td>
+      </tr>
+      <tr>
+        <!-- שימו לב: אין כאן תא ליום! הוא כבר "נלקח" מלמעלה -->
+        <td>10:00</td>
+        <td>CSS</td>
+      </tr>
+      <tr>
+        <td rowspan="3" class="merged">שלישי</td>
+        <td>08:00</td>
+        <td>JavaScript</td>
+      </tr>
+      <tr>
+        <td>10:00</td>
+        <td>JavaScript</td>
+      </tr>
+      <tr>
+        <td>12:00</td>
+        <td>תרגול</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <!-- ============ שילוב ============ -->
+  <h2>שילוב של שניהם</h2>
+  <table>
+    <caption>לוח משמרות שבועי</caption>
+    <thead>
+      <tr>
+        <th rowspan="2" class="merged">עובד</th>
+        <th colspan="3" class="merged">ימי השבוע</th>
+      </tr>
+      <tr>
+        <th>ראשון</th>
+        <th>שני</th>
+        <th>שלישי</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">דנה</th>
+        <td>בוקר</td>
+        <td>ערב</td>
+        <td>חופש</td>
+      </tr>
+      <tr>
+        <th scope="row">יוסי</th>
+        <td>ערב</td>
+        <td>חופש</td>
+        <td>בוקר</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    בשורה הראשונה: תא אחד עם <code>rowspan="2"</code> + תא אחד עם
+    <code>colspan="3"</code> = 4 עמודות סה"כ.<br>
+    בשורה השנייה: 3 תאים בלבד, כי העמודה הראשונה כבר תפוסה מלמעלה.
+  </p>
+
+</body>
+</html>

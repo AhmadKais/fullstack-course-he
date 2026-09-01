@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <!-- ==================================================
+       חלק 1: תגיות טכניות בסיסיות (תמיד ראשונות)
+       ================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ==================================================
+       חלק 2: SEO – מה שגוגל מציג
+       ================================================== -->
+
+  <!-- כותרת: 50-60 תווים. הכי חשוב.
+       מבנה מומלץ: נושא הדף | שם האתר -->
+  <title>קורס Full Stack בעברית – HTML, CSS ו-JavaScript | מכללת עתיד</title>
+
+  <!-- תיאור: 150-160 תווים. מופיע מתחת לכותרת בתוצאות החיפוש.
+       לא משפיע ישירות על הדירוג, אבל משפיע מאוד על אחוז ההקלקה. -->
+  <meta name="description"
+        content="קורס Full Stack מלא בעברית: HTML, CSS ו-JavaScript מאפס. 28 מפגשים, תרגול מעשי בכיתה, פרויקט גמר וליווי אישי. פתיחת מחזור במרץ 2026.">
+
+  <!-- מחבר -->
+  <meta name="author" content="מכללת עתיד">
+
+  <!-- הוראות למנועי חיפוש -->
+  <meta name="robots" content="index, follow">
+  <!-- אפשרויות: noindex (אל תוסיף לאינדקס), nofollow (אל תעקוב אחרי קישורים) -->
+
+  <!-- כתובת קנונית: מונעת בעיית "תוכן כפול"
+       כשאותו דף נגיש בכמה כתובות -->
+  <link rel="canonical" href="https://example.com/courses/fullstack">
+
+  <!-- ==================================================
+       חלק 3: Open Graph – פייסבוק, וואטסאפ, לינקדאין, טלגרם
+       שימו לב: כאן משתמשים ב-property ולא ב-name!
+       ================================================== -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="מכללת עתיד">
+  <meta property="og:title" content="קורס Full Stack בעברית">
+  <meta property="og:description" content="למדו לבנות אתרים מאפס: HTML, CSS ו-JavaScript. 28 מפגשים עם ליווי אישי.">
+  <meta property="og:image" content="https://example.com/images/course-preview.jpg">
+  <meta property="og:image:alt" content="סטודנטים לומדים תכנות מול מחשבים ניידים">
+  <meta property="og:url" content="https://example.com/courses/fullstack">
+  <meta property="og:locale" content="he_IL">
+
+  <!-- ==================================================
+       חלק 4: Twitter Card
+       ================================================== -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="קורס Full Stack בעברית">
+  <meta name="twitter:description" content="למדו לבנות אתרים מאפס.">
+  <meta name="twitter:image" content="https://example.com/images/course-preview.jpg">
+
+  <!-- ==================================================
+       חלק 5: אייקונים ונושא
+       ================================================== -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#2b6cb0">
+
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 800px; margin: 20px auto;
+           line-height: 1.7; padding: 0 18px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: right; }
+    th { background: #f0f0f0; }
+    .preview { border: 1px solid #ddd; border-radius: 8px; padding: 14px; background: #fafafa; }
+    .preview .url { color: #006621; font-size: 0.85rem; }
+    .preview .title { color: #1a0dab; font-size: 1.2rem; margin: 4px 0; }
+    .preview .desc { color: #545454; font-size: 0.92rem; }
+  </style>
+</head>
+<body>
+
+  <h1>מטא-תגיות ל-SEO</h1>
+  <p>
+    <strong>פתחו את קוד המקור של הדף הזה</strong> (Ctrl+U) כדי לראות
+    את כל התגיות עם ההסברים.
+  </p>
+
+  <h2>איך זה ייראה בגוגל</h2>
+  <div class="preview">
+    <div class="url">https://example.com › courses › fullstack</div>
+    <div class="title">קורס Full Stack בעברית – HTML, CSS ו-JavaScript | מכללת עתיד</div>
+    <div class="desc">
+      קורס Full Stack מלא בעברית: HTML, CSS ו-JavaScript מאפס. 28 מפגשים,
+      תרגול מעשי בכיתה, פרויקט גמר וליווי אישי. פתיחת מחזור במרץ 2026.
+    </div>
+  </div>
+
+  <h2>טבלת התגיות החשובות</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>תגית</th>
+        <th>תפקיד</th>
+        <th>אורך מומלץ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>&lt;title&gt;</code></td>
+        <td>כותרת בגוגל ובלשונית</td>
+        <td>50–60 תווים</td>
+      </tr>
+      <tr>
+        <td><code>meta description</code></td>
+        <td>התיאור מתחת לכותרת</td>
+        <td>150–160 תווים</td>
+      </tr>
+      <tr>
+        <td><code>link canonical</code></td>
+        <td>מניעת תוכן כפול</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><code>og:title</code></td>
+        <td>כותרת בשיתוף ברשתות</td>
+        <td>עד 60 תווים</td>
+      </tr>
+      <tr>
+        <td><code>og:image</code></td>
+        <td>תמונת התצוגה המקדימה</td>
+        <td>1200×630 פיקסלים</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>⚠️ טעויות נפוצות</h2>
+  <ul>
+    <li>
+      <strong>כתיבת <code>name</code> במקום <code>property</code> ב-Open Graph.</strong>
+      התגיות של OG משתמשות ב-<code>property</code>. זו הסיבה מספר 1
+      לכך שהתצוגה המקדימה בוואטסאפ לא עובדת.
+    </li>
+    <li>
+      <strong>אותו <code>&lt;title&gt;</code> בכל הדפים באתר.</strong>
+      כל דף חייב כותרת ייחודית.
+    </li>
+    <li>
+      <strong>כתובת יחסית ב-<code>og:image</code>.</strong>
+      חייבת להיות כתובת מלאה שמתחילה ב-<code>https://</code>.
+    </li>
+    <li>
+      <strong>שכחת <code>meta viewport</code>.</strong>
+      גוגל מדרג אתרים שאינם מותאמים לנייד נמוך משמעותית.
+    </li>
+  </ul>
+
+  <h2>🧪 כלים לבדיקה</h2>
+  <ul>
+    <li>
+      <a href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener noreferrer">
+        Facebook Sharing Debugger
+      </a> – בדיקת תצוגת Open Graph
+    </li>
+    <li>
+      <a href="https://search.google.com/test/rich-results" target="_blank" rel="noopener noreferrer">
+        Google Rich Results Test
+      </a>
+    </li>
+    <li>
+      <strong>Lighthouse</strong> – מובנה ב-Chrome (F12 ← Lighthouse ← SEO)
+    </li>
+  </ul>
+
+</body>
+</html>

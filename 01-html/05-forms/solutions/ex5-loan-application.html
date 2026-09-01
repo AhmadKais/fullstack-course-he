@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="טופס בקשת הלוואה - תרגיל מסכם למודול הטפסים">
+  <title>בקשת הלוואה</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 700px; margin: 20px auto;
+           line-height: 1.7; padding: 0 16px; color: #1a202c; }
+    fieldset { border: 1px solid #dde; border-radius: 10px; padding: 16px 20px; margin-bottom: 22px; }
+    legend { font-weight: 700; padding: 0 10px; color: #2c5282; font-size: 1.05rem; }
+    label { display: block; margin-top: 12px; font-weight: 600; }
+    .opt label { display: inline; font-weight: normal; }
+    .opt { margin: 5px 0; }
+    input[type="text"], input[type="email"], input[type="tel"], input[type="number"],
+    input[type="date"], input[type="url"], input[type="month"], input[type="password"],
+    select, textarea {
+      width: 100%; padding: 8px; box-sizing: border-box; margin-top: 4px;
+      border: 1px solid #bbb; border-radius: 4px; font-size: 1rem;
+    }
+    input[type="range"] { width: 100%; }
+    .req::after { content: " *"; color: #c53030; }
+    .hint { font-weight: normal; font-size: 0.85rem; color: #666; }
+    button { padding: 12px 28px; font-size: 1rem; border-radius: 6px; cursor: pointer; }
+    .primary { background: #2c5282; color: #fff; border: none; }
+    .legend-note { background: #f7fafc; padding: 10px 14px; border-right: 4px solid #2c5282;
+                   font-size: 0.9rem; margin-bottom: 18px; }
+  </style>
+</head>
+<body>
+
+  <h1>בקשת הלוואה</h1>
+
+  <p class="legend-note">
+    שדות המסומנים ב-<span style="color:#c53030">*</span> הם שדות חובה.
+    הטופס מיועד לתרגול בלבד ואינו נשלח לשום מקום.
+  </p>
+
+  <form action="" method="post">
+
+    <!-- ================= 1. פרטים אישיים ================= -->
+    <fieldset>
+      <legend>1. פרטים אישיים</legend>
+
+      <label for="l-first" class="req">שם פרטי</label>
+      <input type="text" id="l-first" name="firstName"
+             autocomplete="given-name" required autofocus>
+
+      <label for="l-last" class="req">שם משפחה</label>
+      <input type="text" id="l-last" name="lastName"
+             autocomplete="family-name" required>
+
+      <label for="l-id" class="req">
+        תעודת זהות <span class="hint">(9 ספרות)</span>
+      </label>
+      <input type="text" id="l-id" name="idNumber"
+             pattern="[0-9]{9}"
+             title="יש להזין בדיוק 9 ספרות, ללא רווחים או מקפים"
+             dir="ltr" required>
+
+      <label for="l-birth" class="req">תאריך לידה</label>
+      <input type="date" id="l-birth" name="birthDate"
+             min="1926-01-01" max="2008-12-31" required>
+      <span class="hint">הגיל המינימלי לבקשת הלוואה הוא 18.</span>
+
+      <span style="font-weight:600; display:block; margin-top:14px">מצב משפחתי:</span>
+      <div class="opt">
+        <input type="radio" id="ms-single" name="maritalStatus" value="single" required>
+        <label for="ms-single">רווק/ה</label>
+      </div>
+      <div class="opt">
+        <input type="radio" id="ms-married" name="maritalStatus" value="married">
+        <label for="ms-married">נשוי/אה</label>
+      </div>
+      <div class="opt">
+        <input type="radio" id="ms-divorced" name="maritalStatus" value="divorced">
+        <label for="ms-divorced">גרוש/ה</label>
+      </div>
+      <div class="opt">
+        <input type="radio" id="ms-widowed" name="maritalStatus" value="widowed">
+        <label for="ms-widowed">אלמן/ה</label>
+      </div>
+    </fieldset>
+
+    <!-- ================= 2. פרטי קשר ================= -->
+    <fieldset>
+      <legend>2. פרטי קשר</legend>
+
+      <label for="l-email" class="req">אימייל</label>
+      <input type="email" id="l-email" name="email"
+             autocomplete="email" dir="ltr" required
+             placeholder="you@example.com">
+
+      <label for="l-phone" class="req">
+        טלפון נייד <span class="hint">(10 ספרות שמתחילות ב-05)</span>
+      </label>
+      <input type="tel" id="l-phone" name="phone"
+             pattern="05[0-9]{8}"
+             title="מספר נייד ישראלי: 10 ספרות שמתחילות ב-05"
+             autocomplete="tel" dir="ltr" required>
+
+      <label for="l-city" class="req">
+        עיר מגורים <span class="hint">(התחילו להקליד — יופיעו הצעות)</span>
+      </label>
+      <input type="text" id="l-city" name="city" list="cities-list"
+             autocomplete="address-level2" required>
+      <datalist id="cities-list">
+        <option value="תל אביב–יפו"></option>
+        <option value="ירושלים"></option>
+        <option value="חיפה"></option>
+        <option value="ראשון לציון"></option>
+        <option value="באר שבע"></option>
+        <option value="פתח תקווה"></option>
+        <option value="נצרת"></option>
+        <option value="אשדוד"></option>
+      </datalist>
+
+      <label for="l-website">
+        אתר אישי או פרופיל מקצועי <span class="hint">(לא חובה)</span>
+      </label>
+      <input type="url" id="l-website" name="website"
+             dir="ltr" placeholder="https://example.com">
+    </fieldset>
+
+    <!-- ================= 3. תעסוקה והכנסות ================= -->
+    <fieldset>
+      <legend>3. תעסוקה והכנסות</legend>
+
+      <label for="l-employer" class="req">שם המעסיק</label>
+      <input type="text" id="l-employer" name="employer"
+             autocomplete="organization" required>
+
+      <label for="l-since" class="req">מועד תחילת העבודה</label>
+      <input type="month" id="l-since" name="employedSince"
+             min="1970-01" max="2026-12" required>
+
+      <label for="l-sector" class="req">ענף תעסוקה</label>
+      <select id="l-sector" name="sector" required>
+        <option value="">-- בחרו ענף --</option>
+        <optgroup label="מגזר פרטי">
+          <option value="tech">היי-טק</option>
+          <option value="retail">מסחר וקמעונאות</option>
+          <option value="industry">תעשייה</option>
+          <option value="services">שירותים</option>
+        </optgroup>
+        <optgroup label="מגזר ציבורי">
+          <option value="education">חינוך</option>
+          <option value="health">בריאות</option>
+          <option value="government">ממשלה ורשויות</option>
+        </optgroup>
+        <optgroup label="אחר">
+          <option value="selfemployed">עצמאי</option>
+          <option value="pension">פנסיונר</option>
+        </optgroup>
+      </select>
+
+      <label for="l-income" class="req">
+        הכנסה חודשית נטו <span class="hint">(בשקלים, בקפיצות של 100)</span>
+      </label>
+      <input type="number" id="l-income" name="monthlyIncome"
+             min="0" max="200000" step="100" required
+             placeholder="12000">
+
+      <label for="l-payslip" class="req">
+        תלוש שכר אחרון <span class="hint">(PDF או תמונה, עד 5MB)</span>
+      </label>
+      <input type="file" id="l-payslip" name="payslip"
+             accept=".pdf,.jpg,.jpeg,.png" required>
+    </fieldset>
+
+    <!-- ================= 4. פרטי ההלוואה ================= -->
+    <fieldset>
+      <legend>4. פרטי ההלוואה המבוקשת</legend>
+
+      <label for="l-amount" class="req">
+        סכום מבוקש <span class="hint">(בקפיצות של 500&#8362;)</span>
+      </label>
+      <input type="number" id="l-amount" name="loanAmount"
+             min="5000" max="500000" step="500" value="20000" required>
+
+      <label for="l-months" class="req">
+        מספר תשלומים <span class="hint">(12–120 חודשים)</span>
+      </label>
+      <input type="range" id="l-months" name="months"
+             min="12" max="120" step="12" value="36">
+      <span class="hint">הזיזו את הסרגל לבחירת מספר החודשים.</span>
+
+      <label for="l-purpose" class="req">מטרת ההלוואה</label>
+      <select id="l-purpose" name="purpose" required>
+        <option value="">-- בחרו מטרה --</option>
+        <option value="car">רכישת רכב</option>
+        <option value="renovation">שיפוץ דירה</option>
+        <option value="education">מימון לימודים</option>
+        <option value="debt">איחוד הלוואות</option>
+        <option value="business">השקעה בעסק</option>
+        <option value="other">אחר</option>
+      </select>
+
+      <label for="l-startdate" class="req">מועד מבוקש לקבלת הכסף</label>
+      <input type="date" id="l-startdate" name="startDate"
+             min="2026-01-01" max="2027-12-31" required>
+
+      <p style="font-weight:600; margin-top:16px">אילו ביטחונות תוכלו להציג?</p>
+      <div class="opt">
+        <input type="checkbox" id="col-salary" name="collateral" value="salary">
+        <label for="col-salary">המחאת שכר</label>
+      </div>
+      <div class="opt">
+        <input type="checkbox" id="col-guarantor" name="collateral" value="guarantor">
+        <label for="col-guarantor">ערבים</label>
+      </div>
+      <div class="opt">
+        <input type="checkbox" id="col-property" name="collateral" value="property">
+        <label for="col-property">נכס משועבד</label>
+      </div>
+      <div class="opt">
+        <input type="checkbox" id="col-savings" name="collateral" value="savings">
+        <label for="col-savings">תוכנית חיסכון</label>
+      </div>
+      <div class="opt">
+        <input type="checkbox" id="col-none" name="collateral" value="none">
+        <label for="col-none">אין ביטחונות</label>
+      </div>
+
+      <label for="l-comments">
+        הערות נוספות <span class="hint">(עד 800 תווים)</span>
+      </label>
+      <textarea id="l-comments" name="comments" rows="4" maxlength="800"
+                placeholder="כל מידע נוסף שיסייע בבחינת הבקשה"></textarea>
+    </fieldset>
+
+    <!-- ================= 5. חשבון ואישורים ================= -->
+    <fieldset>
+      <legend>5. חשבון ואישורים</legend>
+
+      <label for="l-account" class="req">
+        מספר חשבון בנק <span class="hint">(6–9 ספרות)</span>
+      </label>
+      <input type="text" id="l-account" name="bankAccount"
+             pattern="[0-9]{6,9}"
+             title="מספר חשבון: בין 6 ל-9 ספרות"
+             dir="ltr" required>
+
+      <label for="l-pass" class="req">
+        סיסמה לאזור האישי
+        <span class="hint">(8+ תווים, אות גדולה, אות קטנה וספרה)</span>
+      </label>
+      <input type="password" id="l-pass" name="password"
+             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+             title="לפחות 8 תווים, הכוללים אות גדולה, אות קטנה וספרה"
+             autocomplete="new-password" dir="ltr" required>
+
+      <div class="opt" style="margin-top:16px">
+        <input type="checkbox" id="l-terms" name="terms" value="yes" required>
+        <label for="l-terms" class="req">
+          קראתי ואני מסכים/ה
+          <a href="#" target="_blank" rel="noopener noreferrer">לתנאי השימוש</a>
+          ולמדיניות הפרטיות
+        </label>
+      </div>
+
+      <div class="opt">
+        <input type="checkbox" id="l-credit" name="creditCheck" value="yes" required>
+        <label for="l-credit" class="req">
+          אני מאשר/ת בדיקת נתוני אשראי
+        </label>
+      </div>
+
+      <div class="opt">
+        <input type="checkbox" id="l-marketing" name="marketing" value="yes">
+        <label for="l-marketing">
+          אשמח לקבל הצעות והטבות בדואר אלקטרוני
+        </label>
+      </div>
+    </fieldset>
+
+    <!-- שדה נסתר: מזהה גרסת הטופס וערוץ ההגעה -->
+    <input type="hidden" name="formVersion" value="loan-2026-v3">
+    <input type="hidden" name="channel" value="web">
+
+    <p>
+      <button type="submit" class="primary">שליחת הבקשה</button>
+      <button type="reset">איפוס הטופס</button>
+    </p>
+
+  </form>
+
+  <hr>
+
+  <h2>🔒 תזכורת חשובה</h2>
+  <p>
+    כל הוולידציה בטופס הזה נעשית <strong>בדפדפן</strong>.
+    היא נועדה לשפר את חוויית המשתמש – לא לאבטח דבר.
+    כל אחד יכול למחוק את <code>required</code> בכלי המפתחים
+    ולשלוח טופס ריק. בקשת הלוואה אמיתית חייבת בדיקה מלאה בשרת.
+  </p>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>כל סוגי ה-input</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 20px auto; line-height: 1.7; }
+    .row { display: grid; grid-template-columns: 180px 1fr; gap: 10px; align-items: center;
+           padding: 8px 0; border-bottom: 1px solid #eee; }
+    label { font-weight: 600; }
+    input, select, textarea { padding: 6px; font-size: 1rem; }
+    code { background: #f4f4f4; padding: 1px 5px; border-radius: 3px; direction: ltr; display: inline-block; }
+  </style>
+</head>
+<body>
+
+  <h1>כל סוגי ה-input</h1>
+  <p>נסו כל שדה. שימו לב איך הדפדפן משנה את הממשק לפי ה-<code>type</code>.</p>
+
+  <form action="" method="get">
+
+    <div class="row">
+      <label for="i-text">text</label>
+      <input type="text" id="i-text" name="text" placeholder="טקסט חופשי">
+    </div>
+
+    <div class="row">
+      <label for="i-pass">password</label>
+      <input type="password" id="i-pass" name="password" placeholder="מוסתר">
+    </div>
+
+    <div class="row">
+      <label for="i-email">email</label>
+      <input type="email" id="i-email" name="email" placeholder="you@example.com" dir="ltr">
+    </div>
+
+    <div class="row">
+      <label for="i-tel">tel</label>
+      <input type="tel" id="i-tel" name="tel" placeholder="0501234567" dir="ltr">
+    </div>
+
+    <div class="row">
+      <label for="i-url">url</label>
+      <input type="url" id="i-url" name="url" placeholder="https://example.com" dir="ltr">
+    </div>
+
+    <div class="row">
+      <label for="i-num">number</label>
+      <input type="number" id="i-num" name="number" min="0" max="100" step="5" value="20">
+    </div>
+
+    <div class="row">
+      <label for="i-range">range</label>
+      <input type="range" id="i-range" name="range" min="0" max="100" step="10" value="50">
+    </div>
+
+    <div class="row">
+      <label for="i-date">date</label>
+      <input type="date" id="i-date" name="date">
+    </div>
+
+    <div class="row">
+      <label for="i-time">time</label>
+      <input type="time" id="i-time" name="time">
+    </div>
+
+    <div class="row">
+      <label for="i-dtl">datetime-local</label>
+      <input type="datetime-local" id="i-dtl" name="datetime">
+    </div>
+
+    <div class="row">
+      <label for="i-month">month</label>
+      <input type="month" id="i-month" name="month">
+    </div>
+
+    <div class="row">
+      <label for="i-color">color</label>
+      <input type="color" id="i-color" name="color" value="#2b6cb0">
+    </div>
+
+    <div class="row">
+      <label for="i-file">file</label>
+      <input type="file" id="i-file" name="file" accept="image/*" multiple>
+    </div>
+
+    <div class="row">
+      <label for="i-search">search</label>
+      <input type="search" id="i-search" name="search" placeholder="חיפוש...">
+    </div>
+
+    <div class="row">
+      <label for="i-list">datalist</label>
+      <div>
+        <input type="text" id="i-list" name="city" list="cities" placeholder="התחילו להקליד עיר">
+        <datalist id="cities">
+          <option value="תל אביב"></option>
+          <option value="ירושלים"></option>
+          <option value="חיפה"></option>
+          <option value="באר שבע"></option>
+          <option value="נצרת"></option>
+        </datalist>
+      </div>
+    </div>
+
+    <!-- שדה נסתר: המשתמש לא רואה אותו, אבל הוא נשלח -->
+    <input type="hidden" name="formVersion" value="2026-01">
+
+    <p style="margin-top:20px">
+      <button type="submit">שליחה (בדקו את שורת הכתובת!)</button>
+    </p>
+
+  </form>
+
+  <hr>
+
+  <h2>הערות חשובות</h2>
+  <dl>
+    <dt><code>type="password"</code></dt>
+    <dd>
+      מסתיר את התווים <strong>ויזואלית בלבד</strong>.
+      הוא אינו מצפין דבר. הצפנה נעשית בהעברה (HTTPS) ובשרת.
+    </dd>
+
+    <dt><code>type="number"</code> מול <code>type="tel"</code></dt>
+    <dd>
+      למספר טלפון השתמשו ב-<code>tel</code> ולא ב-<code>number</code>:
+      מספרי טלפון יכולים להתחיל ב-0, ו-<code>number</code> יאפשר חיצי הגדלה
+      חסרי היגיון.
+    </dd>
+
+    <dt><code>type="hidden"</code></dt>
+    <dd>
+      שדה שהמשתמש לא רואה אבל נשלח עם הטופס. שימושי למזהים.
+      <strong>אינו מאובטח</strong> – אפשר לראותו ולשנותו בכלי המפתחים.
+    </dd>
+  </dl>
+
+</body>
+</html>

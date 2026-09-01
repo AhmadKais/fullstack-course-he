@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>טבלאות – בסיס</title>
+  <style>
+    /* עיצוב מינימלי כדי לראות את הגבולות. נלמד CSS בהמשך. */
+    table { border-collapse: collapse; margin-bottom: 2rem; }
+    th, td { border: 1px solid #999; padding: 8px 14px; }
+    th { background: #eee; }
+    caption { font-weight: bold; padding: 8px; }
+  </style>
+</head>
+<body>
+
+  <h1>טבלאות ב-HTML</h1>
+
+  <!-- ============ טבלה מינימלית ============ -->
+  <h2>1. טבלה מינימלית</h2>
+  <table>
+    <tr>
+      <th>שם</th>
+      <th>גיל</th>
+      <th>עיר</th>
+    </tr>
+    <tr>
+      <td>דנה כהן</td>
+      <td>28</td>
+      <td>תל אביב</td>
+    </tr>
+    <tr>
+      <td>יוסי לוי</td>
+      <td>34</td>
+      <td>חיפה</td>
+    </tr>
+    <tr>
+      <td>מאיה בר</td>
+      <td>25</td>
+      <td>באר שבע</td>
+    </tr>
+  </table>
+
+  <hr>
+
+  <!-- ============ טבלה מלאה ותקנית ============ -->
+  <h2>2. טבלה מלאה: caption + thead + tbody + tfoot</h2>
+
+  <table>
+    <caption>דוח מכירות – רבעון ראשון 2026</caption>
+
+    <thead>
+      <tr>
+        <th scope="col">מוצר</th>
+        <th scope="col">כמות</th>
+        <th scope="col">מחיר ליחידה</th>
+        <th scope="col">סה״כ</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <th scope="row">מקלדת</th>
+        <td>120</td>
+        <td>150 ₪</td>
+        <td>18,000 ₪</td>
+      </tr>
+      <tr>
+        <th scope="row">עכבר</th>
+        <td>200</td>
+        <td>80 ₪</td>
+        <td>16,000 ₪</td>
+      </tr>
+      <tr>
+        <th scope="row">מסך</th>
+        <td>45</td>
+        <td>900 ₪</td>
+        <td>40,500 ₪</td>
+      </tr>
+    </tbody>
+
+    <tfoot>
+      <tr>
+        <th scope="row">סה״כ</th>
+        <td>365</td>
+        <td>—</td>
+        <td>74,500 ₪</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <p>
+    שימו לב לתכונת <code>scope</code>: היא אומרת לקורא המסך אם התא
+    הוא כותרת של עמודה או של שורה. בלעדיה, משתמש עיוור שומע רק
+    רצף מספרים חסר הקשר.
+  </p>
+
+</body>
+</html>

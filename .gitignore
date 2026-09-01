@@ -1,0 +1,24 @@
+# מערכת הפעלה
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# עורכים
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+
+# תלויות (למקרה שתלמידים מוסיפים)
+node_modules/
+package-lock.json
+
+# עבודות תלמידים
+students/
+*-my-work.html
+*.local.*
+
+# לוגים וזמניים
+*.log
+tmp/

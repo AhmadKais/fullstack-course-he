@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>פתרון תרגיל 3 – article מול section מול div</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 820px; margin: 20px auto;
+           line-height: 1.75; padding: 0 18px; }
+    table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+    th, td { border: 1px solid #ddd; padding: 9px 12px; text-align: right; vertical-align: top; }
+    th { background: #edf2f7; }
+    .demo { border: 2px dashed #cbd5e0; border-radius: 8px; padding: 14px; margin: 14px 0; }
+    .tag { font-family: monospace; direction: ltr; display: inline-block;
+           background: #edf2f7; padding: 1px 7px; border-radius: 4px; font-size: 0.85rem; }
+    .row { display: flex; gap: 14px; }
+    .col { flex: 1; background: #f7fafc; padding: 10px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+
+  <h1>article מול section מול div</h1>
+
+  <h2>מבחן ההחלטה</h2>
+  <ol>
+    <li><strong>האם התוכן הגיוני בפני עצמו</strong> אם אעתיק אותו לאתר אחר, לפיד RSS או לניוזלטר? → <span class="tag">article</span></li>
+    <li><strong>האם זה קטע נושאי</strong> בתוך משהו גדול יותר, ויש לו כותרת טבעית? → <span class="tag">section</span></li>
+    <li><strong>האם אני צריך את זה רק כדי לעצב?</strong> → <span class="tag">div</span></li>
+  </ol>
+
+  <h2>הפתרון ל-8 המקרים</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">התוכן</th>
+        <th scope="col">התגית</th>
+        <th scope="col">הנימוק</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>פוסט בודד בבלוג</td>
+        <td><span class="tag">article</span></td>
+        <td>עומד בפני עצמו לגמרי. אפשר לשלוח אותו בניוזלטר או ב-RSS והוא עדיין מובן.</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>אזור "אודותינו" בדף הבית</td>
+        <td><span class="tag">section</span></td>
+        <td>קטע נושאי עם כותרת ברורה, אבל הוא חלק מדף הבית ולא יחידה עצמאית.</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>עטיפה למרכוז ב-CSS</td>
+        <td><span class="tag">div</span></td>
+        <td>אין לה שום משמעות תוכנית. זה בדיוק מה ש-div נועד לו.</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>תגובה של משתמש</td>
+        <td><span class="tag">article</span></td>
+        <td>תגובה היא יחידת תוכן עצמאית עם מחבר ותאריך משלה. מקננים אותה בתוך ה-article של הפוסט.</td>
+      </tr>
+      <tr>
+        <th scope="row">5</th>
+        <td>פרק 3 במדריך ארוך</td>
+        <td><span class="tag">section</span></td>
+        <td>יש לו כותרת, אבל הוא חסר משמעות בלי הפרקים שלפניו.</td>
+      </tr>
+      <tr>
+        <th scope="row">6</th>
+        <td>כרטיס מוצר בחנות</td>
+        <td><span class="tag">article</span></td>
+        <td>מוצר עומד בפני עצמו: שם, תמונה, מחיר. אפשר להציג אותו בכל הקשר.</td>
+      </tr>
+      <tr>
+        <th scope="row">7</th>
+        <td>אזור "שאלות נפוצות"</td>
+        <td><span class="tag">section</span></td>
+        <td>קטע נושאי בעל כותרת בתוך הדף.</td>
+      </tr>
+      <tr>
+        <th scope="row">8</th>
+        <td>שורה עם 3 עמודות לפריסה</td>
+        <td><span class="tag">div</span></td>
+        <td>מבנה ויזואלי בלבד. אם התוכן שבתוך העמודות סמנטי – זה מספיק.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h2>המימוש בפועל</h2>
+
+  <main>
+
+    <!-- מקרה 2: section - אודותינו -->
+    <section>
+      <h2>אודותינו</h2>
+      <p>אנחנו חנות ספרים עצמאית שפועלת מאז 2011.</p>
+      <p class="tag">&lt;section&gt; — קטע נושאי בדף הבית</p>
+    </section>
+
+    <!-- מקרה 8 + 3: div לפריסה -->
+    <div class="row">
+      <!-- מקרה 6: article - כרטיס מוצר -->
+      <div class="col">
+        <article>
+          <h3>ספר: יסודות התכנות</h3>
+          <img src="../../../assets/img/placeholder-square.svg"
+               alt="עטיפת הספר יסודות התכנות" width="300" height="300"
+               style="max-width:100%; height:auto">
+          <p>מחיר: 89&#8362;</p>
+          <p class="tag">&lt;article&gt; — מוצר עומד בפני עצמו</p>
+        </article>
+      </div>
+
+      <div class="col">
+        <article>
+          <h3>ספר: אלגוריתמים למתחילים</h3>
+          <img src="../../../assets/img/placeholder-square.svg"
+               alt="עטיפת הספר אלגוריתמים למתחילים" width="300" height="300"
+               style="max-width:100%; height:auto">
+          <p>מחיר: 112&#8362;</p>
+        </article>
+      </div>
+    </div>
+    <p class="tag">&lt;div class="row"&gt; — פריסה ויזואלית בלבד</p>
+
+    <!-- מקרה 1 + 4: article עם תגובות מקוננות -->
+    <article class="demo">
+      <header>
+        <h2>איך בחרנו את ספרי החודש</h2>
+        <p>מאת יעל כהן · <time datetime="2026-03-12">12 במרץ 2026</time></p>
+      </header>
+
+      <p>בכל חודש אנחנו קוראים כ-40 ספרים ובוחרים שלושה.</p>
+
+      <!-- מקרה 5: section - פרק בתוך המאמר -->
+      <section>
+        <h3>שלב א׳: הסינון הראשוני</h3>
+        <p>מתחילים מרשימת המועמדים של המו"לים.</p>
+        <p class="tag">&lt;section&gt; — פרק בתוך המאמר</p>
+      </section>
+
+      <section>
+        <h3>שלב ב׳: הקריאה</h3>
+        <p>שלושה קוראים עוברים על כל ספר שנותר.</p>
+      </section>
+
+      <!-- מקרה 4: תגובות = article מקונן -->
+      <section>
+        <h3>תגובות</h3>
+
+        <article class="demo">
+          <header>
+            <h4>אחמד סאלח</h4>
+            <p><time datetime="2026-03-13">13 במרץ 2026</time></p>
+          </header>
+          <p>תודה על השקיפות! מעניין לראות את התהליך.</p>
+          <p class="tag">&lt;article&gt; — תגובה עצמאית בתוך article</p>
+        </article>
+
+        <article class="demo">
+          <header>
+            <h4>דנה לוי</h4>
+            <p><time datetime="2026-03-14">14 במרץ 2026</time></p>
+          </header>
+          <p>אשמח לדעת מי הקוראים.</p>
+        </article>
+      </section>
+    </article>
+
+    <!-- מקרה 7: section - שאלות נפוצות -->
+    <section>
+      <h2>שאלות נפוצות</h2>
+
+      <details>
+        <summary>האם יש משלוחים?</summary>
+        <p>כן, לכל הארץ, חינם בקנייה מעל 200&#8362;.</p>
+      </details>
+
+      <details>
+        <summary>אפשר להזמין ספר שאינו במלאי?</summary>
+        <p>בהחלט. זמן ההזמנה הוא כשבועיים.</p>
+      </details>
+
+      <p class="tag">&lt;section&gt; — קטע נושאי בעל כותרת</p>
+    </section>
+
+  </main>
+
+  <hr>
+
+  <h2>⚠️ הטעות הנפוצה ביותר</h2>
+  <p>
+    להשתמש ב-<span class="tag">section</span> כמו ב-<span class="tag">div</span>,
+    בלי כותרת:
+  </p>
+<pre style="background:#fff5f5; padding:12px; border-radius:6px; direction:ltr; text-align:left">&lt;section class="wrapper"&gt;
+  &lt;section class="row"&gt;
+    &lt;section class="col"&gt;...&lt;/section&gt;
+  &lt;/section&gt;
+&lt;/section&gt;</pre>
+  <p>
+    זו פשוט "Div Soup" בשם אחר, והיא <strong>גרועה יותר</strong> מ-div:
+    היא יוצרת אזורים ריקים בעץ הנגישות ומבלבלת קוראי מסך.
+  </p>
+  <p>
+    <strong>הכלל:</strong> אם לא כתבתם <code>&lt;h2&gt;</code> או
+    <code>&lt;h3&gt;</code> מיד בתוך ה-section – כנראה שזה צריך להיות div.
+  </p>
+
+</body>
+</html>

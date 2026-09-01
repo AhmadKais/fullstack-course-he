@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ישויות ותווים מיוחדים</title>
+</head>
+<body>
+
+  <h1>ישויות (Entities)</h1>
+
+  <h2>למה בכלל צריך את זה?</h2>
+  <p>
+    אם אכתוב בקוד את הסימן "קטן מ-" ואחריו אות, הדפדפן יחשוב שהתחלתי תגית.
+    לכן משתמשים בקוד מיוחד.
+  </p>
+
+  <p>
+    ככה כותבים תגית פסקה כטקסט:
+    <code>&lt;p&gt;שלום&lt;/p&gt;</code>
+  </p>
+
+  <hr>
+
+  <h2>טבלת הישויות הנפוצות</h2>
+  <pre>
+&amp;lt;      →  &lt;      סימן קטן מ
+&amp;gt;      →  &gt;      סימן גדול מ
+&amp;amp;     →  &amp;      אמפרסנד
+&amp;quot;    →  &quot;      מרכאות
+&amp;nbsp;    →  רווח שלא נשבר
+&amp;copy;    →  &copy;      זכויות יוצרים
+&amp;reg;     →  &reg;      סימן רשום
+&amp;trade;   →  &trade;      סימן מסחרי
+&amp;#8362;   →  &#8362;      שקל חדש
+&amp;euro;    →  &euro;      אירו
+&amp;larr;    →  &larr;      חץ שמאלה
+&amp;rarr;    →  &rarr;      חץ ימינה
+&amp;bull;    →  &bull;      נקודה
+&amp;hellip;  →  &hellip;      שלוש נקודות
+  </pre>
+
+  <hr>
+
+  <h2>שימוש מעשי</h2>
+  <p>מחיר המוצר: 249&#8362; (כולל מע&quot;מ)</p>
+  <p>חברת Rosen &amp; Sons&reg; &mdash; מובילה בתחומה&trade;</p>
+  <p>&copy; 2026 כל הזכויות שמורות</p>
+  <p>עמוד&nbsp;7 מתוך&nbsp;12 &nbsp;|&nbsp; המשך&nbsp;&larr;</p>
+
+  <hr>
+
+  <h2>התגית pre – שומרת רווחים</h2>
+  <p>שימו לב שהעץ שלמטה שומר על הרווחים בדיוק:</p>
+<pre>
+      *
+     ***
+    *****
+   *******
+      |
+      |
+</pre>
+
+  <p>לעומת זאת, בפסקה רגילה כל הרווחים מתכווצים:</p>
+  <p>      *
+     ***
+    *****</p>
+
+</body>
+</html>

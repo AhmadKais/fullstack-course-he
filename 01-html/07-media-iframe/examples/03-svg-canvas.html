@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG מול Canvas</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 780px; margin: 20px auto;
+           line-height: 1.75; padding: 0 18px; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+    th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: right; }
+    th { background: #eee; }
+    .demo { display: flex; gap: 24px; flex-wrap: wrap; align-items: center;
+            background: #f7f7f7; padding: 18px; border-radius: 8px; }
+    /* SVG ניתן לעיצוב ב-CSS - יתרון גדול על canvas */
+    .icon { transition: fill .2s; }
+    .icon:hover { fill: #c53030; }
+  </style>
+</head>
+<body>
+
+  <h1>SVG מול Canvas</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">&nbsp;</th>
+        <th scope="col">SVG</th>
+        <th scope="col">Canvas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">סוג</th>
+        <td>וקטורי (צורות)</td>
+        <td>רסטר (פיקסלים)</td>
+      </tr>
+      <tr>
+        <th scope="row">הגדלה</th>
+        <td>תמיד חד</td>
+        <td>מיטשטש</td>
+      </tr>
+      <tr>
+        <th scope="row">שליטה</th>
+        <td>HTML, CSS ו-JS</td>
+        <td>JavaScript בלבד</td>
+      </tr>
+      <tr>
+        <th scope="row">נגישות</th>
+        <td>טובה (טקסט, ARIA)</td>
+        <td>קשה מאוד</td>
+      </tr>
+      <tr>
+        <th scope="row">ביצועים</th>
+        <td>יורדים עם אלפי אלמנטים</td>
+        <td>מצוינים גם עם עשרות אלפים</td>
+      </tr>
+      <tr>
+        <th scope="row">מתאים ל</th>
+        <td>אייקונים, לוגו, גרפים, מפות</td>
+        <td>משחקים, עיבוד תמונה, ויזואליזציה כבדה</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h2>SVG בפועל</h2>
+  <p>SVG נכתב ישירות בתוך ה-HTML, בדיוק כמו כל תגית אחרת:</p>
+
+  <div class="demo">
+
+    <svg width="120" height="120" viewBox="0 0 120 120"
+         role="img" aria-label="עיגול כחול">
+      <circle cx="60" cy="60" r="50" fill="#2b6cb0"/>
+    </svg>
+
+    <svg width="120" height="120" viewBox="0 0 120 120"
+         role="img" aria-label="משולש ירוק">
+      <polygon points="60,15 110,105 10,105" fill="#2f855a"/>
+    </svg>
+
+    <!-- רחפו עם העכבר - הצבע משתנה ב-CSS! -->
+    <svg width="120" height="120" viewBox="0 0 24 24"
+         role="img" aria-label="אייקון לב - רחפו לשינוי צבע">
+      <path class="icon" fill="#718096"
+            d="M12 21s-7-4.6-9.3-8.4C.9 9.8 2.3 6 5.7 6c2 0 3.3 1.2 4.3 2.4C11 7.2 12.3 6 14.3 6c3.4 0 4.8 3.8 3 6.6C19 16.4 12 21 12 21z"/>
+    </svg>
+
+    <svg width="200" height="120" viewBox="0 0 200 120"
+         role="img" aria-label="גרף עמודות: ינואר 40, פברואר 70, מרץ 100">
+      <rect x="20"  y="70" width="30" height="40"  fill="#4299e1"/>
+      <rect x="70"  y="40" width="30" height="70"  fill="#4299e1"/>
+      <rect x="120" y="10" width="30" height="100" fill="#4299e1"/>
+      <line x1="10" y1="110" x2="190" y2="110" stroke="#2d3748" stroke-width="2"/>
+    </svg>
+
+  </div>
+
+  <h3>למה SVG כל כך שימושי?</h3>
+  <ul>
+    <li><strong>חד בכל גודל</strong> – אותו קובץ לאייקון של 16px ולבאנר של 2000px.</li>
+    <li><strong>קובץ זעיר</strong> – האייקון למעלה שוקל פחות מ-300 בתים.</li>
+    <li><strong>ניתן לעיצוב ב-CSS</strong> – רחפו על הלב ותראו. עם תמונת PNG זה בלתי אפשרי.</li>
+    <li><strong>נגיש</strong> – <code>role="img"</code> + <code>aria-label</code>, או תגית <code>&lt;title&gt;</code> בתוך ה-SVG.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Canvas בפועל</h2>
+  <p>
+    <code>&lt;canvas&gt;</code> הוא בד ציור <strong>ריק לגמרי</strong>.
+    בלי JavaScript לא יופיע בו כלום:
+  </p>
+
+  <canvas id="demoCanvas" width="300" height="150"
+          style="border:1px solid #ccc; border-radius:6px">
+    הדפדפן שלך אינו תומך ב-canvas.
+  </canvas>
+
+  <p>הציור שלמעלה נוצר בקוד הבא (נלמד JavaScript בחלק ג׳ של הקורס):</p>
+
+<pre style="background:#f7f7f7; padding:12px; border-radius:6px; direction:ltr; text-align:left; font-size:0.88rem">const canvas = document.getElementById("demoCanvas");
+const ctx = canvas.getContext("2d");
+
+ctx.fillStyle = "#f0b429";
+ctx.fillRect(20, 20, 80, 60);
+
+ctx.fillStyle = "#2b6cb0";
+ctx.beginPath();
+ctx.arc(180, 50, 35, 0, Math.PI * 2);
+ctx.fill();</pre>
+
+  <script>
+    // הצגה בפועל של ההבדל: canvas דורש JS
+    const canvas = document.getElementById("demoCanvas");
+    if (canvas.getContext) {
+      const ctx = canvas.getContext("2d");
+
+      ctx.fillStyle = "#f0b429";
+      ctx.fillRect(20, 20, 80, 60);
+
+      ctx.fillStyle = "#2b6cb0";
+      ctx.beginPath();
+      ctx.arc(180, 50, 35, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = "#2d3748";
+      ctx.font = "16px system-ui";
+      ctx.fillText("צויר ב-JavaScript", 20, 120);
+    }
+  </script>
+
+  <hr>
+
+  <h2>📌 המסקנה לקורס</h2>
+  <p>
+    בקורס הזה נשתמש ב-<strong>SVG</strong> לאייקונים וללוגו.
+    <code>&lt;canvas&gt;</code> דורש שליטה ב-JavaScript ומתאים למשחקים
+    ולוויזואליזציות כבדות – מעבר להיקף הקורס.
+  </p>
+  <p>
+    <strong>כלל אצבע:</strong> אם אתם יכולים לתאר את הצורה במילים
+    ("עיגול כחול ברדיוס 50") – זה SVG.
+    אם אתם צריכים לצייר עשרות אלפי פיקסלים 60 פעם בשנייה – זה Canvas.
+  </p>
+
+</body>
+</html>

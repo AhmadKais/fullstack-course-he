@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>חמשת סוגי הקישורים</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 20px auto; line-height: 1.8; }
+    section { margin-bottom: 2.5rem; }
+    .spacer { height: 60vh; background: #f4f4f4; display: grid; place-items: center; color: #888; }
+  </style>
+</head>
+<body>
+
+  <h1 id="top">חמשת סוגי הקישורים</h1>
+
+  <nav>
+    <a href="#external">1. חיצוני</a> |
+    <a href="#internal">2. פנימי</a> |
+    <a href="#anchor">3. עוגן</a> |
+    <a href="#mail">4. מייל</a> |
+    <a href="#phone">5. טלפון</a>
+  </nav>
+
+  <!-- ============ 1 ============ -->
+  <section id="external">
+    <h2>1. קישור חיצוני</h2>
+    <p>
+      <a href="https://developer.mozilla.org/he/" target="_blank" rel="noopener noreferrer">
+        MDN Web Docs – התיעוד הרשמי
+      </a>
+    </p>
+    <p>
+      שימו לב לשתי התכונות:<br>
+      <code>target="_blank"</code> – פותח בלשונית חדשה.<br>
+      <code>rel="noopener noreferrer"</code> – <strong>חובת אבטחה</strong>.
+      בלעדיו הדף החדש יכול לגשת לדף שלכם ולהחליף את כתובתו.
+    </p>
+  </section>
+
+  <!-- ============ 2 ============ -->
+  <section id="internal">
+    <h2>2. קישור פנימי</h2>
+    <p>
+      <a href="02-paths-demo.html">מעבר לדוגמה על נתיבים</a> &mdash;
+      קובץ באותה תיקייה.
+    </p>
+    <p>
+      <a href="../README.md">חזרה לתיקיית המודול</a> &mdash;
+      תיקייה אחת למעלה עם <code>../</code>.
+    </p>
+  </section>
+
+  <!-- ============ 4 ============ -->
+  <section id="mail">
+    <h2>4. קישור למייל</h2>
+    <p><a href="mailto:info@example.com">שליחת מייל פשוטה</a></p>
+    <p>
+      <a href="mailto:info@example.com?subject=פנייה%20מהאתר&amp;body=שלום,%20אשמח%20לפרטים">
+        מייל עם נושא וגוף מוכנים מראש
+      </a>
+    </p>
+    <p><small>שימו לב: רווחים בכתובת מקודדים כ-<code>%20</code>.</small></p>
+  </section>
+
+  <!-- ============ 5 ============ -->
+  <section id="phone">
+    <h2>5. קישור לטלפון</h2>
+    <p>
+      <a href="tel:+972501234567" dir="ltr">050-123-4567</a>
+    </p>
+    <p>
+      בנייד לחיצה תפתח את החייגן. בדסקטופ – לא יקרה כלום.
+      זהו אחד השיפורים הפשוטים ביותר לאתר עסקי.
+    </p>
+  </section>
+
+  <div class="spacer">← גללו למטה כדי לראות את קישור העוגן בפעולה →</div>
+
+  <!-- ============ 3 ============ -->
+  <section id="anchor">
+    <h2>3. קישור לעוגן</h2>
+    <p>
+      הגעתם לכאן בזכות <code>&lt;a href="#anchor"&gt;</code>
+      שמצביע על <code>&lt;section id="anchor"&gt;</code>.
+    </p>
+    <p>
+      <a href="#top">⬆ חזרה לראש הדף</a> &mdash;
+      זהו קישור עוגן קלאסי לתחתית דפים ארוכים.
+    </p>
+  </section>
+
+  <hr>
+
+  <h2>בונוס: קישור להורדה</h2>
+  <p>
+    <a href="../../../assets/img/logo.svg" download="my-logo.svg">
+      הורדת הלוגו
+    </a>
+    &mdash; התכונה <code>download</code> מורידה את הקובץ במקום לפתוח אותו.
+  </p>
+
+</body>
+</html>

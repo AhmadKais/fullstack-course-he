@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>נגישות – עשה ואל תעשה</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 820px; margin: 20px auto;
+           line-height: 1.75; padding: 0 18px; }
+    .bad  { background: #fff5f5; border-right: 4px solid #c53030; padding: 12px 16px; margin: 10px 0; }
+    .good { background: #f0fff4; border-right: 4px solid #2f855a; padding: 12px 16px; margin: 10px 0; }
+    pre { background: #f7f7f7; padding: 10px; border-radius: 5px; overflow-x: auto;
+          direction: ltr; text-align: left; font-size: 0.88rem; }
+    .low-contrast { color: #bbb; background: #fff; padding: 6px; }
+    .ok-contrast  { color: #2d3748; background: #fff; padding: 6px; }
+    button { padding: 8px 16px; font-size: 1rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <h1>נגישות – 8 כללים מעשיים</h1>
+  <p>
+    נגישות אינה "תוספת לסוף הפרויקט". היא נבנית מהשורה הראשונה.
+    כל כלל כאן עולה שניות ליישם – ומשנה את החוויה עבור מיליוני משתמשים.
+  </p>
+
+  <h2>1. שפת הדף</h2>
+  <div class="bad">
+    <strong>❌</strong>
+    <pre>&lt;html&gt;</pre>
+    קורא המסך ינסה להקריא עברית במבטא אנגלי – בלתי מובן.
+  </div>
+  <div class="good">
+    <strong>✅</strong>
+    <pre>&lt;html lang="he" dir="rtl"&gt;</pre>
+  </div>
+
+  <h2>2. טקסט חלופי לתמונות</h2>
+  <div class="bad">
+    <pre>&lt;img src="graph.png"&gt;
+&lt;img src="graph.png" alt="תמונה"&gt;</pre>
+  </div>
+  <div class="good">
+    <pre>&lt;img src="graph.png"
+     alt="גרף: המכירות עלו מ-120 אלף בינואר ל-340 אלף במרץ"&gt;
+
+&lt;!-- תמונה דקורטיבית בלבד --&gt;
+&lt;img src="swirl.png" alt=""&gt;</pre>
+  </div>
+
+  <h2>3. טקסט קישור ברור</h2>
+  <div class="bad">
+    <strong>❌</strong> קורא מסך שמקריא רק את רשימת הקישורים ישמע:
+    "לחצו כאן, לחצו כאן, קרא עוד, לחצו כאן" – חסר משמעות.
+    <pre>&lt;a href="/privacy"&gt;לחצו כאן&lt;/a&gt;</pre>
+  </div>
+  <div class="good">
+    <pre>&lt;a href="/privacy"&gt;קראו את מדיניות הפרטיות&lt;/a&gt;</pre>
+  </div>
+
+  <h2>4. תוויות בטפסים</h2>
+  <div class="bad">
+    <pre>&lt;input type="email" placeholder="אימייל"&gt;</pre>
+    ה-placeholder נעלם בהקלדה, והניגודיות שלו נמוכה.
+  </div>
+  <div class="good">
+    <pre>&lt;label for="email"&gt;כתובת אימייל&lt;/label&gt;
+&lt;input type="email" id="email" name="email"
+       placeholder="you@example.com"&gt;</pre>
+  </div>
+
+  <h2>5. ניגודיות צבעים</h2>
+  <p class="low-contrast">❌ טקסט אפור בהיר על לבן — יחס ניגודיות נמוך מדי (כ-1.6:1)</p>
+  <p class="ok-contrast">✅ טקסט כהה על לבן — יחס ניגודיות תקין (מעל 4.5:1)</p>
+  <p>
+    <small>
+      התקן דורש יחס של <strong>4.5:1</strong> לטקסט רגיל ו-<strong>3:1</strong> לטקסט גדול.
+      אפשר לבדוק בכלי המפתחים: בחרו אלמנט ← לשונית Styles ← לחצו על ריבוע הצבע.
+    </small>
+  </p>
+
+  <h2>6. אל תסתמכו על צבע בלבד</h2>
+  <div class="bad">
+    <strong>❌</strong> שדה עם מסגרת אדומה בלבד. משתמש עם עיוורון צבעים
+    (כ-8% מהגברים) לא יראה הבדל.
+  </div>
+  <div class="good">
+    <strong>✅</strong> מסגרת אדומה <em>ועוד</em> אייקון ⚠ <em>ועוד</em> טקסט:
+    "שדה חובה – נא למלא כתובת אימייל".
+  </div>
+
+  <h2>7. ניווט במקלדת</h2>
+  <p>
+    לחצו <kbd>Tab</kbd> עכשיו וגלשו בדף. כל אלמנט אינטראקטיבי
+    חייב להיות נגיש כך, ובסדר הגיוני.
+  </p>
+  <p>
+    <button>כפתור 1</button>
+    <button>כפתור 2</button>
+    <a href="#top">קישור</a>
+  </p>
+  <div class="bad">
+    <strong>❌ אף פעם אל תכתבו:</strong>
+    <pre>*:focus { outline: none; }</pre>
+    זה מוחק את סימון המיקוד והופך ניווט במקלדת לבלתי אפשרי.
+  </div>
+
+  <h2>8. ARIA – רק כשאין ברירה</h2>
+  <div class="bad">
+    <strong>❌</strong> בניית כפתור מ-div:
+    <pre>&lt;div role="button" tabindex="0"
+     onclick="..." onkeydown="..."&gt;שלח&lt;/div&gt;</pre>
+    צריך לשחזר ידנית: מיקוד, Enter, Space, מצב disabled...
+  </div>
+  <div class="good">
+    <strong>✅</strong> פשוט להשתמש בתגית הנכונה:
+    <pre>&lt;button&gt;שלח&lt;/button&gt;</pre>
+  </div>
+
+  <h3>מתי ARIA כן מועיל</h3>
+  <p>כפתור סגירה שמכיל רק אייקון:</p>
+  <p><button aria-label="סגירת החלון">✕</button></p>
+  <pre>&lt;button aria-label="סגירת החלון"&gt;✕&lt;/button&gt;</pre>
+
+  <p>אייקון דקורטיבי ליד טקסט קיים:</p>
+  <p><span aria-hidden="true">📧</span> צרו קשר</p>
+  <pre>&lt;span aria-hidden="true"&gt;📧&lt;/span&gt; צרו קשר</pre>
+
+  <hr>
+
+  <h2>🧪 איך בודקים נגישות?</h2>
+  <ol>
+    <li><strong>Lighthouse:</strong> F12 ← לשונית Lighthouse ← Accessibility ← Analyze.</li>
+    <li><strong>ניווט במקלדת:</strong> נסו להשתמש בדף רק עם Tab ו-Enter.</li>
+    <li><strong>WAVE:</strong> תוסף דפדפן שמסמן בעיות ישירות על הדף.</li>
+    <li><strong>כיבוי תמונות:</strong> האם הדף עדיין מובן?</li>
+    <li><strong>הגדלה ל-200%:</strong> האם משהו נשבר?</li>
+  </ol>
+
+</body>
+</html>

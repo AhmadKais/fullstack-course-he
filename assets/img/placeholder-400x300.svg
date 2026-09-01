@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="תמונת דוגמה">
+  <rect width="400" height="300" fill="#fed7aa"/>
+  <circle cx="200" cy="130" r="55" fill="#fb923c"/>
+  <text x="200" y="230" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" fill="#7c2d12">400 &#215; 300</text>
+</svg>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>טופס הרשמה מלא</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 660px; margin: 20px auto;
+           line-height: 1.7; padding: 0 16px; }
+    fieldset { border: 1px solid #ddd; border-radius: 10px; padding: 16px 20px; margin-bottom: 22px; }
+    legend { font-weight: 700; padding: 0 10px; color: #2b6cb0; }
+    label { display: block; margin-top: 12px; font-weight: 600; }
+    .inline label { display: inline; font-weight: normal; margin: 0 4px 0 0; }
+    .inline { margin: 8px 0; }
+    input[type="text"], input[type="email"], input[type="tel"],
+    input[type="password"], input[type="date"], select, textarea {
+      width: 100%; padding: 8px; font-size: 1rem; box-sizing: border-box;
+      border: 1px solid #bbb; border-radius: 4px; margin-top: 4px;
+    }
+    .hint { font-size: 0.85rem; color: #666; font-weight: normal; }
+    .req::after { content: " *"; color: #c53030; }
+    button { padding: 12px 28px; font-size: 1rem; border-radius: 6px; cursor: pointer; }
+    .primary { background: #2b6cb0; color: #fff; border: none; }
+  </style>
+</head>
+<body>
+
+  <h1>הרשמה לקורס Full Stack</h1>
+  <p class="hint">שדות המסומנים ב-<span style="color:#c53030">*</span> הם שדות חובה.</p>
+
+  <form action="" method="post">
+
+    <!-- ============ פרטים אישיים ============ -->
+    <fieldset>
+      <legend>פרטים אישיים</legend>
+
+      <label for="f-first" class="req">שם פרטי</label>
+      <input type="text" id="f-first" name="firstName"
+             autocomplete="given-name" required autofocus>
+
+      <label for="f-last" class="req">שם משפחה</label>
+      <input type="text" id="f-last" name="lastName"
+             autocomplete="family-name" required>
+
+      <label for="f-id" class="req">תעודת זהות</label>
+      <input type="text" id="f-id" name="idNumber"
+             pattern="[0-9]{9}"
+             title="9 ספרות בדיוק"
+             dir="ltr" required>
+
+      <label for="f-birth" class="req">תאריך לידה</label>
+      <input type="date" id="f-birth" name="birthDate"
+             max="2010-01-01" required>
+
+      <div class="inline">
+        <span style="font-weight:600">מגדר:</span>
+        <input type="radio" id="g-f" name="gender" value="female">
+        <label for="g-f">נקבה</label>
+        <input type="radio" id="g-m" name="gender" value="male">
+        <label for="g-m">זכר</label>
+        <input type="radio" id="g-o" name="gender" value="other" checked>
+        <label for="g-o">מעדיף/ה לא לציין</label>
+      </div>
+    </fieldset>
+
+    <!-- ============ פרטי קשר ============ -->
+    <fieldset>
+      <legend>פרטי קשר</legend>
+
+      <label for="f-email" class="req">אימייל</label>
+      <input type="email" id="f-email" name="email"
+             autocomplete="email" dir="ltr" required
+             placeholder="you@example.com">
+
+      <label for="f-phone" class="req">
+        טלפון נייד
+        <span class="hint">(10 ספרות, ללא מקפים)</span>
+      </label>
+      <input type="tel" id="f-phone" name="phone"
+             pattern="05[0-9]{8}"
+             title="מספר נייד ישראלי: 10 ספרות שמתחילות ב-05"
+             autocomplete="tel" dir="ltr" required>
+
+      <label for="f-city" class="req">עיר מגורים</label>
+      <select id="f-city" name="city" required>
+        <option value="">-- בחרו עיר --</option>
+        <option value="tlv">תל אביב–יפו</option>
+        <option value="jlm">ירושלים</option>
+        <option value="hfa">חיפה</option>
+        <option value="bsh">באר שבע</option>
+        <option value="nzr">נצרת</option>
+        <option value="other">אחר</option>
+      </select>
+    </fieldset>
+
+    <!-- ============ פרטי הקורס ============ -->
+    <fieldset>
+      <legend>פרטי הקורס</legend>
+
+      <span style="font-weight:600">מסלול מבוקש:</span>
+      <div class="inline">
+        <input type="radio" id="t-morning" name="track" value="morning" required>
+        <label for="t-morning">בוקר (א׳–ה׳, 09:00–14:00)</label>
+      </div>
+      <div class="inline">
+        <input type="radio" id="t-evening" name="track" value="evening">
+        <label for="t-evening">ערב (א׳,ג׳,ה׳, 17:00–21:00)</label>
+      </div>
+
+      <label for="f-exp">רמת ניסיון קודם</label>
+      <select id="f-exp" name="experience">
+        <optgroup label="ללא רקע">
+          <option value="none">לא כתבתי קוד מעולם</option>
+          <option value="tutorial">עברתי מדריך אונליין</option>
+        </optgroup>
+        <optgroup label="עם רקע">
+          <option value="hobby">בניתי פרויקטים בעצמי</option>
+          <option value="pro">עבדתי בתחום</option>
+        </optgroup>
+      </select>
+
+      <div style="margin-top:14px">
+        <span style="font-weight:600">שפות שאני כבר מכיר/ה:</span>
+        <div class="inline">
+          <input type="checkbox" id="k-html" name="known" value="html">
+          <label for="k-html">HTML</label>
+
+          <input type="checkbox" id="k-css" name="known" value="css">
+          <label for="k-css">CSS</label>
+
+          <input type="checkbox" id="k-js" name="known" value="js">
+          <label for="k-js">JavaScript</label>
+
+          <input type="checkbox" id="k-sql" name="known" value="sql">
+          <label for="k-sql">SQL</label>
+        </div>
+      </div>
+
+      <label for="f-cv">
+        קורות חיים
+        <span class="hint">(PDF או Word, עד 5MB)</span>
+      </label>
+      <input type="file" id="f-cv" name="cv" accept=".pdf,.doc,.docx">
+
+      <label for="f-about">ספרו לנו קצת על עצמכם</label>
+      <textarea id="f-about" name="about" rows="4" maxlength="600"
+                placeholder="למה אתם רוצים ללמוד פיתוח?"></textarea>
+    </fieldset>
+
+    <!-- ============ חשבון ============ -->
+    <fieldset>
+      <legend>יצירת חשבון</legend>
+
+      <label for="f-user" class="req">
+        שם משתמש
+        <span class="hint">(3–12 תווים, אותיות באנגלית ומספרים)</span>
+      </label>
+      <input type="text" id="f-user" name="username"
+             pattern="[A-Za-z0-9]{3,12}"
+             title="3 עד 12 תווים: אותיות באנגלית ומספרים בלבד"
+             autocomplete="username" dir="ltr" required>
+
+      <label for="f-pass" class="req">
+        סיסמה
+        <span class="hint">(8+ תווים, אות גדולה, אות קטנה וספרה)</span>
+      </label>
+      <input type="password" id="f-pass" name="password"
+             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+             title="לפחות 8 תווים הכוללים אות גדולה, אות קטנה וספרה"
+             autocomplete="new-password" dir="ltr" required>
+
+      <div class="inline" style="margin-top:16px">
+        <input type="checkbox" id="f-terms" name="terms" value="yes" required>
+        <label for="f-terms">
+          קראתי ואני מסכים/ה
+          <a href="#" target="_blank" rel="noopener noreferrer">לתנאי השימוש</a>
+          <span style="color:#c53030">*</span>
+        </label>
+      </div>
+
+      <div class="inline">
+        <input type="checkbox" id="f-news" name="newsletter" value="yes" checked>
+        <label for="f-news">אשמח לקבל עדכונים על קורסים נוספים</label>
+      </div>
+    </fieldset>
+
+    <!-- שדה נסתר להעברת מזהה הטופס -->
+    <input type="hidden" name="formId" value="registration-2026-spring">
+
+    <p>
+      <button type="submit" class="primary">שליחת ההרשמה</button>
+      <button type="reset">איפוס הטופס</button>
+    </p>
+
+  </form>
+
+</body>
+</html>

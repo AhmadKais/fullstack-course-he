@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="חשבונית מס דיגיטלית - דוגמה לתרגיל HTML">
+  <title>חשבונית מס 2026-0147</title>
+  <style>
+    body { max-width: 800px; margin: 20px auto; font-family: system-ui, sans-serif; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #bbb; padding: 8px 12px; }
+    thead th { background: #eee; }
+    tfoot th, tfoot td { background: #f7f7f7; }
+    .total { font-size: 1.1rem; font-weight: bold; background: #e6f5e6 !important; }
+    .num { text-align: center; }
+    dt { font-weight: bold; margin-top: 6px; }
+    dd { margin: 0 20px 0 0; }
+  </style>
+</head>
+<body>
+
+  <!-- ============ כותרת ============ -->
+  <h1>סטודיו&nbsp;פיקסל בע&quot;מ&reg;</h1>
+  <p>חשבונית מס &bull; מספר <span dir="ltr">2026-0147</span></p>
+
+  <hr>
+
+  <!-- ============ פרטי לקוח – רשימת הגדרות ============ -->
+  <h2>פרטי הלקוח</h2>
+  <dl>
+    <dt>שם הלקוח</dt>
+    <dd>חברת אבן &amp; בן בע&quot;מ</dd>
+
+    <dt>ח.פ.</dt>
+    <dd><span dir="ltr">514789632</span></dd>
+
+    <dt>כתובת</dt>
+    <dd>רחוב הברזל 12, תל אביב</dd>
+
+    <dt>תאריך הנפקה</dt>
+    <dd><time datetime="2026-03-01">1 במרץ 2026</time></dd>
+
+    <dt>תאריך לתשלום</dt>
+    <dd><time datetime="2026-03-31">31 במרץ 2026</time></dd>
+  </dl>
+
+  <hr>
+
+  <!-- ============ פירוט – טבלה ============ -->
+  <h2>פירוט השירותים</h2>
+
+  <table>
+    <caption>פירוט חיובים לחודש פברואר 2026</caption>
+
+    <thead>
+      <tr>
+        <th scope="col">תיאור הפריט</th>
+        <th scope="col">כמות</th>
+        <th scope="col">מחיר יחידה</th>
+        <th scope="col">סה&quot;כ</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <th scope="row">עיצוב דף נחיתה</th>
+        <td class="num">1</td>
+        <td class="num">3,500&#8362;</td>
+        <td class="num">3,500&#8362;</td>
+      </tr>
+      <tr>
+        <th scope="row">פיתוח דפי תוכן</th>
+        <td class="num">4</td>
+        <td class="num">900&#8362;</td>
+        <td class="num">3,600&#8362;</td>
+      </tr>
+      <tr>
+        <th scope="row">התאמה לנייד</th>
+        <td class="num">1</td>
+        <td class="num">1,200&#8362;</td>
+        <td class="num">1,200&#8362;</td>
+      </tr>
+      <tr>
+        <th scope="row">שעות תמיכה</th>
+        <td class="num">6</td>
+        <td class="num">250&#8362;</td>
+        <td class="num">1,500&#8362;</td>
+      </tr>
+    </tbody>
+
+    <!-- שלוש שורות סיכום. בכל אחת colspan=3 דוחף את הסכום לעמודה האחרונה -->
+    <tfoot>
+      <tr>
+        <th colspan="3">סכום ביניים</th>
+        <td class="num">9,800&#8362;</td>
+      </tr>
+      <tr>
+        <th colspan="3">מע&quot;מ 17%</th>
+        <td class="num">1,666&#8362;</td>
+      </tr>
+      <tr class="total">
+        <th colspan="3" class="total">סה&quot;כ לתשלום</th>
+        <td class="num total">11,466&#8362;</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <hr>
+
+  <!-- ============ תנאי תשלום – רשימה מסודרת ============ -->
+  <h2>תנאי תשלום</h2>
+  <ol>
+    <li>התשלום יבוצע בתנאי שוטף&nbsp;+&nbsp;30 מיום הנפקת החשבונית.</li>
+    <li>איחור בתשלום יגרור ריבית פיגורים בשיעור של 1.5% לחודש.</li>
+    <li>העברה בנקאית לחשבון <span dir="ltr">12-345-678901</span> בבנק לאומי.</li>
+    <li>לבירורים יש לפנות למחלקת הגבייה בטלפון <span dir="ltr">03-1234567</span>.</li>
+  </ol>
+
+  <hr>
+
+  <p>
+    <small>
+      &copy; 2026 סטודיו&nbsp;פיקסל בע&quot;מ&reg; &bull;
+      מסמך זה הופק ממוחשב ואינו דורש חתימה&hellip;
+    </small>
+  </p>
+
+</body>
+</html>

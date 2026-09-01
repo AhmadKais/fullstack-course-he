@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" role="img" aria-label="לוגו">
+  <rect width="200" height="60" rx="8" fill="#2b6cb0"/>
+  <circle cx="34" cy="30" r="15" fill="#90cdf4"/>
+  <text x="60" y="38" font-family="system-ui, sans-serif" font-size="22" fill="#fff">MySite</text>
+</svg>

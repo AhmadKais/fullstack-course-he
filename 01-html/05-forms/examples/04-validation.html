@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ולידציה מובנית</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 600px; margin: 20px auto; line-height: 1.7; }
+    label { display: block; margin-top: 16px; font-weight: 600; }
+    input { width: 100%; padding: 8px; font-size: 1rem; box-sizing: border-box;
+            border: 2px solid #ccc; border-radius: 4px; }
+    /* פסאודו-מחלקות של ולידציה - נלמד CSS בהמשך, אבל שווה לראות */
+    input:valid   { border-color: #2f855a; }
+    input:invalid { border-color: #c53030; }
+    input:placeholder-shown { border-color: #ccc; }
+    .hint { font-size: 0.85rem; color: #666; font-weight: normal; }
+    button { margin-top: 20px; padding: 10px 24px; font-size: 1rem; }
+    .note { background: #fffbea; border-right: 4px solid #f0b429; padding: 12px 16px; margin: 20px 0; }
+  </style>
+</head>
+<body>
+
+  <h1>ולידציה מובנית של הדפדפן</h1>
+  <p>
+    כל הבדיקות בדף הזה נעשות <strong>בלי שורת JavaScript אחת</strong>.
+    נסו לשלוח את הטופס עם ערכים שגויים.
+  </p>
+
+  <form action="" method="post">
+
+    <!-- required -->
+    <label for="v-name">
+      שם מלא
+      <span class="hint">— required</span>
+    </label>
+    <input type="text" id="v-name" name="name" required
+           placeholder="שדה חובה">
+
+    <!-- minlength / maxlength -->
+    <label for="v-user">
+      שם משתמש
+      <span class="hint">— בין 3 ל-12 תווים</span>
+    </label>
+    <input type="text" id="v-user" name="username"
+           minlength="3" maxlength="12" required
+           placeholder="3-12 תווים">
+
+    <!-- type=email -->
+    <label for="v-email">
+      אימייל
+      <span class="hint">— type="email"</span>
+    </label>
+    <input type="email" id="v-email" name="email" required
+           placeholder="you@example.com" dir="ltr">
+
+    <!-- min / max על מספר -->
+    <label for="v-age">
+      גיל
+      <span class="hint">— בין 18 ל-120</span>
+    </label>
+    <input type="number" id="v-age" name="age"
+           min="18" max="120" required
+           placeholder="18-120">
+
+    <!-- pattern + title -->
+    <label for="v-id">
+      תעודת זהות
+      <span class="hint">— בדיוק 9 ספרות</span>
+    </label>
+    <input type="text" id="v-id" name="idNumber"
+           pattern="[0-9]{9}"
+           title="יש להזין בדיוק 9 ספרות, ללא רווחים או מקפים"
+           required
+           placeholder="123456789" dir="ltr">
+
+    <!-- pattern לסיסמה חזקה -->
+    <label for="v-pass">
+      סיסמה
+      <span class="hint">— לפחות 8 תווים, אות גדולה, אות קטנה וספרה</span>
+    </label>
+    <input type="password" id="v-pass" name="password"
+           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+           title="לפחות 8 תווים, הכוללים אות גדולה, אות קטנה וספרה"
+           required
+           placeholder="Password1" dir="ltr">
+
+    <!-- min/max על תאריך -->
+    <label for="v-date">
+      תאריך הזמנה
+      <span class="hint">— במהלך 2026 בלבד</span>
+    </label>
+    <input type="date" id="v-date" name="orderDate"
+           min="2026-01-01" max="2026-12-31" required>
+
+    <!-- step -->
+    <label for="v-price">
+      סכום
+      <span class="hint">— בקפיצות של 0.5</span>
+    </label>
+    <input type="number" id="v-price" name="price"
+           min="0" max="1000" step="0.5" value="10">
+
+    <button type="submit">שליחה</button>
+  </form>
+
+  <div class="note">
+    <h2>🔒 אזהרה קריטית</h2>
+    <p>
+      ולידציה בצד הלקוח היא <strong>נוחות למשתמש בלבד</strong>, ולא אבטחה.
+      כל אחד יכול לפתוח את כלי המפתחים, למחוק את התכונה <code>required</code>,
+      ולשלוח מה שירצה. אפשר גם לשלוח בקשה לשרת בלי דפדפן בכלל.
+    </p>
+    <p>
+      <strong>הבדיקה האמיתית תמיד נעשית בשרת.</strong>
+      זה נכון גם לגבי מסד הנתונים שתלמדו בקורס ה-SQL.
+    </p>
+  </div>
+
+  <h2>איך מבטלים ולידציה זמנית?</h2>
+  <p>
+    לצורכי פיתוח, אפשר להוסיף <code>novalidate</code> לתגית ה-<code>form</code>:
+  </p>
+  <pre dir="ltr">&lt;form action="" method="post" novalidate&gt;</pre>
+  <p>הדפדפן יפסיק לבדוק, והטופס יישלח כמו שהוא.</p>
+
+</body>
+</html>

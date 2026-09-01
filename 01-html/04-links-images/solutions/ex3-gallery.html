@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>גלריית תמונות</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 960px; margin: 20px auto; line-height: 1.7; }
+    img { max-width: 100%; height: auto; display: block; border-radius: 6px; }
+    figure { margin: 0; border: 1px solid #ddd; border-radius: 10px; padding: 12px; }
+    figcaption { font-size: 0.9rem; color: #555; margin-top: 8px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    nav a { margin-left: 14px; }
+  </style>
+</head>
+<body>
+
+  <h1 id="top">גלריית עבודות</h1>
+
+  <!-- ===== ניווט עוגנים ===== -->
+  <nav>
+    <strong>קטגוריות:</strong>
+    <a href="#web">אתרים</a>
+    <a href="#print">דפוס</a>
+    <a href="#brand">מיתוג</a>
+  </nav>
+
+  <hr>
+
+  <h2 id="web">אתרים</h2>
+  <div class="grid">
+
+    <!-- תמונה 1 – גם קישור -->
+    <figure>
+      <a href="ex1-links.html">
+        <img src="../../../assets/img/placeholder-800x400.svg"
+             alt="דף נחיתה לחנות אופניים – מעבר לדף הפרויקט"
+             width="800" height="400">
+      </a>
+      <figcaption>דף נחיתה לחנות אופניים עירונית, 2025</figcaption>
+    </figure>
+
+    <!-- תמונה 2 -->
+    <figure>
+      <img src="../../../assets/img/placeholder-400x300.svg"
+           alt="מסך ראשי של אפליקציית מזג אוויר עם שמש כתומה גדולה"
+           width="400" height="300">
+      <figcaption>אפליקציית מזג אוויר, מסך ראשי</figcaption>
+    </figure>
+
+    <!-- תמונה 3 – מכאן והלאה loading=lazy -->
+    <figure>
+      <a href="ex2-multipage/index.html">
+        <img src="../../../assets/img/hero-wide.svg"
+             alt="תמונת נושא של אתר תיירות – מעבר לאתר לדוגמה"
+             width="1200" height="500" loading="lazy">
+      </a>
+      <figcaption>אתר תיירות – תמונת נושא של רכס הרים בשקיעה</figcaption>
+    </figure>
+
+  </div>
+
+  <h2 id="print">דפוס</h2>
+  <div class="grid">
+
+    <figure>
+      <img src="../../../assets/img/placeholder-square.svg"
+           alt="עיצוב עטיפה לחוברת בצבעי ירוק עם משולש מרכזי"
+           width="300" height="300" loading="lazy">
+      <figcaption>עטיפת חוברת שנתית לעמותה סביבתית</figcaption>
+    </figure>
+
+    <figure>
+      <a href="ex2-multipage/pages/gallery.html">
+        <img src="../../../assets/img/placeholder-400x300.svg"
+             alt="פוסטר לאירוע קיץ – מעבר לגלריה המלאה"
+             width="400" height="300" loading="lazy">
+      </a>
+      <figcaption>פוסטר לפסטיבל קיץ עירוני</figcaption>
+    </figure>
+
+  </div>
+
+  <h2 id="brand">מיתוג</h2>
+  <div class="grid">
+
+    <figure>
+      <img src="../../../assets/img/logo.svg"
+           alt="לוגו כחול עם עיגול תכלת והכיתוב MySite"
+           width="200" height="60" loading="lazy">
+      <figcaption>לוגו לחברת תוכנה, גרסת צבע מלא</figcaption>
+    </figure>
+
+  </div>
+
+  <hr>
+  <p><a href="#top">⬆ חזרה לראש הדף</a></p>
+
+</body>
+</html>

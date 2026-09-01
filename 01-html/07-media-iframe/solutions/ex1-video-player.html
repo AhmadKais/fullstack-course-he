@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>שיעור 1: מבוא ל-HTML | וידאו</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 20px auto;
+           line-height: 1.75; padding: 0 18px; }
+    video { max-width: 100%; border-radius: 8px; background: #000; }
+    .fallback { background: #fff8e1; border-right: 4px solid #f0b429;
+                padding: 12px 16px; border-radius: 6px; }
+    details { border: 1px solid #e2e8f0; border-radius: 8px;
+              padding: 12px 16px; margin-top: 20px; }
+    summary { cursor: pointer; font-weight: 600; }
+    .ts { font-family: monospace; color: #4a5568; direction: ltr; display: inline-block; }
+  </style>
+</head>
+<body>
+
+  <h1>שיעור 1: מבוא ל-HTML</h1>
+
+  <video controls
+         width="720"
+         poster="../../../assets/img/placeholder-800x400.svg"
+         preload="metadata">
+
+    <!-- WebM ראשון: קובץ קטן יותר. הדפדפן בוחר את הראשון שהוא תומך בו. -->
+    <source src="../examples/media/sample.webm" type="video/webm">
+    <source src="../examples/media/sample.mp4"  type="video/mp4">
+
+    <!-- כתוביות: default קובע איזו שפה פעילה מלכתחילה -->
+    <track src="../examples/media/captions-he.vtt"
+           kind="captions" srclang="he" label="עברית" default>
+    <track src="../examples/media/captions-en.vtt"
+           kind="captions" srclang="en" label="English">
+
+    <!-- תוכן גיבוי: מוצג רק אם שום source לא נתמך -->
+    <p class="fallback">
+      ⚠️ הדפדפן שלך אינו תומך בנגן הווידאו המובנה.
+      <a href="../examples/media/sample.mp4" download>הורדת הסרטון (MP4)</a>
+    </p>
+  </video>
+
+  <p>
+    <small>
+      משך: 15 דקות ·
+      <time datetime="2026-03-01">פורסם ב-1 במרץ 2026</time> ·
+      כתוביות: עברית, אנגלית
+    </small>
+  </p>
+
+  <details>
+    <summary>תמליל השיעור</summary>
+
+    <p>
+      <span class="ts">[00:00]</span>
+      שלום וברוכים הבאים לשיעור הראשון.
+    </p>
+    <p>
+      <span class="ts">[00:04]</span>
+      היום נלמד על תגיות HTML בסיסיות.
+    </p>
+    <p>
+      <span class="ts">[00:07]</span>
+      [מוזיקת רקע שקטה]
+    </p>
+    <p>
+      <span class="ts">[00:11]</span>
+      נתחיל מהמבנה של מסמך HTML תקין: שורת ה-DOCTYPE,
+      תגית ה-html, ובתוכה head ו-body.
+    </p>
+  </details>
+
+  <h2>למה תמליל?</h2>
+  <ul>
+    <li>משתמשים חירשים או כבדי שמיעה.</li>
+    <li>מי שנמצא בסביבה רועשת או בלי אוזניות.</li>
+    <li>מי שמעדיף לקרוא מהר במקום לצפות 15 דקות.</li>
+    <li>מנועי חיפוש – הם לא יכולים "לצפות" בסרטון.</li>
+  </ul>
+
+</body>
+</html>

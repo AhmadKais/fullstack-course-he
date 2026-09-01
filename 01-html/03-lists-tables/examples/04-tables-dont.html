@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מתי לא להשתמש בטבלה</title>
+  <style>
+    table { border-collapse: collapse; width: 100%; }
+    td { border: 1px dashed #c00; padding: 20px; vertical-align: top; }
+    .good { border: 2px solid #090; padding: 12px; }
+  </style>
+</head>
+<body>
+
+  <h1>מתי טבלה היא הכלי הלא נכון</h1>
+
+  <h2>❌ מה שעשו בשנות ה-90</h2>
+  <p>כך בנו פריסת אתר לפני שהיה CSS מודרני:</p>
+
+  <table>
+    <tr>
+      <td colspan="2"><h3>הכותרת של האתר</h3></td>
+    </tr>
+    <tr>
+      <td style="width: 25%;">
+        תפריט צד<br>
+        קישור 1<br>
+        קישור 2
+      </td>
+      <td>
+        התוכן הראשי של הדף מופיע כאן.
+        זו אינה טבלת נתונים – זו פריסה.
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">כותרת תחתונה</td>
+    </tr>
+  </table>
+
+  <h3>למה זה רע?</h3>
+  <ul>
+    <li>קורא מסך מכריז "טבלה בת 3 שורות" ומנסה לקרוא נתונים שאינם קיימים.</li>
+    <li>בלתי אפשרי להפוך את זה לרספונסיבי לנייד.</li>
+    <li>הקוד ארוך, מקונן ובלתי קריא.</li>
+    <li>מנועי חיפוש מתקשים להבין את מבנה התוכן.</li>
+  </ul>
+
+  <hr>
+
+  <h2>✅ מה שעושים היום</h2>
+  <p>אותו מבנה בדיוק, עם תגיות סמנטיות (נלמד אותן במודול 6) ו-CSS:</p>
+
+  <div class="good">
+    <header><h3>הכותרת של האתר</h3></header>
+    <nav>תפריט צד: קישור 1 | קישור 2</nav>
+    <main>התוכן הראשי של הדף.</main>
+    <footer>כותרת תחתונה</footer>
+  </div>
+
+  <hr>
+
+  <h2>✅ מתי טבלה כן נכונה?</h2>
+  <p>כשיש נתונים אמיתיים בשורות ועמודות:</p>
+
+  <table style="width: auto;">
+    <caption>לוח זמנים של רכבות</caption>
+    <thead>
+      <tr>
+        <th scope="col">יעד</th>
+        <th scope="col">שעת יציאה</th>
+        <th scope="col">רציף</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">חיפה</th>
+        <td>08:15</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <th scope="row">באר שבע</th>
+        <td>08:40</td>
+        <td>1</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>מבחן פשוט:</strong> אם הייתם מעבירים את הנתונים לאקסל –
+    זו טבלה. אם אתם מנסים לסדר אזורים בדף – זו פריסה, והיא שייכת ל-CSS.
+  </p>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Div Soup מול HTML סמנטי</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 900px; margin: 20px auto;
+           line-height: 1.7; padding: 0 16px; }
+    .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .bad  { border: 2px solid #c53030; border-radius: 8px; padding: 14px; }
+    .good { border: 2px solid #2f855a; border-radius: 8px; padding: 14px; }
+    pre { background: #f7f7f7; padding: 12px; border-radius: 6px; overflow-x: auto; direction: ltr; text-align: left; font-size: 0.85rem; }
+    @media (max-width: 700px) { .compare { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <h1>אותה תוצאה ויזואלית, קוד שונה לגמרי</h1>
+
+  <div class="compare">
+
+    <div class="bad">
+      <h2>❌ Div Soup</h2>
+<pre>&lt;div class="header"&gt;
+  &lt;div class="logo"&gt;האתר שלי&lt;/div&gt;
+  &lt;div class="nav"&gt;
+    &lt;div&gt;&lt;a href="/"&gt;בית&lt;/a&gt;&lt;/div&gt;
+    &lt;div&gt;&lt;a href="/about"&gt;אודות&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="main"&gt;
+  &lt;div class="post"&gt;
+    &lt;div class="title"&gt;כותרת&lt;/div&gt;
+    &lt;div class="text"&gt;תוכן...&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="footer"&gt;
+  &lt;div&gt;כל הזכויות שמורות&lt;/div&gt;
+&lt;/div&gt;</pre>
+      <h3>מה הבעיה?</h3>
+      <ul>
+        <li>קורא מסך לא יכול להציע "קפוץ לתוכן הראשי"</li>
+        <li>אין כותרות אמיתיות – אין תוכן עניינים לניווט</li>
+        <li>גוגל לא יודע מה התוכן העיקרי ומה תפריט</li>
+        <li>"מצב קריאה" של הדפדפן לא יעבוד</li>
+        <li>שמות המחלקות הם המצאה פרטית – אין תקן</li>
+      </ul>
+    </div>
+
+    <div class="good">
+      <h2>✅ HTML סמנטי</h2>
+<pre>&lt;header&gt;
+  &lt;h1&gt;האתר שלי&lt;/h1&gt;
+  &lt;nav aria-label="ניווט ראשי"&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="/"&gt;בית&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/about"&gt;אודות&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;h2&gt;כותרת&lt;/h2&gt;
+    &lt;p&gt;תוכן...&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;p&gt;&lt;small&gt;כל הזכויות שמורות&lt;/small&gt;&lt;/p&gt;
+&lt;/footer&gt;</pre>
+      <h3>מה הרווחנו?</h3>
+      <ul>
+        <li>ניווט מהיר לקוראי מסך</li>
+        <li>מנוע חיפוש מבין את המבנה</li>
+        <li>הקוד קריא בלי לפתוח את ה-CSS</li>
+        <li>פחות שורות קוד</li>
+        <li>עובד עם "מצב קריאה"</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <h2>🔍 בדקו בעצמכם</h2>
+  <ol>
+    <li>פתחו את הדף <code>02-page-skeleton.html</code>.</li>
+    <li>לחצו F12 ← לשונית <strong>Accessibility</strong> (או Elements ← Accessibility).</li>
+    <li>שימו לב לעץ הנגישות: הדפדפן מזהה landmarks (banner, navigation, main, contentinfo).</li>
+    <li>עכשיו נסו את אותו הדבר על דף שבנוי מ-div בלבד – העץ יהיה ריק.</li>
+  </ol>
+
+</body>
+</html>

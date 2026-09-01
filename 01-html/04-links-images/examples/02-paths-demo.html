@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>נתיבים – יחסי מול מוחלט</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 800px; margin: 20px auto; line-height: 1.8; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 8px 12px; }
+    th { background: #eee; }
+    code { background: #f4f4f4; padding: 2px 5px; border-radius: 3px; direction: ltr; display: inline-block; }
+  </style>
+</head>
+<body>
+
+  <h1>נתיבים ב-HTML</h1>
+
+  <h2>מבנה התיקיות שבו נעבוד</h2>
+<pre dir="ltr">
+my-site/
+├── index.html
+├── about.html
+├── images/
+│   ├── logo.png
+│   └── team.jpg
+└── pages/
+    ├── contact.html
+    └── services.html
+</pre>
+
+  <h2>טבלת נתיבים</h2>
+  <table>
+    <caption>איך מגיעים מכל קובץ לכל יעד</caption>
+    <thead>
+      <tr>
+        <th scope="col">מהקובץ</th>
+        <th scope="col">אל היעד</th>
+        <th scope="col">הנתיב שנכתוב</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">index.html</th>
+        <td>about.html</td>
+        <td><code>about.html</code></td>
+      </tr>
+      <tr>
+        <th scope="row">index.html</th>
+        <td>pages/contact.html</td>
+        <td><code>pages/contact.html</code></td>
+      </tr>
+      <tr>
+        <th scope="row">index.html</th>
+        <td>images/logo.png</td>
+        <td><code>images/logo.png</code></td>
+      </tr>
+      <tr>
+        <th scope="row">pages/contact.html</th>
+        <td>index.html</td>
+        <td><code>../index.html</code></td>
+      </tr>
+      <tr>
+        <th scope="row">pages/contact.html</th>
+        <td>images/logo.png</td>
+        <td><code>../images/logo.png</code></td>
+      </tr>
+      <tr>
+        <th scope="row">pages/contact.html</th>
+        <td>pages/services.html</td>
+        <td><code>services.html</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>ארבעת הסימונים</h2>
+  <dl>
+    <dt><code>file.html</code></dt>
+    <dd>קובץ באותה תיקייה בדיוק.</dd>
+
+    <dt><code>folder/file.html</code></dt>
+    <dd>יורדים לתוך תיקייה.</dd>
+
+    <dt><code>../file.html</code></dt>
+    <dd>עולים תיקייה אחת למעלה. אפשר לשרשר: <code>../../</code></dd>
+
+    <dt><code>/file.html</code></dt>
+    <dd>
+      מתחילים משורש האתר. עובד רק כשיש שרת אמיתי –
+      בפתיחת קובץ מקומית זה עלול להישבר.
+    </dd>
+  </dl>
+
+  <h2>הוכחה חיה</h2>
+  <p>
+    התמונה הבאה נטענת מהנתיב
+    <code>../../../assets/img/logo.svg</code>
+    – שלוש תיקיות למעלה ואז לתוך assets/img:
+  </p>
+  <img src="../../../assets/img/logo.svg" alt="לוגו לדוגמה" width="200" height="60">
+
+  <p><a href="01-links.html">⬅ חזרה לדוגמת הקישורים</a></p>
+
+</body>
+</html>

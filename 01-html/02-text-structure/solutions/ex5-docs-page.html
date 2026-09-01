@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="תיעוד לתגית p בשפת HTML">
+  <title>תיעוד: התגית &lt;p&gt;</title>
+</head>
+<body>
+
+  <h1>התגית <code>&lt;p&gt;</code> &mdash; פסקה</h1>
+
+  <p>
+    <small>
+      עדכון אחרון: <time datetime="2026-02-01">1 בפברואר 2026</time>
+      &nbsp;|&nbsp; רמה: מתחילים
+    </small>
+  </p>
+
+  <hr>
+
+  <h2>תיאור</h2>
+  <p>
+    התגית <code>&lt;p&gt;</code> (קיצור של <em>paragraph</em>) מגדירה
+    <strong>פסקת טקסט</strong>. זהו אלמנט מסוג <em>block</em>:
+    הוא תופס את מלוא רוחב המיכל שלו, והדפדפן מוסיף לו אוטומטית
+    מרווח עליון ותחתון.
+  </p>
+
+  <p>
+    <mark>שימו לב:</mark> הדפדפן מכווץ רצף של רווחים או ירידות שורה
+    לרווח בודד. כדי לשמור על עיצוב מדויק יש להשתמש ב-<code>&lt;pre&gt;</code>.
+  </p>
+
+  <hr>
+
+  <h2>תחביר</h2>
+
+  <pre><code>&lt;p&gt;טקסט הפסקה&lt;/p&gt;
+
+&lt;!-- עם תכונות --&gt;
+&lt;p id="intro" class="lead"&gt;
+  פסקת פתיחה
+&lt;/p&gt;
+
+&lt;!-- עם קינון תקין --&gt;
+&lt;p&gt;
+  טקסט רגיל עם &lt;strong&gt;חלק חשוב&lt;/strong&gt;
+  ועם &lt;em&gt;הדגשה&lt;/em&gt;.
+&lt;/p&gt;</code></pre>
+
+  <h3>מבנה האלמנט</h3>
+
+  <pre>
+&lt;p&gt;      שלום כיתה      &lt;/p&gt;
+ ^^^         ^^^            ^^^^
+  |           |               |
+  |           |               +-- תגית סוגרת
+  |           +------------------ תוכן
+  +------------------------------ תגית פותחת
+
+     כל השורה יחד = אלמנט (Element)
+  </pre>
+
+  <hr>
+
+  <h2>קיצורי מקלדת שימושיים</h2>
+  <p>
+    יצירת פסקה ב-Emmet: הקלידו <kbd>p</kbd> ואז <kbd>Tab</kbd>.<br>
+    יצירת 3 פסקאות: <kbd>p*3</kbd> ואז <kbd>Tab</kbd>.<br>
+    שמירת הקובץ: <kbd>Ctrl</kbd> + <kbd>S</kbd>.<br>
+    עטיפת טקסט קיים בתגית: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>
+    ואז <code>Wrap with Abbreviation</code>.
+  </p>
+
+  <hr>
+
+  <h2>הערות</h2>
+
+  <blockquote>
+    <p>
+      אין לקנן <code>&lt;p&gt;</code> בתוך <code>&lt;p&gt;</code>.
+      הדפדפן יסגור אוטומטית את הפסקה הראשונה ברגע שיתקל בפתיחת השנייה,
+      והתוצאה תהיה מבנה שונה לגמרי ממה שהתכוונתם אליו.
+    </p>
+    <footer>— <cite>מפרט HTML Living Standard</cite></footer>
+  </blockquote>
+
+  <hr>
+
+  <h2>היסטוריית גרסאות</h2>
+  <p>
+    <time datetime="1993-06-01">יוני 1993</time> &bull;
+    <span dir="ltr">HTML 1.0</span> &bull; התגית הוצגה לראשונה.
+  </p>
+  <p>
+    <time datetime="1999-12-24">דצמבר 1999</time> &bull;
+    <span dir="ltr">HTML 4.01</span> &bull;
+    התכונה <code>align</code> סומנה כמיושנת&nbsp;&mdash; יש להשתמש ב-CSS.
+  </p>
+  <p>
+    <time datetime="2014-10-28">אוקטובר 2014</time> &bull;
+    <span dir="ltr">HTML5</span> &bull;
+    <del>align</del> <ins>CSS בלבד</ins> &bull; התגית שרדה ללא שינוי מהותי.
+  </p>
+
+  <hr>
+
+  <p>
+    <small>
+      &copy; 2026 &bull; מסמך תיעוד לימודי &bull;
+      נכתב במסגרת קורס <abbr title="פיתוח צד לקוח וצד שרת">Full&nbsp;Stack</abbr>
+      &bull; &larr; חזרה&nbsp;לאינדקס
+    </small>
+  </p>
+
+</body>
+</html>

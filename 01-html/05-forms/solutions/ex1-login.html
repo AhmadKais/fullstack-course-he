@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>התחברות</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 400px; margin: 40px auto;
+           line-height: 1.7; padding: 0 16px; }
+    label { display: block; margin-top: 14px; font-weight: 600; }
+    input[type="text"], input[type="password"] {
+      width: 100%; padding: 9px; font-size: 1rem; box-sizing: border-box;
+      border: 1px solid #bbb; border-radius: 4px; margin-top: 4px;
+    }
+    .remember { margin-top: 14px; }
+    .remember label { display: inline; font-weight: normal; }
+    button { width: 100%; margin-top: 18px; padding: 11px; font-size: 1rem;
+             background: #2b6cb0; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+    .links { margin-top: 14px; text-align: center; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+  <h1>התחברות</h1>
+
+  <form action="" method="post">
+
+    <label for="username">שם משתמש</label>
+    <input type="text"
+           id="username"
+           name="username"
+           minlength="3"
+           autocomplete="username"
+           dir="ltr"
+           required
+           autofocus>
+
+    <label for="password">סיסמה</label>
+    <input type="password"
+           id="password"
+           name="password"
+           minlength="8"
+           autocomplete="current-password"
+           dir="ltr"
+           required>
+
+    <div class="remember">
+      <input type="checkbox" id="remember" name="remember" value="yes">
+      <label for="remember">זכור אותי במכשיר זה</label>
+    </div>
+
+    <button type="submit">התחברות</button>
+
+  </form>
+
+  <p class="links">
+    <a href="#">שכחתי סיסמה</a>
+  </p>
+
+</body>
+</html>

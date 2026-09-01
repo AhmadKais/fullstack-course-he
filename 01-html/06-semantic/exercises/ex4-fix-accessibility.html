@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>תרגיל 4 – תיקון נגישות</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 700px; margin: 20px auto; }
+    /* בעיה: מוחק את סימון המיקוד */
+    *:focus { outline: none; }
+    .fake-btn { background: #2b6cb0; color: #fff; padding: 8px 16px;
+                display: inline-block; cursor: pointer; border-radius: 4px; }
+    .layout td { padding: 10px; vertical-align: top; }
+    .light { color: #ccc; }
+  </style>
+</head>
+<body>
+
+<!--
+  ============================================
+  בדף הזה מסתתרות 10 בעיות נגישות.
+  מצאו, תקנו, וכתבו בהערה מה הייתה הבעיה.
+  ============================================
+-->
+
+  <h1>סטודיו יוגה "נשימה"</h1>
+
+  <h4>השיעורים שלנו</h4>
+
+  <img src="../../../assets/img/placeholder-400x300.svg" width="400" height="300">
+
+  <p class="light">שיעורי יוגה לכל הרמות, בבוקר ובערב.</p>
+
+  <table class="layout">
+    <tr>
+      <td>
+        <h3>יוגה למתחילים</h3>
+        <p>שיעור רגוע להיכרות עם התרגול.</p>
+      </td>
+      <td>
+        <h3>יוגה מתקדמים</h3>
+        <p>תרגול אינטנסיבי לבעלי ניסיון.</p>
+      </td>
+    </tr>
+  </table>
+
+  <p>לפרטים נוספים על השיעורים <a href="#">לחצו כאן</a></p>
+
+  <h4>הרשמה</h4>
+
+  <form>
+    <input type="text" placeholder="שם מלא"><br>
+    <input type="text" placeholder="אימייל"><br>
+    <div class="fake-btn" onclick="alert('נשלח')">שלח</div>
+  </form>
+
+  <p><button>✕</button></p>
+
+  <p>© 2026 סטודיו נשימה</p>
+
+</body>
+</html>

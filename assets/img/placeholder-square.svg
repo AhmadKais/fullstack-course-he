@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300" role="img" aria-label="תמונה ריבועית">
+  <rect width="300" height="300" fill="#c7f9cc"/>
+  <polygon points="150,60 250,240 50,240" fill="#2d6a4f"/>
+  <text x="150" y="285" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#1b4332">300 &#215; 300</text>
+</svg>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Block מול Inline</title>
+  <style>
+    /* עיצוב מינימלי רק כדי להמחיש את ההבדל -
+       נלמד CSS לעומק בחלק הבא של הקורס */
+    .demo { background: #ffe08a; border: 2px solid #d19a00; }
+  </style>
+</head>
+<body>
+
+  <h1>Block מול Inline</h1>
+
+  <h2>אלמנטי Block – כל אחד תופס שורה שלמה</h2>
+
+  <div class="demo">div ראשון – שימו לב שהרקע הצהוב נמתח עד סוף השורה</div>
+  <div class="demo">div שני – התחיל בשורה חדשה</div>
+  <p class="demo">גם פסקה היא Block</p>
+
+  <hr>
+
+  <h2>אלמנטי Inline – זורמים באותה שורה</h2>
+
+  <p>
+    זהו טקסט רגיל עם
+    <span class="demo">span ראשון</span>
+    וגם
+    <span class="demo">span שני</span>
+    וגם
+    <strong class="demo">strong</strong>
+    – כולם נשארים באותה שורה, והרקע עוטף רק את התוכן עצמו.
+  </p>
+
+  <hr>
+
+  <h2>כלל הכלה</h2>
+  <p>
+    אלמנט Block יכול להכיל אלמנטי Block ואלמנטי Inline.<br>
+    אלמנט Inline <strong>לא</strong> אמור להכיל אלמנט Block.
+  </p>
+
+  <div class="demo">
+    <h3>זה תקין: div שמכיל h3 ו-p</h3>
+    <p>פסקה בתוך div – מותר לגמרי.</p>
+  </div>
+
+  <p>
+    ❌ לא תקין: span שמכיל div
+    <code>&lt;span&gt;&lt;div&gt;...&lt;/div&gt;&lt;/span&gt;</code>
+  </p>
+
+</body>
+</html>

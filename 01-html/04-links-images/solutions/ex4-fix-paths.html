@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>פתרון תרגיל 4 – תיקון נתיבים</title>
+</head>
+<body>
+
+<!--
+  ============================================
+  תזכורת למבנה:
+
+  site/
+  ├── index.html
+  ├── about.html
+  ├── assets/
+  │   ├── img/
+  │   │   ├── logo.svg
+  │   │   └── team.jpg
+  │   └── docs/
+  │       └── brochure.pdf
+  └── pages/
+      ├── this-file.html   <-- אנחנו כאן
+      ├── contact.html
+      └── services.html
+
+  הכלל: אנחנו בתוך pages/. כדי להגיע לשורש – ../
+  ============================================
+-->
+
+  <h1>הנתיבים המתוקנים</h1>
+
+  <!-- ✅ תיקון 1: index.html בשורש -> צריך לעלות תיקייה -->
+  <!-- היה:  href="index.html"        (חיפש pages/index.html) -->
+  <p><a href="../index.html">דף הבית</a></p>
+
+  <!-- ✅ תיקון 2: about.html בשורש -->
+  <!-- היה:  href="pages/about.html"  (חיפש pages/pages/about.html) -->
+  <p><a href="../about.html">אודות</a></p>
+
+  <!-- ✅ תיקון 3: contact.html באותה תיקייה -->
+  <!-- היה:  href="../pages/contact.html"  (עלה וירד מיותר - עבד במקרה, אבל מסורבל) -->
+  <p><a href="contact.html">צור קשר</a></p>
+
+  <!-- ✅ תיקון 4: assets נמצא בשורש -->
+  <!-- היה:  src="assets/img/logo.svg"   (חיפש pages/assets/...) -->
+  <p><img src="../assets/img/logo.svg" alt="לוגו החברה" width="200" height="60"></p>
+
+  <!-- ✅ תיקון 5: התיקייה היא assets/img ולא img -->
+  <!-- היה:  src="../img/team.jpg"       (חיפש site/img/ שלא קיים) -->
+  <p><img src="../assets/img/team.jpg" alt="צוות החברה בישיבת בוקר" width="400" height="300"></p>
+
+  <!-- ✅ תיקון 6: docs נמצא בתוך assets -->
+  <!-- היה:  href="docs/brochure.pdf"    (חיפש pages/docs/) -->
+  <p><a href="../assets/docs/brochure.pdf" download>הורדת החוברת</a></p>
+
+  <hr>
+
+  <h2>שיטת עבודה לפתרון בעיות נתיב</h2>
+  <ol>
+    <li>שאלו: <strong>איפה אני עכשיו?</strong> (באיזו תיקייה נמצא הקובץ שאני עורך)</li>
+    <li>שאלו: <strong>איפה היעד?</strong></li>
+    <li>ספרו כמה תיקיות צריך <strong>לעלות</strong> – זה מספר ה-<code>../</code></li>
+    <li>אחר כך רשמו את הדרך <strong>למטה</strong> אל היעד.</li>
+  </ol>
+  <p>
+    <strong>טיפ:</strong> ב-VS Code, הקלידו <code>src="</code> או <code>href="</code>
+    והעורך יציע לכם השלמה אוטומטית של הנתיב. זו הדרך הבטוחה ביותר.
+  </p>
+
+</body>
+</html>

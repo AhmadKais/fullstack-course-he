@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="דף פרויקט - מערכת ניהול תורים למספרה, נבנה ב-HTML, CSS ו-JavaScript">
+  <meta name="author" content="תלמיד הקורס">
+  <title>פרויקט: מערכת תורים למספרה</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; line-height: 1.8; }
+    img { max-width: 100%; height: auto; display: block; border-radius: 8px; }
+    figure { margin: 0 0 20px; border: 1px solid #e0e0e0; border-radius: 10px; padding: 12px; }
+    figcaption { font-size: 0.9rem; color: #555; margin-top: 8px; }
+    nav a { margin-left: 14px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+    header { border-bottom: 2px solid #eee; padding-bottom: 12px; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+
+  <!-- ============ כותרת עם לוגו-קישור ============ -->
+  <header id="top">
+    <a href="ex1-links.html">
+      <img src="../../../assets/img/logo.svg"
+           alt="לוגו MySite – חזרה לדף הבית"
+           width="200" height="60">
+    </a>
+
+    <h1>מערכת תורים למספרה</h1>
+
+    <nav>
+      <strong>בדף זה:</strong>
+      <a href="#about">על הפרויקט</a>
+      <a href="#screens">צילומי מסך</a>
+      <a href="#tech">טכנולוגיות</a>
+      <a href="#contact">צור קשר</a>
+    </nav>
+  </header>
+
+  <!-- ============ תמונת נושא רספונסיבית ============ -->
+  <picture>
+    <source media="(max-width: 600px)"
+            srcset="../../../assets/img/placeholder-square.svg">
+    <source media="(min-width: 601px)"
+            srcset="../../../assets/img/hero-wide.svg">
+    <img src="../../../assets/img/hero-wide.svg"
+         alt="תמונת נושא של הפרויקט: שמיים בגווני כחול וסגול מעל צללית הרים"
+         width="1200" height="500">
+  </picture>
+
+  <!-- ============ על הפרויקט ============ -->
+  <section id="about">
+    <h2>על הפרויקט</h2>
+    <p>
+      מערכת שמאפשרת ללקוחות מספרה לקבוע תור מהנייד בלי להתקשר,
+      ולבעל העסק לראות את לוח היום שלו במבט אחד.
+      הפרויקט נבנה כעבודת גמר בקורס <span dir="ltr">Full Stack</span>.
+    </p>
+    <p>
+      <strong>המטרה:</strong> לצמצם את זמן קביעת התור מ-4 דקות שיחה
+      ל-20 שניות של הקלקות.
+    </p>
+  </section>
+
+  <!-- ============ צילומי מסך ============ -->
+  <section id="screens">
+    <h2>צילומי מסך</h2>
+
+    <div class="grid">
+      <figure>
+        <img src="../../../assets/img/placeholder-400x300.svg"
+             alt="מסך הבית של האפליקציה עם כפתור גדול לקביעת תור"
+             width="400" height="300" loading="lazy">
+        <figcaption>מסך הבית – קביעת תור בהקלקה אחת</figcaption>
+      </figure>
+
+      <figure>
+        <img src="../../../assets/img/placeholder-square.svg"
+             alt="מסך בחירת שעה עם רשת של משבצות זמן פנויות"
+             width="300" height="300" loading="lazy">
+        <figcaption>בחירת שעה – משבצות פנויות מסומנות בירוק</figcaption>
+      </figure>
+
+      <figure>
+        <img src="../../../assets/img/placeholder-800x400.svg"
+             alt="לוח הניהול של בעל העסק עם רשימת התורים ליום הנוכחי"
+             width="800" height="400" loading="lazy">
+        <figcaption>לוח ניהול – תצוגת יום לבעל העסק</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ טכנולוגיות ============ -->
+  <section id="tech">
+    <h2>טכנולוגיות</h2>
+    <ul>
+      <li>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML"
+           target="_blank" rel="noopener noreferrer">HTML5</a>
+        &mdash; מבנה סמנטי ונגיש
+      </li>
+      <li>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS"
+           target="_blank" rel="noopener noreferrer">CSS3</a>
+        &mdash; פריסה ב-Grid ו-Flexbox
+      </li>
+      <li>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+           target="_blank" rel="noopener noreferrer">JavaScript</a>
+        &mdash; לוגיקת התורים ותפעול ה-DOM
+      </li>
+      <li>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API"
+           target="_blank" rel="noopener noreferrer">localStorage</a>
+        &mdash; שמירת התורים בדפדפן
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ צור קשר ============ -->
+  <section id="contact">
+    <h2>צור קשר</h2>
+    <p>
+      מייל:
+      <a href="mailto:student@example.com?subject=בנוגע%20לפרויקט%20מערכת%20התורים">
+        student@example.com
+      </a>
+      <br>
+      טלפון: <a href="tel:+972541234567" dir="ltr">054-123-4567</a>
+    </p>
+
+    <p>
+      <a href="../../../assets/img/logo.svg" download="project-logo.svg">
+        ⬇ הורדת הלוגו של הפרויקט
+      </a>
+    </p>
+  </section>
+
+  <hr>
+
+  <footer>
+    <p>
+      <a href="#top">⬆ חזרה לראש הדף</a>
+      &nbsp;|&nbsp;
+      <small>&copy; 2026 &mdash; פרויקט לימודי</small>
+    </p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>משוב על הקורס</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 620px; margin: 20px auto;
+           line-height: 1.7; padding: 0 16px; }
+    fieldset { border: 1px solid #ddd; border-radius: 8px; padding: 14px 18px; margin-bottom: 18px; }
+    legend { font-weight: 700; padding: 0 8px; }
+    label { font-weight: 600; }
+    fieldset .opt label { font-weight: normal; }
+    .opt { margin: 6px 0; }
+    input[type="text"], input[type="email"], select, textarea {
+      width: 100%; padding: 8px; box-sizing: border-box; margin-top: 4px;
+      border: 1px solid #bbb; border-radius: 4px; font-size: 1rem;
+    }
+    button { padding: 10px 24px; font-size: 1rem; cursor: pointer; }
+    .hint { font-weight: normal; font-size: 0.85rem; color: #666; }
+  </style>
+</head>
+<body>
+
+  <h1>משוב על הקורס</h1>
+  <p class="hint">המשוב אנונימי – מילוי השם והמייל אינו חובה.</p>
+
+  <form action="" method="post">
+
+    <fieldset>
+      <legend>פרטים (אופציונלי)</legend>
+
+      <label for="fb-name">שם <span class="hint">(אפשר להשאיר ריק)</span></label>
+      <input type="text" id="fb-name" name="name">
+
+      <label for="fb-email">אימייל <span class="hint">(אם תרצו שנחזור אליכם)</span></label>
+      <input type="email" id="fb-email" name="email" dir="ltr" placeholder="you@example.com">
+    </fieldset>
+
+    <fieldset>
+      <legend>דירוג כללי של הקורס</legend>
+
+      <div class="opt">
+        <input type="radio" id="r-excellent" name="rating" value="excellent" required>
+        <label for="r-excellent">מצוין</label>
+      </div>
+      <div class="opt">
+        <input type="radio" id="r-good" name="rating" value="good">
+        <label for="r-good">טוב</label>
+      </div>
+      <div class="opt">
+        <input type="radio" id="r-average" name="rating" value="average">
+        <label for="r-average">בינוני</label>
+      </div>
+      <div class="opt">
+        <input type="radio" id="r-poor" name="rating" value="poor">
+        <label for="r-poor">חלש</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>אילו נושאים היו המועילים ביותר?</legend>
+
+      <div class="opt">
+        <input type="checkbox" id="t-html" name="topics" value="html">
+        <label for="t-html">מבנה HTML וסמנטיקה</label>
+      </div>
+      <div class="opt">
+        <input type="checkbox" id="t-css" name="topics" value="css">
+        <label for="t-css">עיצוב ב-CSS</label>
+      </div>
+      <div class="opt">
+        <input type="checkbox" id="t-flex" name="topics" value="flexbox">
+        <label for="t-flex">Flexbox ו-Grid</label>
+      </div>
+      <div class="opt">
+        <input type="checkbox" id="t-js" name="topics" value="javascript">
+        <label for="t-js">יסודות JavaScript</label>
+      </div>
+      <div class="opt">
+        <input type="checkbox" id="t-dom" name="topics" value="dom">
+        <label for="t-dom">עבודה עם ה-DOM</label>
+      </div>
+      <div class="opt">
+        <input type="checkbox" id="t-proj" name="topics" value="projects">
+        <label for="t-proj">הפרויקטים המעשיים</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>פרטי הלמידה</legend>
+
+      <label for="fb-track">באיזה מסלול למדתם?</label>
+      <select id="fb-track" name="track" required>
+        <option value="">-- בחרו מסלול --</option>
+        <option value="morning">בוקר</option>
+        <option value="evening">ערב</option>
+      </select>
+
+      <label for="fb-notes" style="margin-top:14px; display:block">
+        הערות חופשיות <span class="hint">(עד 500 תווים)</span>
+      </label>
+      <textarea id="fb-notes" name="notes" rows="5" maxlength="500"
+                placeholder="מה שיפרתם? מה היה חסר?"></textarea>
+    </fieldset>
+
+    <p>
+      <button type="submit">שליחת המשוב</button>
+      <button type="reset">איפוס</button>
+    </p>
+
+  </form>
+
+</body>
+</html>

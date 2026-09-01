@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="צרו קשר עם סטודיו פיקסל - מיקום, סרטון תדמית ופרטי התקשרות">
+  <title>צור קשר | סטודיו פיקסל</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 820px; margin: 20px auto;
+           line-height: 1.75; padding: 0 18px; }
+    section { margin-bottom: 36px; }
+    iframe { border: 1px solid #ddd; border-radius: 8px; max-width: 100%; }
+
+    /* טכניקת יחס גובה-רוחב: הופכת כל iframe לרספונסיבי */
+    .ratio-16-9 { position: relative; padding-top: 56.25%; height: 0; }
+    .ratio-16-9 iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+    .ratio-4-3 { position: relative; padding-top: 75%; height: 0; }
+    .ratio-4-3 iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+    .note { background: #f0f7ff; border-right: 4px solid #2b6cb0;
+            padding: 12px 16px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+
+  <h1>סטודיו פיקסל — צור קשר</h1>
+
+  <!-- ============ 1. סרטון יוטיוב רספונסיבי ============ -->
+  <section>
+    <h2>סרטון התדמית שלנו</h2>
+
+    <div class="ratio-16-9">
+      <!--
+        שימו לב:
+        - youtube-nocookie.com  = בלי עוגיות מעקב עד שלוחצים Play
+        - title                 = חובה לנגישות
+        - loading="lazy"        = לא טוען עד שגוללים לכאן
+        - allowfullscreen       = מאפשר מסך מלא
+        - אין width/height קבועים - ה-CSS מטפל ברספונסיביות
+      -->
+      <iframe src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ"
+              title="סרטון תדמית: הצצה לתהליך העבודה בסטודיו פיקסל"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin">
+      </iframe>
+    </div>
+
+    <p>
+      <small>
+        שנו את רוחב חלון הדפדפן — הסרטון שומר על יחס 16:9 ולא גולש מהמסך.
+      </small>
+    </p>
+  </section>
+
+  <!-- ============ 2. מפת גוגל ============ -->
+  <section>
+    <h2>איך מגיעים אלינו</h2>
+
+    <div class="ratio-4-3">
+      <!--
+        את כתובת ה-src מקבלים ב-Google Maps:
+        חיפוש כתובת ← שתף ← הטמעת מפה ← העתקת HTML.
+        גוגל לא מוסיפה title - חייבים להוסיף בעצמכם!
+      -->
+      <iframe src="https://www.google.com/maps?q=Tel+Aviv&output=embed"
+              title="מפה: משרדי סטודיו פיקסל ברחוב הברזל 12, תל אביב"
+              style="border:0"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <address>
+      רחוב הברזל 12, תל אביב–יפו<br>
+      טלפון: <a href="tel:+97236667788" dir="ltr">03-666-7788</a><br>
+      אימייל: <a href="mailto:hello@pixel.example">hello@pixel.example</a>
+    </address>
+  </section>
+
+  <!-- ============ 3. הטמעת דף מקומי ============ -->
+  <section>
+    <h2>תצוגה מקדימה: אחת העבודות שלנו</h2>
+
+    <iframe src="../examples/03-svg-canvas.html"
+            width="760" height="420"
+            title="תצוגה מקדימה של דף הדגמה: SVG מול Canvas"
+            loading="lazy">
+    </iframe>
+
+    <p>
+      <a href="../examples/03-svg-canvas.html" target="_blank" rel="noopener noreferrer">
+        פתיחת הדף בחלון מלא
+      </a>
+    </p>
+  </section>
+
+  <div class="note">
+    <h2>מה משותף לשלוש ההטמעות?</h2>
+    <ul>
+      <li><strong><code>title</code></strong> תיאורי בכל אחת — חובה לנגישות.</li>
+      <li><strong><code>loading="lazy"</code></strong> — הדף נטען מהר יותר.</li>
+      <li><strong><code>referrerpolicy</code></strong> — שולט בכמה מידע נחשף לאתר החיצוני.</li>
+      <li>קישור טקסטואלי חלופי לכל תוכן מוטמע.</li>
+    </ul>
+  </div>
+
+</body>
+</html>

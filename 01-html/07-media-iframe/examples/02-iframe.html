@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iframe – הטמעת תוכן חיצוני</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 820px; margin: 20px auto;
+           line-height: 1.75; padding: 0 18px; }
+    iframe { max-width: 100%; border: 1px solid #ccc; border-radius: 8px; }
+    .warn { background: #fff5f5; border-right: 4px solid #c53030;
+            padding: 12px 16px; border-radius: 6px; margin: 16px 0; }
+    .ok { background: #f0fff4; border-right: 4px solid #2f855a;
+          padding: 12px 16px; border-radius: 6px; margin: 16px 0; }
+    pre { background: #f7f7f7; padding: 12px; border-radius: 6px;
+          overflow-x: auto; direction: ltr; text-align: left; font-size: 0.88rem; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: right; }
+    th { background: #eee; }
+    /* טכניקת יחס גובה-רוחב לווידאו רספונסיבי */
+    .ratio { position: relative; padding-top: 56.25%; /* 9/16 */ height: 0; }
+    .ratio iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+
+  <h1>iframe – הטמעת דף בתוך דף</h1>
+
+  <h2>1. הטמעת דף מקומי</h2>
+  <p>כאן הטמענו דוגמה אחרת מתוך הקורס:</p>
+
+  <iframe src="01-video.html"
+          width="700" height="320"
+          title="הדגמת וידאו ואודיו מתוך המודול"
+          loading="lazy">
+  </iframe>
+
+  <p>
+    <strong>שימו לב ל-<code>title</code>.</strong> הוא חובה לנגישות:
+    קורא מסך מכריז אותו לפני שהוא נכנס לתוכן המוטמע.
+    בלעדיו המשתמש שומע רק "מסגרת".
+  </p>
+
+  <hr>
+
+  <h2>2. וידאו מיוטיוב</h2>
+  <p>הקוד המלא שיוטיוב נותן בכפתור "שתף → הטמע":</p>
+
+<pre>&lt;iframe width="560" height="315"
+        src="https://www.youtube.com/embed/VIDEO_ID"
+        title="שם הסרטון"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write;
+               encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy"&gt;
+&lt;/iframe&gt;</pre>
+
+  <div class="ok">
+    <strong>💡 טיפ לפרטיות:</strong> החליפו את הדומיין ב-
+    <code>youtube-nocookie.com</code>:
+    <pre>src="https://www.youtube-nocookie.com/embed/VIDEO_ID"</pre>
+    יוטיוב לא ישתול עוגיות מעקב עד שהמשתמש ילחץ Play.
+  </div>
+
+  <h3>הפיכת יוטיוב לרספונסיבי</h3>
+  <p>
+    הבעיה: <code>width="560"</code> קבוע גולש מהמסך בנייד.
+    הפתרון – עטיפה ביחס גובה-רוחב קבוע:
+  </p>
+
+<pre>.ratio { position: relative; padding-top: 56.25%; height: 0; }
+.ratio iframe { position: absolute; inset: 0;
+                width: 100%; height: 100%; }</pre>
+
+  <p>
+    <code>56.25%</code> הוא <code>9 ÷ 16</code> – יחס המסך הסטנדרטי.
+    שנו את רוחב החלון וראו איך הדוגמה למטה מתאימה את עצמה:
+  </p>
+
+  <div class="ratio">
+    <iframe src="03-svg-canvas.html"
+            title="הדגמה של יחס גובה-רוחב רספונסיבי">
+    </iframe>
+  </div>
+
+  <hr>
+
+  <h2>3. מפת גוגל</h2>
+<pre>&lt;iframe
+  src="https://www.google.com/maps/embed?pb=..."
+  width="600" height="450"
+  title="מפה: משרדי החברה ברחוב הברזל 12, תל אביב"
+  style="border:0"
+  allowfullscreen
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"&gt;
+&lt;/iframe&gt;</pre>
+
+  <p>
+    את הקוד מקבלים ב-Google Maps: חיפוש כתובת ←
+    <strong>שתף</strong> ← <strong>הטמעת מפה</strong>.
+    <strong>אל תשכחו להוסיף <code>title</code> משלכם</strong> –
+    גוגל לא מוסיפה אותו.
+  </p>
+
+  <hr>
+
+  <h2>4. ⚠️ אבטחה – החלק הכי חשוב במודול</h2>
+
+  <div class="warn">
+    <p>
+      <code>&lt;iframe&gt;</code> מריץ <strong>קוד של מישהו אחר</strong>
+      בתוך הדף שלכם. אם האתר המוטמע נפרץ – הבעיה שלכם.
+    </p>
+  </div>
+
+  <h3>התכונה sandbox</h3>
+
+<pre>&lt;!-- מקסימום הגבלה: sandbox ריק מבטל הכול --&gt;
+&lt;iframe src="untrusted.html" sandbox title="תוכן לא מהימן"&gt;&lt;/iframe&gt;
+
+&lt;!-- מרשים רק את מה שנחוץ --&gt;
+&lt;iframe src="widget.html"
+        sandbox="allow-scripts allow-forms"
+        title="ווידג'ט מזג אוויר"&gt;&lt;/iframe&gt;</pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">ערך</th>
+        <th scope="col">מה מרשה</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>allow-scripts</code></td><td>הרצת JavaScript</td></tr>
+      <tr><td><code>allow-forms</code></td><td>שליחת טפסים</td></tr>
+      <tr><td><code>allow-same-origin</code></td><td>גישה למקור המקורי</td></tr>
+      <tr><td><code>allow-popups</code></td><td>פתיחת חלונות</td></tr>
+      <tr><td><code>allow-top-navigation</code></td><td>שינוי כתובת הדף החיצוני</td></tr>
+    </tbody>
+  </table>
+
+  <div class="warn">
+    <strong>אזהרה קריטית:</strong> אל תשלבו
+    <code>allow-scripts</code> יחד עם <code>allow-same-origin</code>
+    לתוכן שאינכם סומכים עליו. השילוב מאפשר ל-iframe
+    <strong>להסיר את ה-sandbox של עצמו</strong> – ואז ההגנה חסרת ערך.
+  </div>
+
+  <h3>הגנה על האתר שלכם – Clickjacking</h3>
+  <p>
+    התקפת Clickjacking: תוקף מטמיע את האתר שלכם ב-iframe שקוף,
+    ומרמה משתמשים ללחוץ על כפתורים אמיתיים באתר שלכם
+    בלי שהם מודעים לכך.
+  </p>
+  <p>ההגנה מוגדרת <strong>בשרת</strong>, לא ב-HTML:</p>
+<pre>X-Frame-Options: SAMEORIGIN
+Content-Security-Policy: frame-ancestors 'self'</pre>
+
+  <hr>
+
+  <h2>5. מתי לא להשתמש ב-iframe</h2>
+  <ul>
+    <li><strong>לפריסת האתר שלכם.</strong> זו שיטה מיושנת מלפני 20 שנה.</li>
+    <li><strong>לתפריט ניווט משותף.</strong> קישורים בתוך iframe מבלבלים את הדפדפן וההיסטוריה נשברת.</li>
+    <li><strong>לתוכן שקריטי ל-SEO.</strong> גוגל מתקשה לייחס תוכן מוטמע לדף המארח.</li>
+  </ul>
+
+  <div class="ok">
+    <strong>iframe מתאים ל:</strong> וידאו חיצוני, מפות, ווידג׳טים
+    (טפסים, תשלומים, לוחות שנה), ותצוגה מקדימה של דמו – בדיוק כמו בדף הזה.
+  </div>
+
+</body>
+</html>

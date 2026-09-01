@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>טעויות נפוצות – ואיך מתקנים</title>
+</head>
+<body>
+
+  <h1>4 טעויות נפוצות של מתחילים</h1>
+
+  <h2>1. שכחת תגית סוגרת</h2>
+  <p>
+    כותבים <code>&lt;p&gt;טקסט</code> בלי <code>&lt;/p&gt;</code>.
+    התוצאה: הדפדפן "מנחש" איפה הפסקה נגמרת – ולרוב מנחש לא נכון.
+  </p>
+
+  <h2>2. סדר סגירה שגוי</h2>
+  <p>
+    ❌ <code>&lt;p&gt;&lt;strong&gt;טקסט&lt;/p&gt;&lt;/strong&gt;</code><br>
+    ✅ <code>&lt;p&gt;&lt;strong&gt;טקסט&lt;/strong&gt;&lt;/p&gt;</code>
+  </p>
+
+  <h2>3. שכחת מרכאות בתכונה</h2>
+  <p>
+    ❌ <code>&lt;a href=index.html&gt;</code><br>
+    ✅ <code>&lt;a href="index.html"&gt;</code>
+  </p>
+
+  <h2>4. תוכן בתוך head</h2>
+  <p>
+    כל מה שנכתב בתוך <code>&lt;head&gt;</code> פשוט לא יופיע על המסך.
+    התוכן חייב להיות בתוך <code>&lt;body&gt;</code>.
+  </p>
+
+  <hr>
+
+  <h2>💡 איך בודקים שהקוד תקין?</h2>
+  <p>
+    נכנסים לכתובת <code>validator.w3.org</code>, מדביקים את הקוד,
+    ומקבלים רשימת שגיאות עם מספרי שורה.
+  </p>
+
+  <p>
+    שימו לב: כדי להציג סימני &lt; ו-&gt; כטקסט (ולא כתגית),
+    משתמשים ב"ישויות": <code>&amp;lt;</code> ו-<code>&amp;gt;</code>.
+    נלמד על כך במודול הבא.
+  </p>
+
+</body>
+</html>

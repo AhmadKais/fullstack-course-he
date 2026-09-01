@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="שלד דף סמנטי מלא - דוגמה לקורס Full Stack">
+  <meta name="author" content="צוות הקורס">
+  <title>שלד דף סמנטי | הבלוג של דנה</title>
+
+  <!-- Open Graph - כך הקישור ייראה בוואטסאפ ובפייסבוק -->
+  <meta property="og:title" content="שלד דף סמנטי">
+  <meta property="og:description" content="דוגמה למבנה HTML נכון ונגיש">
+  <meta property="og:type" content="article">
+
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; margin: 0; line-height: 1.7; color: #1a202c; }
+
+    /* קישור הדילוג: מוסתר עד שמגיעים אליו עם Tab */
+    .skip-link {
+      position: absolute; right: -9999px; top: 0;
+      background: #2b6cb0; color: #fff; padding: 10px 18px; z-index: 100;
+    }
+    .skip-link:focus { right: 0; }
+
+    header, footer { background: #2d3748; color: #fff; padding: 16px 24px; }
+    header a, footer a { color: #90cdf4; }
+    nav ul { list-style: none; display: flex; gap: 18px; padding: 0; margin: 10px 0 0; }
+    .layout { display: grid; grid-template-columns: 3fr 1fr; gap: 26px;
+              max-width: 1000px; margin: 24px auto; padding: 0 20px; }
+    article, aside { border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px; }
+    aside { background: #f7fafc; }
+    .label { display: inline-block; background: #edf2f7; color: #4a5568;
+             font-size: 0.75rem; padding: 2px 8px; border-radius: 4px;
+             font-family: monospace; direction: ltr; }
+    @media (max-width: 760px) { .layout { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- ===== קישור דילוג: הראשון בדף, מוסתר עד Tab ===== -->
+  <a href="#main-content" class="skip-link">דלגו לתוכן הראשי</a>
+
+  <!-- ===== HEADER: ראש האתר ===== -->
+  <header>
+    <span class="label">&lt;header&gt;</span>
+    <h1>הבלוג של דנה</h1>
+
+    <!-- aria-label מבחין בין כמה תפריטים בדף -->
+    <nav aria-label="ניווט ראשי">
+      <span class="label">&lt;nav&gt;</span>
+      <ul>
+        <li><a href="#main-content">בית</a></li>
+        <li><a href="#about">אודות</a></li>
+        <li><a href="#faq">שאלות נפוצות</a></li>
+        <li><a href="#contact">צור קשר</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="layout">
+
+    <!-- ===== MAIN: אחד בלבד בדף! ===== -->
+    <main id="main-content">
+      <span class="label">&lt;main&gt;</span>
+
+      <!-- ===== ARTICLE: עומד בפני עצמו ===== -->
+      <article>
+        <span class="label">&lt;article&gt;</span>
+
+        <!-- header יכול להופיע גם בתוך article -->
+        <header>
+          <h2>איך למדתי לתכנת בגיל 35</h2>
+          <p>
+            מאת דנה כהן ·
+            <time datetime="2026-03-01">1 במרץ 2026</time> ·
+            זמן קריאה: 6 דקות
+          </p>
+        </header>
+
+        <p>
+          לפני שנתיים לא ידעתי מה זה <code>HTML</code>.
+          היום אני בונה אתרים. זה הסיפור של הדרך.
+        </p>
+
+        <!-- ===== SECTION: קטע נושאי עם כותרת ===== -->
+        <section>
+          <span class="label">&lt;section&gt;</span>
+          <h3>ההתחלה</h3>
+          <p>
+            הכול התחיל כשניסיתי לשנות משהו קטן באתר של העסק
+            ולא הצלחתי. במקום להתקשר למישהו, החלטתי להבין.
+          </p>
+        </section>
+
+        <section>
+          <h3>הקושי הראשון</h3>
+          <p>
+            הדבר שהכי הפיל אותי היה <mark>נתיבים יחסיים</mark>.
+            לקח לי שבוע להבין מה זה <code>../</code>.
+          </p>
+
+          <figure>
+            <img src="../../../assets/img/placeholder-800x400.svg"
+                 alt="צילום מסך של עורך קוד עם שגיאת נתיב שבור"
+                 width="800" height="400" loading="lazy"
+                 style="max-width:100%; height:auto; border-radius:6px">
+            <figcaption>
+              <span class="label">&lt;figure&gt;</span>
+              איור 1: השגיאה שליוותה אותי שבוע שלם.
+            </figcaption>
+          </figure>
+        </section>
+
+        <section id="faq">
+          <h3>שאלות שאני מקבלת</h3>
+
+          <!-- details/summary: אקורדיון נגיש בלי JavaScript -->
+          <details>
+            <summary>כמה זמן זה לוקח?</summary>
+            <p>בקצב של 10 שעות בשבוע, כחצי שנה עד לפרויקט ראשון אמיתי.</p>
+          </details>
+
+          <details>
+            <summary>צריך רקע במתמטיקה?</summary>
+            <p>לא. חשיבה לוגית מספיקה לחלוטין לפיתוח צד לקוח.</p>
+          </details>
+
+          <details open>
+            <summary>מאיפה מתחילים?</summary>
+            <p>מ-HTML. תמיד מ-HTML.</p>
+          </details>
+
+          <p><span class="label">&lt;details&gt; &lt;summary&gt;</span></p>
+        </section>
+
+        <!-- footer של המאמר -->
+        <footer style="background:none; color:inherit; padding:12px 0; border-top:1px solid #e2e8f0">
+          <p><small>תגיות: לימודים · הסבה מקצועית · HTML</small></p>
+        </footer>
+      </article>
+    </main>
+
+    <!-- ===== ASIDE: תוכן משני ===== -->
+    <aside>
+      <span class="label">&lt;aside&gt;</span>
+      <h2>מאמרים נוספים</h2>
+      <ul>
+        <li><a href="#">חמש טעויות של מתחילים</a></li>
+        <li><a href="#">איך בוחרים קורס</a></li>
+        <li><a href="#">הפרויקט הראשון שלי</a></li>
+      </ul>
+
+      <h2 id="about">על הכותבת</h2>
+      <p>
+        דנה כהן, מפתחת צד לקוח, כותבת על הסבה מקצועית
+        מאז <time datetime="2024">2024</time>.
+      </p>
+    </aside>
+
+  </div>
+
+  <!-- ===== FOOTER: תחתית האתר ===== -->
+  <footer id="contact">
+    <span class="label">&lt;footer&gt;</span>
+
+    <!-- address: פרטי קשר. לא לכתובת דואר סתם! -->
+    <address>
+      <span class="label">&lt;address&gt;</span><br>
+      צרו קשר: <a href="mailto:dana@example.com">dana@example.com</a><br>
+      טלפון: <a href="tel:+972501234567" dir="ltr">050-123-4567</a>
+    </address>
+
+    <p><small>&copy; 2026 הבלוג של דנה. כל הזכויות שמורות.</small></p>
+  </footer>
+
+</body>
+</html>
