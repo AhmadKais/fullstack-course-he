@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>סלקטורים בסיסיים</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 760px;
+           margin: 20px auto; padding: 0 18px; line-height: 1.8; }
+
+    /* ===== סלקטור תגית: כל ה-p בדף ===== */
+    p { color: #4a5568; }
+
+    /* ===== סלקטור מחלקה: כל אלמנט עם class="highlight" ===== */
+    .highlight {
+      background: #fff3bf;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    /* ===== סלקטור מזהה: האלמנט היחיד עם id="special" ===== */
+    #special {
+      border: 2px solid #2b6cb0;
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    /* ===== קיבוץ: אותו עיצוב לכמה סלקטורים ===== */
+    h2, h3 {
+      color: #2c5282;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 4px;
+    }
+
+    /* ===== צירוף: p שיש לו גם class="intro" ===== */
+    p.intro {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #1a202c;
+    }
+
+    /* ===== שתי מחלקות באותו אלמנט (בלי רווח!) ===== */
+    .card { border: 1px solid #cbd5e0; padding: 14px;
+            border-radius: 8px; margin: 10px 0; }
+    .card.featured { border-color: #d69e2e; background: #fffbeb; }
+
+    /* ===== ההבדל: עם רווח = צאצא ===== */
+    .box .inner { background: #e6fffa; padding: 8px; }
+
+    .demo-note { font-size: 0.88rem; color: #718096;
+                 font-family: monospace; direction: ltr; display: block; }
+  </style>
+</head>
+<body>
+
+  <h1>סלקטורים בסיסיים</h1>
+
+  <p class="intro">
+    הפסקה הזו משתמשת ב-<code>p.intro</code> — צירוף של תגית ומחלקה.
+  </p>
+
+  <h2>1. סלקטור תגית</h2>
+  <p>הפסקה הזו אפורה, כי הכלל <code>p</code> חל על כל הפסקאות בדף.</p>
+  <span class="demo-note">p { color: #4a5568; }</span>
+
+  <h2>2. סלקטור מחלקה</h2>
+  <p>
+    בפסקה הזו יש <span class="highlight">מילים מודגשות</span> ועוד
+    <span class="highlight">מילים מודגשות</span> — מחלקה יכולה לחזור
+    כמה פעמים שרוצים.
+  </p>
+  <span class="demo-note">.highlight { background: #fff3bf; }</span>
+
+  <h2>3. סלקטור מזהה</h2>
+  <p id="special">
+    לפסקה הזו יש מזהה ייחודי. מזהה יכול להופיע
+    <strong>פעם אחת בלבד</strong> בכל הדף.
+  </p>
+  <span class="demo-note">#special { border: 2px solid #2b6cb0; }</span>
+
+  <h2>4. שתי מחלקות באותו אלמנט</h2>
+
+  <div class="card">
+    כרטיס רגיל — יש לו רק <code>class="card"</code>
+  </div>
+
+  <div class="card featured">
+    כרטיס מודגש — יש לו <code>class="card featured"</code>,
+    ולכן חלים עליו <strong>שני</strong> הכללים.
+  </div>
+
+  <span class="demo-note">.card.featured { }  /* בלי רווח = אותו אלמנט */</span>
+
+  <h2>5. ⚠️ ההבדל הקריטי: רווח או לא</h2>
+
+  <div class="box">
+    <p>אני בתוך <code>.box</code></p>
+    <p class="inner">אני <code>.inner</code> <strong>בתוך</strong> <code>.box</code> — ולכן אני צבוע.</p>
+  </div>
+
+  <span class="demo-note">.box .inner  /* עם רווח    = inner בתוך box */</span>
+  <span class="demo-note">.box.inner   /* בלי רווח  = אלמנט עם שתי המחלקות */</span>
+
+  <p>
+    <strong>זו אחת הטעויות הנפוצות ביותר.</strong>
+    רווח מיותר או חסר משנה לגמרי את משמעות הסלקטור.
+  </p>
+
+  <hr>
+
+  <h2>🧪 תרגול מהיר</h2>
+  <p>פתחו F12, בחרו כל אלמנט בדף, וראו בלשונית Styles איזה כללים חלים עליו.</p>
+
+</body>
+</html>

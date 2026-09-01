@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>פתרון 5 – תפריט ניווט</title>
+  <style>
+    :root {
+      --color-main: #0d6efd;
+      --color-dark: #212529;
+      --color-muted: #adb5bd;
+    }
+
+    body { font-family: Arial, sans-serif; margin: 0; }
+
+    .site-nav        { background: #f8f9fa; border-bottom: 2px solid #dee2e6; padding: 0 20px; }
+    .site-nav ul     { display: flex; align-items: center; gap: 4px; margin: 0; padding: 0; }
+    .site-nav a      { display: block; padding: 14px 16px; text-decoration: none; }
+
+    /* ===================== הפתרון ===================== */
+
+    /* 1. הסרת נקודות הרשימה */
+    .site-nav ul {
+      list-style: none;
+    }
+
+    /* 2. צבע כהה + מעבר הדרגתי */
+    .site-nav a {
+      color: var(--color-dark);
+      transition: color 0.25s ease, background 0.25s ease;
+    }
+
+    .site-nav a:hover {
+      color: var(--color-main);
+      background: #e9ecef;
+    }
+
+    /* 3. הקישור הפעיל */
+    .site-nav a.active {
+      font-weight: bold;
+      color: var(--color-main);
+      border-bottom: 3px solid var(--color-main);
+    }
+
+    /* 4. קו מפריד לכל פריט חוץ מהאחרון.
+       :not(:last-child) חוסך מחלקה מיותרת ב-HTML – ונשאר נכון
+       גם אם מוסיפים או מוחקים פריטים מחר. */
+    .site-nav li:not(:last-child) {
+      border-inline-end: 1px solid #dee2e6;
+    }
+
+    /* 5. הפריט הראשון */
+    .site-nav li:first-child a {
+      font-weight: 600;
+    }
+
+    /* 6. אייקון לפני כל קישור.
+       ::before הוא פסאודו-אלמנט – בלי content הוא פשוט לא קיים. */
+    .site-nav a::before {
+      content: "◂ ";
+      color: var(--color-muted);
+    }
+
+    /* לשדה החיפוש אין ::before כי הוא input – אלמנט ריק (void),
+       ולכן פסאודו-אלמנטים לא עובדים עליו בכלל. */
+
+    /* 7. סימון קישור חיצוני */
+    .site-nav a.external::after {
+      content: " ↗";
+      font-size: 0.85em;
+    }
+
+    /* 8. שדה החיפוש */
+    .site-nav input[type="search"] {
+      margin-inline-start: 12px;
+      padding: 7px 10px;
+      border: 2px solid #dee2e6;
+      border-radius: 4px;
+      transition: border-color 0.25s ease;
+    }
+
+    .site-nav input[type="search"]:focus {
+      outline: none;                       /* מותר רק כי אנחנו מחליפים בסימון אחר */
+      border-color: var(--color-main);
+    }
+
+    .site-nav input[type="search"]::placeholder {
+      color: var(--color-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <ul>
+      <li><a href="#" class="active">בית</a></li>
+      <li><a href="#">קורסים</a></li>
+      <li><a href="#">מרצים</a></li>
+      <li><a href="#">בלוג</a></li>
+      <li><a href="https://example.com" class="external">פורום</a></li>
+      <li><input type="search" placeholder="חיפוש באתר..."></li>
+    </ul>
+  </nav>
+
+  <main style="padding: 40px 20px; max-width: 700px;">
+    <h1>תוכן הדף</h1>
+    <p>כל העיצוב של התפריט מגיע מסלקטורים בלבד. ה-HTML נשאר נקי:
+       שתי מחלקות סמנטיות (<code>.active</code>, <code>.external</code>) וזהו.</p>
+
+    <h2>מה למדנו כאן</h2>
+    <ul>
+      <li><code>:not(:last-child)</code> – במקום מחלקת עזר <code>.no-border</code>.</li>
+      <li><code>::before</code> / <code>::after</code> – תוכן דקורטיבי שלא צריך לשבת ב-HTML.</li>
+      <li>משתני CSS – שינוי צבע אחד ב-<code>:root</code> משנה את כל התפריט.</li>
+      <li><code>transition</code> – שינוי מצב הדרגתי במקום קפיצה.</li>
+    </ul>
+  </main>
+
+</body>
+</html>

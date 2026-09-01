@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>סלקטורים של יחסים ותכונות</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 800px;
+           margin: 20px auto; padding: 0 18px; line-height: 1.8; }
+    .demo { border: 1px solid #cbd5e0; border-radius: 8px;
+            padding: 14px 18px; margin: 14px 0; }
+    .note { font-family: monospace; direction: ltr; display: block;
+            font-size: 0.88rem; color: #718096; margin-top: 6px; }
+
+    /* ============ 1. צאצא: כל עומק ============ */
+    .demo-desc a { color: #c53030; font-weight: 700; }
+
+    /* ============ 2. ילד ישיר: רק רמה אחת ============ */
+    .demo-child > li { background: #c6f6d5; padding: 4px 8px; }
+
+    /* ============ 3. אח סמוך: רק הראשון שאחרי ============ */
+    .demo-adj h3 + p { background: #bee3f8; padding: 6px 10px; }
+
+    /* ============ 4. כל האחים שאחרי ============ */
+    .demo-sib h3 ~ p { border-right: 3px solid #805ad5; padding-right: 10px; }
+
+    /* ============ 5. סלקטורים של תכונות ============ */
+    a[target="_blank"]::after { content: " ↗"; color: #2b6cb0; }
+    a[href$=".pdf"]::after    { content: " (PDF)"; color: #c53030; font-size: 0.85em; }
+    a[href^="mailto"]::before { content: "✉ "; }
+    a[href^="tel"]::before    { content: "☎ "; }
+
+    input[type="email"] { border: 2px solid #2b6cb0; }
+    input[type="password"] { border: 2px solid #c53030; }
+    input, select { padding: 7px; border-radius: 4px; margin: 4px 0;
+                    border: 1px solid #cbd5e0; width: 100%; box-sizing: border-box; }
+
+    ul { padding-right: 24px; }
+  </style>
+</head>
+<body>
+
+  <h1>סלקטורים של יחסים ותכונות</h1>
+
+  <!-- ============ צאצא ============ -->
+  <h2>1. צאצא (רווח) — בכל עומק</h2>
+  <div class="demo demo-desc">
+    <a href="#">קישור ברמה ראשונה</a>
+    <div>
+      <p>
+        <a href="#">קישור בעומק שלוש רמות</a> — גם הוא נצבע,
+        כי הסלקטור חל על <strong>כל</strong> הצאצאים.
+      </p>
+    </div>
+  </div>
+  <span class="note">.demo-desc a { color: #c53030; }</span>
+
+  <!-- ============ ילד ישיר ============ -->
+  <h2>2. ילד ישיר (&gt;) — רק רמה אחת</h2>
+  <ul class="demo demo-child">
+    <li>אני ילד ישיר ✅ (ירוק)</li>
+    <li>גם אני ילד ישיר ✅ (ירוק)
+      <ul>
+        <li>אני נכד ❌ (לא נצבע)</li>
+        <li>גם אני נכד ❌</li>
+      </ul>
+    </li>
+    <li>ילד ישיר ✅</li>
+  </ul>
+  <span class="note">.demo-child &gt; li { background: #c6f6d5; }</span>
+
+  <!-- ============ אח סמוך ============ -->
+  <h2>3. אח סמוך (+) — רק הראשון שאחרי</h2>
+  <div class="demo demo-adj">
+    <h3>כותרת</h3>
+    <p>אני הפסקה הראשונה מיד אחרי הכותרת ✅ (כחול)</p>
+    <p>אני הפסקה השנייה ❌ (לא נצבעת — כבר לא "סמוכה")</p>
+    <p>אני השלישית ❌</p>
+  </div>
+  <span class="note">.demo-adj h3 + p { background: #bee3f8; }</span>
+
+  <!-- ============ כל האחים ============ -->
+  <h2>4. כל האחים שאחרי (~)</h2>
+  <div class="demo demo-sib">
+    <p>אני <strong>לפני</strong> הכותרת ❌</p>
+    <h3>כותרת</h3>
+    <p>אני אחרי ✅ (קו סגול)</p>
+    <p>גם אני אחרי ✅</p>
+    <p>וגם אני ✅</p>
+  </div>
+  <span class="note">.demo-sib h3 ~ p { border-right: 3px solid #805ad5; }</span>
+
+  <hr>
+
+  <!-- ============ תכונות ============ -->
+  <h2>5. סלקטורים של תכונות</h2>
+
+  <div class="demo">
+    <p><a href="https://developer.mozilla.org" target="_blank" rel="noopener noreferrer">קישור חיצוני</a> — קיבל חץ אוטומטית</p>
+    <p><a href="docs/manual.pdf">מדריך למשתמש</a> — זוהה כקובץ PDF</p>
+    <p><a href="mailto:info@example.com">שלחו מייל</a> — קיבל אייקון מעטפה</p>
+    <p><a href="tel:+97231234567" dir="ltr">03-1234567</a> — קיבל אייקון טלפון</p>
+    <p><a href="02-basic-selectors.html">קישור פנימי רגיל</a> — בלי תוספת</p>
+  </div>
+
+<pre dir="ltr" style="background:#f7f7f7; padding:12px; border-radius:6px; font-size:0.88rem">a[target="_blank"]::after { content: " ↗"; }
+a[href$=".pdf"]::after    { content: " (PDF)"; }
+a[href^="mailto"]::before { content: "✉ "; }
+a[href^="tel"]::before    { content: "☎ "; }</pre>
+
+  <p>
+    <strong>שימו לב לסימנים:</strong>
+    <code>^=</code> מתחיל ב-, <code>$=</code> מסתיים ב-, <code>*=</code> מכיל.
+  </p>
+
+  <h3>שימוש בטפסים</h3>
+  <div class="demo">
+    <label for="e">אימייל (מסגרת כחולה אוטומטית)</label>
+    <input type="email" id="e" placeholder="you@example.com" dir="ltr">
+
+    <label for="pw">סיסמה (מסגרת אדומה אוטומטית)</label>
+    <input type="password" id="pw" dir="ltr">
+
+    <label for="t">טקסט רגיל (מסגרת ברירת מחדל)</label>
+    <input type="text" id="t">
+  </div>
+  <span class="note">input[type="email"] { border: 2px solid #2b6cb0; }</span>
+
+  <p>
+    <strong>למה זה שימושי?</strong> אפשר לעצב שדות לפי הסוג שלהם
+    בלי להוסיף מחלקה לכל אחד ואחד.
+  </p>
+
+  <hr>
+
+  <h2>⚠️ אזהרת נגישות</h2>
+  <p>
+    התוכן שנוצר ב-<code>content</code> (החצים והאייקונים שלמעלה)
+    הוא <strong>קישוט ויזואלי</strong>. קוראי מסך מסוימים מתעלמים ממנו.
+    לעולם אל תשימו שם מידע חיוני שאין לו מקבילה בטקסט האמיתי.
+  </p>
+
+</body>
+</html>

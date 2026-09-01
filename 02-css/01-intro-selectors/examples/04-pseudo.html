@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>פסאודו-מחלקות ופסאודו-אלמנטים</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 800px;
+           margin: 20px auto; padding: 0 18px; line-height: 1.8; }
+    .demo { border: 1px solid #cbd5e0; border-radius: 8px;
+            padding: 14px 18px; margin: 14px 0; }
+    .note { font-family: monospace; direction: ltr; display: block;
+            font-size: 0.88rem; color: #718096; margin-top: 6px; }
+
+    /* ============ מצבי אינטראקציה ============ */
+    /* הסדר קריטי! LoVe HAte:  link, visited, hover, active */
+    .links a         { color: #2b6cb0; text-decoration: none; padding: 3px 6px; }
+    .links a:visited { color: #6b46c1; }
+    .links a:hover   { background: #bee3f8; border-radius: 3px; }
+    .links a:active  { background: #f6ad55; }
+    .links a:focus-visible { outline: 3px solid #2b6cb0; outline-offset: 2px; }
+
+    /* ============ מיקום ברשימה ============ */
+    .pos li { padding: 6px 10px; }
+    .pos li:first-child { font-weight: 700; color: #2f855a; }
+    .pos li:last-child  { font-style: italic; color: #c53030; }
+    .pos li:nth-child(2){ background: #fefcbf; }
+
+    /* פסים לסירוגין - שימושי מאוד בטבלאות */
+    .stripes tr:nth-child(even) { background: #f7fafc; }
+    .stripes tr:hover { background: #ebf8ff; }
+
+    /* כל שלישי */
+    .thirds li:nth-child(3n) { background: #e9d8fd; font-weight: 600; }
+
+    /* ============ שלילה ============ */
+    .neg li:not(.active) { opacity: 0.45; }
+    .neg li.active { font-weight: 700; color: #2b6cb0; }
+
+    /* ============ טפסים ============ */
+    .form input { padding: 8px; width: 100%; box-sizing: border-box;
+                  border: 2px solid #cbd5e0; border-radius: 4px; margin: 4px 0 10px; }
+    .form input:focus { border-color: #2b6cb0; outline: none; }
+    .form input:valid   { border-color: #2f855a; }
+    .form input:invalid { border-color: #c53030; }
+    /* כל עוד ה-placeholder מוצג (השדה ריק) - נשארים ניטרליים */
+    .form input:placeholder-shown { border-color: #cbd5e0; }
+    .form input::placeholder { color: #a0aec0; font-style: italic; }
+
+    /* ============ פסאודו-אלמנטים ============ */
+    .required-label::after { content: " *"; color: #c53030; font-weight: 700; }
+    .quote::before { content: "« "; color: #718096; font-size: 1.3em; }
+    .quote::after  { content: " »"; color: #718096; font-size: 1.3em; }
+
+    .drop::first-letter {
+      font-size: 3em; float: right; line-height: 0.85;
+      margin: 4px 0 0 8px; color: #2b6cb0; font-weight: 700;
+    }
+    .drop::first-line { font-weight: 600; }
+
+    ::selection { background: #fbd38d; color: #1a202c; }
+
+    /* ::before ריק - חובה content גם כשהוא ריק */
+    .badge { position: relative; padding-right: 22px; }
+    .badge::before {
+      content: "";
+      position: absolute; right: 0; top: 8px;
+      width: 12px; height: 12px;
+      background: #2f855a; border-radius: 50%;
+    }
+
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #e2e8f0; padding: 7px 12px; text-align: right; }
+    th { background: #edf2f7; }
+    ul { padding-right: 24px; }
+  </style>
+</head>
+<body>
+
+  <h1>פסאודו-מחלקות ופסאודו-אלמנטים</h1>
+
+  <!-- ============ 1 ============ -->
+  <h2>1. מצבי אינטראקציה</h2>
+  <div class="demo links">
+    <p>
+      <a href="#a">רחפו עליי</a> ·
+      <a href="#b">ולחצו עליי</a> ·
+      <a href="https://example.com">קישור שאולי ביקרתם בו</a>
+    </p>
+    <p><small>נסו גם ללחוץ <kbd>Tab</kbd> — תראו את סימון המיקוד.</small></p>
+  </div>
+  <span class="note">a:hover / a:active / a:focus-visible / a:visited</span>
+
+  <p>
+    ⚠️ <strong>הסדר חשוב:</strong>
+    <code>:link → :visited → :hover → :active</code>.
+    ראשי תיבות לזכירה: <strong>LoVe HAte</strong>.
+    סדר אחר יגרום לחלק מהכללים פשוט לא לעבוד.
+  </p>
+
+  <!-- ============ 2 ============ -->
+  <h2>2. מיקום ברשימה</h2>
+  <ul class="demo pos">
+    <li>פריט ראשון — first-child</li>
+    <li>פריט שני — nth-child(2)</li>
+    <li>פריט שלישי</li>
+    <li>פריט אחרון — last-child</li>
+  </ul>
+
+  <h3>פסים לסירוגין בטבלה</h3>
+  <table class="demo stripes">
+    <thead>
+      <tr><th>שם</th><th>עיר</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>דנה</td><td>תל אביב</td></tr>
+      <tr><td>יוסי</td><td>חיפה</td></tr>
+      <tr><td>מאיה</td><td>באר שבע</td></tr>
+      <tr><td>אחמד</td><td>נצרת</td></tr>
+      <tr><td>נועה</td><td>ירושלים</td></tr>
+    </tbody>
+  </table>
+  <span class="note">tr:nth-child(even) { background: #f7fafc; }</span>
+
+  <h3>כל שלישי — nth-child(3n)</h3>
+  <ul class="demo thirds">
+    <li>1</li><li>2</li><li>3 ✅</li>
+    <li>4</li><li>5</li><li>6 ✅</li>
+    <li>7</li><li>8</li><li>9 ✅</li>
+  </ul>
+
+  <!-- ============ 3 ============ -->
+  <h2>3. שלילה — :not()</h2>
+  <ul class="demo neg">
+    <li class="active">פריט פעיל</li>
+    <li>פריט לא פעיל (מעומעם)</li>
+    <li>עוד אחד לא פעיל</li>
+    <li class="active">שוב פעיל</li>
+  </ul>
+  <span class="note">li:not(.active) { opacity: 0.45; }</span>
+
+  <!-- ============ 4 ============ -->
+  <h2>4. מצבי טופס</h2>
+  <div class="demo form">
+    <label for="p1" class="required-label">אימייל</label>
+    <input type="email" id="p1" placeholder="נסו להקליד כתובת לא תקינה" dir="ltr" required>
+
+    <label for="p2" class="required-label">סיסמה (8 תווים לפחות)</label>
+    <input type="password" id="p2" minlength="8" placeholder="נסו 3 תווים" dir="ltr" required>
+
+    <label for="p3">שדה לא חובה</label>
+    <input type="text" id="p3" placeholder="אפשר להשאיר ריק">
+  </div>
+  <p>
+    <small>
+      שימו לב: השדות נשארים אפורים כל עוד הם ריקים
+      (בזכות <code>:placeholder-shown</code>), ומשנים צבע רק אחרי הקלדה.
+      זו תבנית עיצוב מקובלת — לא להאשים את המשתמש לפני שהתחיל.
+    </small>
+  </p>
+  <span class="note">input:valid / input:invalid / input:placeholder-shown</span>
+
+  <!-- ============ 5 ============ -->
+  <h2>5. פסאודו-אלמנטים</h2>
+
+  <div class="demo">
+    <p class="quote">הקוד הטוב ביותר הוא קוד שלא נכתב</p>
+    <span class="note">.quote::before { content: "« "; }</span>
+  </div>
+
+  <div class="demo">
+    <p class="drop">
+      אות פתיחה מוגדלת היא טכניקה טיפוגרפית עתיקה מעולם הדפוס.
+      ב-CSS משיגים אותה בשתי שורות בלבד, בעזרת
+      <code>::first-letter</code>. השורה הראשונה כולה מודגשת
+      בזכות <code>::first-line</code>.
+    </p>
+  </div>
+
+  <div class="demo">
+    <p class="badge">לפסקה הזו יש נקודה ירוקה שנוצרה ב-CSS בלבד</p>
+    <span class="note">.badge::before { content: ""; width: 12px; ... }</span>
+    <p>
+      <small>
+        ⚠️ שימו לב: גם כשהתוכן ריק, <strong>חובה</strong> לכתוב
+        <code>content: "";</code>. בלעדיו הפסאודו-אלמנט לא ייווצר כלל.
+      </small>
+    </p>
+  </div>
+
+  <div class="demo">
+    <p>סמנו את הטקסט הזה עם העכבר וראו את צבע הסימון המותאם.</p>
+    <span class="note">::selection { background: #fbd38d; }</span>
+  </div>
+
+  <hr>
+
+  <h2>📌 ההבדל: נקודתיים אחת מול שתיים</h2>
+  <table>
+    <thead>
+      <tr><th>&nbsp;</th><th>פסאודו-מחלקה <code>:</code></th><th>פסאודו-אלמנט <code>::</code></th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">מתארת</th>
+        <td>מצב של אלמנט <strong>קיים</strong></td>
+        <td>חלק <strong>וירטואלי</strong> חדש</td>
+      </tr>
+      <tr>
+        <th scope="row">דוגמאות</th>
+        <td><code>:hover</code> <code>:first-child</code> <code>:not()</code></td>
+        <td><code>::before</code> <code>::first-letter</code> <code>::selection</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

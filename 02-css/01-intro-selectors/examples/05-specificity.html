@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ספציפיות, ירושה והמפל</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 820px;
+           margin: 20px auto; padding: 0 18px; line-height: 1.8;
+           /* ↓ המאפיינים האלה יעברו בירושה לכל הדף */
+           color: #2d3748; }
+
+    .demo { border: 1px solid #cbd5e0; border-radius: 8px;
+            padding: 14px 18px; margin: 14px 0; }
+    .note { font-family: monospace; direction: ltr; display: block;
+            font-size: 0.86rem; color: #718096; }
+    table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+    th, td { border: 1px solid #e2e8f0; padding: 7px 12px; text-align: right; }
+    th { background: #edf2f7; }
+    .score { font-family: monospace; direction: ltr; }
+
+    /* =====================================================
+       הדגמה 1: מי מנצח?
+       שלושה כללים פונים לאותה פסקה.
+       ===================================================== */
+    .demo1 p        { color: #2b6cb0; }   /* 0,0,1,1 */
+    .demo1 .text    { color: #2f855a; }   /* 0,0,1,0 */
+    .demo1 #winner  { color: #c53030; }   /* 0,1,0,0  ← מנצח */
+
+    /* =====================================================
+       הדגמה 2: שובר שוויון - האחרון מנצח
+       ===================================================== */
+    .tie { color: #2b6cb0; }
+    .tie { color: #c53030; }   /* ← זה מנצח: ניקוד זהה, מופיע אחרון */
+
+    /* =====================================================
+       הדגמה 3: מזהה אחד חזק מהמון מחלקות
+       ===================================================== */
+    .a .b .c .d .e span { color: #2b6cb0; }  /* 0,0,5,1 */
+    #single span        { color: #c53030; }  /* 0,1,0,0  ← עדיין מנצח! */
+
+    /* =====================================================
+       הדגמה 4: ירושה
+       ===================================================== */
+    .inherit-box {
+      color: #6b46c1;          /* ✅ עובר בירושה */
+      font-style: italic;      /* ✅ עובר בירושה */
+      border: 2px dashed #6b46c1;  /* ❌ לא עובר בירושה */
+      padding: 12px;           /* ❌ לא עובר בירושה */
+    }
+
+    .forced { border: inherit; }  /* כפייה ידנית של ירושה */
+
+    /* =====================================================
+       הדגמה 5: important
+       ===================================================== */
+    #imp-id { color: #2b6cb0; }              /* 0,1,0,0 */
+    .imp-class { color: #c53030 !important; } /* מחלקה - אבל עם important */
+  </style>
+</head>
+<body>
+
+  <h1>ספציפיות, ירושה והמפל</h1>
+
+  <!-- ============ טבלת הניקוד ============ -->
+  <h2>טבלת הניקוד</h2>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">רכיב</th>
+        <th scope="col">ניקוד</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>style=""</code> (inline)</td><td class="score">1,0,0,0</td></tr>
+      <tr><td><code>#id</code></td><td class="score">0,1,0,0</td></tr>
+      <tr><td><code>.class</code>, <code>[attr]</code>, <code>:hover</code></td><td class="score">0,0,1,0</td></tr>
+      <tr><td>תגית, <code>::before</code></td><td class="score">0,0,0,1</td></tr>
+      <tr><td><code>*</code></td><td class="score">0,0,0,0</td></tr>
+    </tbody>
+  </table>
+  <p>ההשוואה נעשית <strong>משמאל לימין, ספרה-ספרה</strong> — כמו מספרים רגילים.</p>
+
+  <!-- ============ הדגמה 1 ============ -->
+  <h2>הדגמה 1: שלושה כללים, פסקה אחת</h2>
+  <div class="demo demo1">
+    <p class="text" id="winner">איזה צבע יהיה לי?</p>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>הכלל</th><th>ניקוד</th><th>תוצאה</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>.demo1 p</code></td><td class="score">0,0,1,1</td><td>❌ הובס</td></tr>
+      <tr><td><code>.demo1 .text</code></td><td class="score">0,0,1,0</td><td>❌ הובס</td></tr>
+      <tr><td><code>.demo1 #winner</code></td><td class="score">0,1,0,0</td><td>✅ <strong>מנצח</strong></td></tr>
+    </tbody>
+  </table>
+  <p>
+    <strong>שימו לב:</strong> <code>.demo1 p</code> (ניקוד 0,0,1,1) גבוה מ-
+    <code>.demo1 .text</code> (0,0,1,0)? לא! משווים משמאל:
+    שניהם 0,0,1 — ואז 1 מול 0. אז דווקא <code>.demo1 p</code> מנצח את
+    <code>.demo1 .text</code>. אבל שניהם מפסידים למזהה.
+  </p>
+
+  <!-- ============ הדגמה 2 ============ -->
+  <h2>הדגמה 2: ניקוד זהה — האחרון מנצח</h2>
+  <div class="demo">
+    <p class="tie">אני אדום, למרות ששני הכללים זהים בניקוד.</p>
+  </div>
+<pre dir="ltr" style="background:#f7f7f7;padding:12px;border-radius:6px;font-size:0.88rem">.tie { color: #2b6cb0; }
+.tie { color: #c53030; }   /* ← מנצח: מופיע אחרון */</pre>
+
+  <!-- ============ הדגמה 3 ============ -->
+  <h2>הדגמה 3: מזהה אחד &gt; חמש מחלקות</h2>
+  <div class="demo a">
+    <div class="b"><div class="c"><div class="d"><div class="e" id="single">
+      <span>אני אדום — מזהה בודד גבר על חמש מחלקות משורשרות.</span>
+    </div></div></div></div>
+  </div>
+  <span class="note">.a .b .c .d .e span  →  0,0,5,1</span>
+  <span class="note">#single span         →  0,1,0,0   ← מנצח</span>
+  <p>
+    <strong>זה המקור לתסכול הנפוץ ביותר ב-CSS.</strong>
+    לכן ההמלצה: השתמשו ב-<code>class</code> לעיצוב, ושמרו את
+    <code>id</code> לעוגנים ול-JavaScript.
+  </p>
+
+  <!-- ============ הדגמה 4 ============ -->
+  <h2>הדגמה 4: ירושה</h2>
+  <div class="demo inherit-box">
+    <p>אני סגול ונטוי — <strong>ירשתי</strong> מההורה.</p>
+    <p>גם אני. הצבע והפונט עוברים בירושה אוטומטית.</p>
+    <p class="forced">
+      אבל את המסגרת <strong>לא</strong> ירשתי — אלא אם ביקשתי במפורש
+      <code>border: inherit</code>, כמו כאן.
+    </p>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>✅ עובר בירושה</th><th>❌ לא עובר</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>color</code></td><td><code>margin</code> / <code>padding</code></td></tr>
+      <tr><td><code>font-family</code>, <code>font-size</code></td><td><code>border</code></td></tr>
+      <tr><td><code>line-height</code></td><td><code>background</code></td></tr>
+      <tr><td><code>text-align</code></td><td><code>width</code> / <code>height</code></td></tr>
+      <tr><td><code>direction</code></td><td><code>display</code> / <code>position</code></td></tr>
+    </tbody>
+  </table>
+  <p>
+    <strong>הכלל שקל לזכור:</strong> מאפייני <em>טקסט</em> עוברים בירושה.
+    מאפייני <em>קופסה</em> לא.
+  </p>
+
+  <!-- ============ הדגמה 5 ============ -->
+  <h2>הדגמה 5: <code>!important</code></h2>
+  <div class="demo">
+    <p id="imp-id" class="imp-class">
+      אני אדום — למרות שהמזהה (0,1,0,0) חזק מהמחלקה (0,0,1,0).
+      <code>!important</code> גובר על הכול.
+    </p>
+  </div>
+
+  <div style="background:#fff5f5;border-right:4px solid #c53030;padding:14px 18px;border-radius:8px">
+    <h3>⚠️ למה להימנע מ-<code>!important</code></h3>
+    <p>
+      ברגע שהשתמשתם בו, הדרך היחידה לגבור עליו היא
+      <code>!important</code> נוסף — וכך נכנסים למרוץ חימוש
+      שהופך את ה-CSS לבלתי ניתן לתחזוקה.
+    </p>
+    <p>
+      <strong>מה לעשות במקום:</strong> להעלות ספציפיות באופן טבעי
+      (להוסיף מחלקת הורה), או לסדר מחדש את סדר הכללים בקובץ.
+    </p>
+  </div>
+
+  <hr>
+
+  <!-- ============ סדר המפל ============ -->
+  <h2>סדר ההכרעה במפל (Cascade)</h2>
+  <ol>
+    <li><code>!important</code></li>
+    <li><strong>ספציפיות</strong> — inline &gt; id &gt; class &gt; תגית</li>
+    <li><strong>סדר הופעה</strong> — האחרון מנצח</li>
+    <li>ירושה מההורה</li>
+    <li>ברירת המחדל של הדפדפן</li>
+  </ol>
+
+  <h2>🔧 איך מדבגים ספציפיות?</h2>
+  <ol>
+    <li>לחצו <kbd>F12</kbd></li>
+    <li>בחרו את האלמנט הבעייתי</li>
+    <li>עברו ללשונית <strong>Styles</strong></li>
+    <li>
+      הדפדפן מציג את כל הכללים לפי סדר עדיפות, וכללים שהובסו
+      מופיעים <s>עם קו חוצה</s>.
+    </li>
+  </ol>
+  <p>
+    <strong>נסו עכשיו:</strong> בחרו את הפסקה מהדגמה 1 וראו
+    את שלושת הכללים — שניים מהם חצויים בקו.
+  </p>
+
+</body>
+</html>

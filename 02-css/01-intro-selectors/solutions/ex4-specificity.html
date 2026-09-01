@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>פתרון 4 – ספציפיות</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 760px; margin: 40px auto; line-height: 1.7; }
+    .case { border: 1px solid #ddd; padding: 14px; margin: 14px 0; }
+
+    /* --- מקרה 1: אדום --- */
+    /* p = (0,0,0,1) | .text-red = (0,0,1,0) → מחלקה מנצחת תגית תמיד. */
+    p            { color: green; }
+    .text-red    { color: red; }
+
+    /* --- מקרה 2: כחול --- */
+    /* #special = (0,1,0,0) | .text-orange = (0,0,1,0) → מזהה מנצח מחלקה. */
+    #special     { color: blue; }
+    .text-orange { color: orange; }
+
+    /* --- מקרה 3: טורקיז --- */
+    /* .a .b = (0,0,2,0) | .b = (0,0,1,0) → שתי מחלקות גוברות על אחת. */
+    .a .b        { color: teal; }
+    .b           { color: brown; }
+
+    /* --- מקרה 4: מג׳נטה --- */
+    /* div p.note = (0,0,1,2) | .note = (0,0,1,0) → שוויון במחלקות,
+       ולכן משווים את עמודת התגיות: 2 מול 0. */
+    div p.note   { color: magenta; }
+    .note        { color: black; }
+
+    /* --- מקרה 5: ירוק כהה --- */
+    /* שני הכללים = (0,0,1,0). ספציפיות שווה → מנצח האחרון בקוד.
+       ⚠️ הסדר של המחלקות ב-HTML (class="second-rule first-rule")
+       לא משפיע בכלל. רק הסדר בגיליון הסגנונות. */
+    .first-rule  { color: crimson; }
+    .second-rule { color: darkgreen; }
+
+    /* ===================== חלק ג׳ – התיקון ===================== */
+
+    #sidebar .btn { background: gray; color: white; padding: 8px 16px; border: none; }
+
+    /* הבעיה: #sidebar .btn = (0,1,1,0) מול .btn-success = (0,0,1,0).
+       המזהה מכריע, ולכן הירוק הפסיד.
+
+       הפתרון: להעלות את הספציפיות של הכלל שלנו כך שיעבור את היריב,
+       בלי !important. הוספת #sidebar נותנת (0,1,2,0) > (0,1,1,0). */
+    #sidebar .btn-success { background: green; }
+
+    /* דרכים חלופיות תקינות:
+       .btn.btn-success        → (0,0,2,0) — לא מספיק כאן, המזהה עדיין גובר.
+       #sidebar .btn-success   → (0,1,2,0) ✅ מה שבחרנו.
+       :is(#sidebar) .btn-success → אותו ניקוד, קריא יותר.
+
+       ✅ הפתרון הכי טוב בפרויקט אמיתי: לא לכתוב #sidebar .btn מלכתחילה.
+          מזהים בסלקטורים הם מקור עיקרי ל"מלחמות ספציפיות". */
+  </style>
+</head>
+<body>
+
+  <h1>תרגיל ספציפיות – פתרון</h1>
+
+  <!--
+    ✅ חלק א׳ – התשובות:
+
+     1. p                    → (0,0,0,1)
+     2. .box                 → (0,0,1,0)
+     3. #header              → (0,1,0,0)
+     4. ul li                → (0,0,0,2)
+     5. .nav a:hover         → (0,0,2,1)   ← :hover נספר כמחלקה
+     6. #main .card p        → (0,1,1,1)
+     7. div.card.featured    → (0,0,2,1)
+     8. a[href^="https"]     → (0,0,1,1)   ← סלקטור תכונה נספר כמחלקה
+     9. ul li a.link         → (0,0,1,3)
+    10. *                    → (0,0,0,0)   ← הכוכבית לא מוסיפה כלום
+
+    כלל: מזהה > מחלקה/תכונה/פסאודו-מחלקה > תגית/פסאודו-אלמנט.
+    ההשוואה היא עמודה-עמודה משמאל לימין, לא סכום.
+    לכן 11 מחלקות (0,0,11,0) עדיין מפסידות למזהה בודד (0,1,0,0).
+  -->
+
+  <div class="case"><p class="text-red">מקרה 1 – אדום</p></div>
+  <div class="case"><p id="special" class="text-orange">מקרה 2 – כחול</p></div>
+  <div class="case a"><p class="b">מקרה 3 – טורקיז</p></div>
+  <div class="case"><p class="note">מקרה 4 – מג׳נטה</p></div>
+  <div class="case"><p class="second-rule first-rule">מקרה 5 – ירוק כהה</p></div>
+
+  <div class="case" id="sidebar">
+    <p>חלק ג׳ – הכפתור ירוק, בלי <code>!important</code>:</p>
+    <button class="btn btn-success">שמירה</button>
+  </div>
+
+</body>
+</html>

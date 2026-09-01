@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>פתרון 3 – משלבים ותכונות</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 760px; margin: 40px auto; }
+    .container { border: 1px dashed #bbb; padding: 16px; }
+    .box { border: 1px solid #ddd; padding: 12px; margin: 10px 0; }
+
+    /* ===================== הפתרון ===================== */
+
+    /* 1. ">" = צאצא ישיר בלבד. הפסקה שבתוך .box לא תיצבע. */
+    .container > p {
+      color: blue;
+    }
+
+    /* 2. רווח = צאצא בכל עומק. כאן גם הפסקה שבתוך .box נכללת. */
+    .container p {
+      line-height: 1.8;
+    }
+
+    /* 3. "+" = האח הסמוך הבא, אחד בלבד. */
+    h3 + p {
+      font-weight: bold;
+    }
+
+    /* 4. "~" = כל האחים הבאים באותה רמה. */
+    .divider ~ p {
+      color: gray;
+    }
+
+    /* 5. ^= "מתחיל ב-". שימו לב: content חייב להיות ב-::before. */
+    a[href^="https://"]::before {
+      content: "🔒 ";
+    }
+
+    /* 6. $= "מסתיים ב-". קישור אחד עונה גם על 5 וגם על 6 – ויקבל את שניהם. */
+    a[href$=".pdf"]::after {
+      content: " (PDF)";
+      color: #b00;
+      font-size: 0.9em;
+    }
+
+    /* 7. סלקטור תכונה עם ערך מדויק. */
+    input[type="email"] {
+      border: 2px solid orange;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>תרגיל משלבים – פתרון</h1>
+
+  <p>הפסקה הזו מחוץ ל-container – שחורה, גובה שורה רגיל. ✅</p>
+
+  <div class="container">
+    <p>צאצא ישיר #1 – כחול, 1.8.</p>
+
+    <h3>כותרת משנה</h3>
+    <p>מיד אחרי h3 – מודגשת + כחולה.</p>
+    <p>הפסקה הזו <strong>אינה</strong> מודגשת: "+" תופס רק את האח הסמוך <em>הראשון</em>.</p>
+
+    <div class="box">
+      <p>עומק 2 – לא כחולה (כי אינה צאצא ישיר), אבל כן 1.8.</p>
+    </div>
+
+    <hr class="divider">
+    <p>אחרי המפריד #1 – אפורה</p>
+    <p>אחרי המפריד #2 – אפורה גם היא, כי "~" תופס את כל האחים הבאים.</p>
+  </div>
+
+  <h2>קישורים</h2>
+  <ul>
+    <li><a href="https://developer.mozilla.org">MDN – אתר חיצוני מאובטח</a></li>
+    <li><a href="http://example.com">אתר לא מאובטח</a></li>
+    <li><a href="about.html">דף פנימי</a></li>
+    <li><a href="syllabus.pdf">סילבוס הקורס</a></li>
+    <li><a href="https://example.com/report.pdf">דוח חיצוני – מקבל את שני הסימנים</a></li>
+  </ul>
+
+  <h2>טופס</h2>
+  <form>
+    <p><label>שם: <input type="text" name="name"></label></p>
+    <p><label>אימייל: <input type="email" name="email"></label></p>
+    <p><label>סיסמה: <input type="password" name="pass"></label></p>
+  </form>
+
+</body>
+</html>

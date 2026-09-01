@@ -1,0 +1,41 @@
+/* =========================================================
+   קובץ CSS חיצוני
+   ---------------------------------------------------------
+   זהו הקובץ שמקושר מ-01-three-ways.html בעזרת:
+   <link rel="stylesheet" href="css/style.css">
+   ========================================================= */
+
+/* עיצוב כללי לדף */
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  max-width: 760px;
+  margin: 20px auto;
+  padding: 0 18px;
+  line-height: 1.75;
+  color: #1a202c;
+}
+
+/* הכלל שמדגים את הדרך החיצונית */
+.external-demo {
+  background: #f0fff4;
+  border-right: 4px solid #2f855a;
+  padding: 12px 16px;
+  border-radius: 6px;
+}
+
+/* עיצוב בלוקי קוד */
+pre {
+  background: #f7f7f7;
+  padding: 10px 14px;
+  border-radius: 5px;
+  overflow-x: auto;
+  direction: ltr;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+code {
+  background: #f0f0f0;
+  padding: 1px 5px;
+  border-radius: 3px;
+}

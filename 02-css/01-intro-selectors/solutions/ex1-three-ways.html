@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>פתרון 1 – שלוש הדרכים לשלב CSS</title>
+
+  <!-- ✅ משימה 1: קובץ חיצוני -->
+  <link rel="stylesheet" href="ex1-style.css">
+
+  <style>
+    /* ✅ משימה 2 */
+    .internal { color: green; }
+
+    /* ✅ משימה 4 – הצד הפנימי של ההתנגשות */
+    .conflict { color: orange; }
+
+    body { font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto; line-height: 1.6; }
+    p    { border-inline-start: 4px solid #ddd; padding-inline-start: 12px; }
+  </style>
+</head>
+<body>
+
+  <h1>שלוש הדרכים לשלב CSS</h1>
+
+  <p class="internal">הפסקה הזו <strong>ירוקה</strong> – סגנון פנימי.</p>
+
+  <!-- ✅ משימה 3 -->
+  <p id="inline" style="color: red;">הפסקה הזו <strong>אדומה</strong> – סגנון שורתי.</p>
+
+  <p class="conflict">שני כללים מתנגשים: סגול בחיצוני, כתום בפנימי.</p>
+
+  <!--
+    ✍️ תשובה למשימה 4:
+
+    הצבע שניצח: כתום (orange).
+
+    למה?
+    לשני הכללים אותו סלקטור בדיוק – .conflict – ולכן אותה ספציפיות: (0,0,1,0).
+    כשהספציפיות שווה, מכריע הכלל שנקרא אחרון. תגית <style> מופיעה בקוד
+    אחרי תגית <link>, ולכן הכלל הפנימי נקרא אחרון והוא שניצח.
+
+    ⚠️ הערה חשובה: זה לא "פנימי חזק מחיצוני"! זה רק סדר.
+    אם היינו מזיזים את <link> אל מתחת ל-<style>, הצבע היה סגול.
+    כלל: הסגנון השורתי (style="") הוא היחיד שתמיד מנצח בגלל ספציפיות (1,0,0,0)
+    ולא בגלל סדר.
+  -->
+
+</body>
+</html>

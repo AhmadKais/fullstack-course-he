@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>תרגיל 4 – ספציפיות</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 760px; margin: 40px auto; line-height: 1.7; }
+    .case { border: 1px solid #ddd; padding: 14px; margin: 14px 0; }
+
+    /* ==========================================================
+       חלק ב׳ – 5 מקרי התנגשות.
+       לכל מקרה: רשמו בהערה את הניחוש שלכם, ורק אז הריצו.
+       ========================================================== */
+
+    /* --- מקרה 1 --- */
+    /* ניחוש: ______ */
+    p            { color: green; }
+    .text-red    { color: red; }
+
+    /* --- מקרה 2 --- */
+    /* ניחוש: ______ */
+    #special     { color: blue; }
+    .text-orange { color: orange; }
+
+    /* --- מקרה 3 --- */
+    /* ניחוש: ______ */
+    .a .b        { color: teal; }
+    .b           { color: brown; }
+
+    /* --- מקרה 4 --- */
+    /* ניחוש: ______ */
+    div p.note   { color: magenta; }
+    .note        { color: black; }
+
+    /* --- מקרה 5: שני כללים בעלי ניקוד זהה --- */
+    /* ניחוש: ______ */
+    .first-rule  { color: crimson; }
+    .second-rule { color: darkgreen; }
+
+    /* ==========================================================
+       חלק ג׳ – תיקון.
+       הכלל למטה אמור לצבוע את הכפתור בירוק, אבל הוא מפסיד.
+       תקנו אותו – בלי !important, בלי לגעת ב-HTML.
+       ========================================================== */
+
+    #sidebar .btn { background: gray; color: white; padding: 8px 16px; border: none; }
+
+    .btn-success  { background: green; }   /* ← הכלל שצריך לנצח. תקנו אותו. */
+  </style>
+</head>
+<body>
+
+  <h1>תרגיל ספציפיות</h1>
+
+  <!--
+    ✍️ חלק א׳ – חישוב על הנייר. מלאו כאן:
+
+     1. p                    → (_, _, _, _)
+     2. .box                 → (_, _, _, _)
+     3. #header              → (_, _, _, _)
+     4. ul li                → (_, _, _, _)
+     5. .nav a:hover         → (_, _, _, _)
+     6. #main .card p        → (_, _, _, _)
+     7. div.card.featured    → (_, _, _, _)
+     8. a[href^="https"]     → (_, _, _, _)
+     9. ul li a.link         → (_, _, _, _)
+    10. *                    → (_, _, _, _)
+  -->
+
+  <div class="case"><p class="text-red">מקרה 1</p></div>
+  <div class="case"><p id="special" class="text-orange">מקרה 2</p></div>
+  <div class="case a"><p class="b">מקרה 3</p></div>
+  <div class="case"><p class="note">מקרה 4</p></div>
+  <div class="case"><p class="second-rule first-rule">מקרה 5</p></div>
+
+  <div class="case" id="sidebar">
+    <p>חלק ג׳ – הכפתור הזה אמור להיות ירוק:</p>
+    <button class="btn btn-success">שמירה</button>
+  </div>
+
+</body>
+</html>

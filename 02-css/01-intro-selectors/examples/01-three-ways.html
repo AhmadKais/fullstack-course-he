@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>שלוש דרכים לשלב CSS</title>
+
+  <!-- ===== דרך א׳: קובץ חיצוני (הדרך הנכונה) ===== -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- ===== דרך ב׳: CSS פנימי בתוך הדף ===== -->
+  <style>
+    /* הכלל הזה נמצא בתוך הדף עצמו */
+    .internal-demo {
+      background: #e6f7ff;
+      border-right: 4px solid #0a84c1;
+      padding: 12px 16px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>שלוש דרכים לשלב CSS</h1>
+
+  <h2>א׳ – קובץ חיצוני ✅</h2>
+  <p class="external-demo">
+    הפסקה הזו מעוצבת מהקובץ <code>css/style.css</code>.
+    <strong>זו הדרך הנכונה.</strong>
+  </p>
+  <pre dir="ltr">&lt;link rel="stylesheet" href="css/style.css"&gt;</pre>
+  <ul>
+    <li>קובץ אחד משרת את כל הדפים באתר</li>
+    <li>הדפדפן שומר אותו במטמון – טעינה מהירה יותר</li>
+    <li>הפרדה נקייה: תוכן ב-HTML, עיצוב ב-CSS</li>
+  </ul>
+
+  <h2>ב׳ – CSS פנימי 🟡</h2>
+  <p class="internal-demo">
+    הפסקה הזו מעוצבת מתגית <code>&lt;style&gt;</code> שבתוך ה-head.
+  </p>
+  <pre dir="ltr">&lt;style&gt;
+  .internal-demo { background: #e6f7ff; }
+&lt;/style&gt;</pre>
+  <p>
+    מתאים לדף בודד או לניסוי מהיר.
+    <strong>בדוגמאות הקורס נשתמש בזה</strong> כדי שכל קובץ יהיה עצמאי.
+  </p>
+
+  <h2>ג׳ – Inline ❌</h2>
+  <p style="background: #fff0f0; border-right: 4px solid #c00; padding: 12px 16px; border-radius: 6px;">
+    הפסקה הזו מעוצבת בתכונת <code>style</code> שלה עצמה.
+  </p>
+  <pre dir="ltr">&lt;p style="color: red;"&gt;טקסט&lt;/p&gt;</pre>
+  <ul>
+    <li>❌ אין שימוש חוזר – צריך להעתיק לכל אלמנט</li>
+    <li>❌ ספציפיות 1000 – כמעט בלתי אפשרי לדרוס</li>
+    <li>❌ מערבב תוכן ועיצוב</li>
+  </ul>
+
+  <hr>
+
+  <h2>🧪 נסו בעצמכם</h2>
+  <ol>
+    <li>פתחו את <code>css/style.css</code> ושנו את הצבע של <code>.external-demo</code>.</li>
+    <li>שמרו – Live Server ירענן והשינוי יופיע.</li>
+    <li>עכשיו נסו לדרוס את הכלל החיצוני מתוך תגית ה-<code>&lt;style&gt;</code>. מי מנצח?</li>
+    <li>ולבסוף – נסו לדרוס את שניהם עם <code>style=""</code>.</li>
+  </ol>
+
+</body>
+</html>

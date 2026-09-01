@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>פתרון 2 – סלקטורים בסיסיים</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 760px; margin: 40px auto; }
+    .card { padding: 16px; margin: 12px 0; background: #fafafa; }
+
+    /* ===================== הפתרון ===================== */
+
+    /* 1. סלקטור תגית */
+    h2 {
+      background: #eee;
+      padding: 10px;
+    }
+
+    /* 2. סלקטור מחלקה */
+    .tag {
+      color: white;
+      background: #0d6efd;
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+
+    /* 3. סלקטור מזהה */
+    #main-title {
+      text-align: center;
+      font-size: 40px;
+    }
+
+    /* 4. סלקטור תגית */
+    p {
+      line-height: 1.6;
+    }
+
+    /* 5. תגית + מחלקה, בלי רווח – אותו אלמנט */
+    p.lead {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    /* 6. שתי מחלקות בלי רווח – אלמנט שיש לו את שתיהן */
+    .card.urgent {
+      border: 2px solid red;
+    }
+    /* ⚠️ אילו כתבנו ".card .urgent" (עם רווח), הסלקטור היה מחפש
+       אלמנט .urgent שנמצא *בתוך* .card – וכאן אין כזה, אז שום דבר
+       לא היה נצבע. זו הטעות מספר 1 בשלב הזה. */
+  </style>
+</head>
+<body>
+
+  <h1 id="main-title">קטלוג הקורסים</h1>
+
+  <p class="lead">הפסקה הזו היא פסקת פתיחה – היא צריכה לבלוט.</p>
+  <p>פסקה רגילה. גובה השורה שלה צריך להיות נוח לקריאה.</p>
+
+  <h2>קורסים פתוחים</h2>
+
+  <div class="card">
+    <h3>פיתוח Front-End</h3>
+    <p>קורס בסיסי בן 112 שעות.</p>
+    <span class="tag">חדש</span>
+    <span class="tag">מקוון</span>
+  </div>
+
+  <div class="card urgent">
+    <h3>הכנה למבחן</h3>
+    <p>נותרו 3 מקומות בלבד.</p>
+    <span class="tag">אחרון</span>
+  </div>
+
+  <h2>ארכיון</h2>
+
+  <div class="urgent">
+    <p>אלמנט <code>.urgent</code> בלי <code>.card</code> – ואכן אין לו מסגרת.</p>
+  </div>
+
+  <p class="lead">עוד פסקת פתיחה.</p>
+
+</body>
+</html>

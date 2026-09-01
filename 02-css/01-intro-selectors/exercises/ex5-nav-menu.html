@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>תרגיל 5 – תפריט ניווט</title>
+  <style>
+    :root {
+      --color-main: #0d6efd;
+      --color-dark: #212529;
+      --color-muted: #adb5bd;
+    }
+
+    body { font-family: Arial, sans-serif; margin: 0; }
+
+    /* עיצוב בסיס לתפריט – נתון */
+    .site-nav        { background: #f8f9fa; border-bottom: 2px solid #dee2e6; padding: 0 20px; }
+    .site-nav ul     { display: flex; align-items: center; gap: 4px; margin: 0; padding: 0; }
+    .site-nav a      { display: block; padding: 14px 16px; text-decoration: none; }
+
+    /* ==========================================================
+       ⬇️ הפתרון שלכם – סלקטורים בלבד ⬇️
+       אסור: !important, ומחלקות חדשות ב-HTML.
+       ========================================================== */
+
+    /* 1. להסיר נקודות רשימה */
+
+
+    /* 2. קישורים בצבע כהה + מעבר הדרגתי ב-hover */
+
+
+    /* 3. הקישור הפעיל (.active): מודגש + קו תחתון בצבע אחר */
+
+
+    /* 4. קו מפריד לכל li חוץ מהאחרון – עם :not(:last-child) */
+
+
+    /* 5. טיפול מיוחד ל-li הראשון */
+
+
+    /* 6. אייקון "◂" לפני כל קישור – עם ::before */
+
+
+    /* 7. "↗" אחרי הקישור עם .external – עם ::after */
+
+
+    /* 8. שדה החיפוש: מסגרת משתנה ב-:focus, placeholder אפור בהיר */
+
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <ul>
+      <li><a href="#" class="active">בית</a></li>
+      <li><a href="#">קורסים</a></li>
+      <li><a href="#">מרצים</a></li>
+      <li><a href="#">בלוג</a></li>
+      <li><a href="https://example.com" class="external">פורום</a></li>
+      <li><input type="search" placeholder="חיפוש באתר..."></li>
+    </ul>
+  </nav>
+
+  <main style="padding: 40px 20px;">
+    <h1>תוכן הדף</h1>
+    <p>העיצוב כולו צריך להגיע מהסלקטורים למעלה – בלי מחלקות נוספות ב-HTML.</p>
+  </main>
+
+</body>
+</html>
