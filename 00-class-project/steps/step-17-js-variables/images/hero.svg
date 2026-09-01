@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500" role="img" aria-label="הדלפק של קפה עתיד בשעת בוקר">
+  <rect width="1200" height="500" fill="#f5efe6"/>
+  <rect y="330" width="1200" height="170" fill="#4a2c17"/>
+  <circle cx="300" cy="220" r="80" fill="#c9a227"/>
+  <rect x="520" y="150" width="360" height="180" rx="12" fill="#7b4b2a"/>
+  <text x="600" y="430" font-family="system-ui, sans-serif" font-size="42" fill="#f5efe6">בוקר בקפה עתיד</text>
+</svg>

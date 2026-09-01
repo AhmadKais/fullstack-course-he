@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img" aria-label="הדלפק">
+  <rect width="600" height="400" fill="#e8d5b7"/>
+  <circle cx="300" cy="170" r="90" fill="#7b4b2a"/>
+  <text x="300" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" fill="#7b4b2a">הדלפק</text>
+</svg>

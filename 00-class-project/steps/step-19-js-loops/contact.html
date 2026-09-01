@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="טלפון, כתובת, מפה והזמנת שולחן בקפה עתיד, הרצל 42 תל אביב.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="צרו קשר | קפה עתיד">
+  <meta property="og:description" content="טלפון, כתובת, מפה והזמנת שולחן בקפה עתיד, הרצל 42 תל אביב.">
+  <meta property="og:image" content="images/og-cover.svg">
+  <title>צרו קשר | קפה עתיד</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/data.js"></script>
+  <script defer src="js/hours.js"></script>
+  <script defer src="js/stats.js"></script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">דילוג לתוכן הראשי</a>
+
+  <header class="site-header">
+    <a href="index.html" class="logo"><img src="images/logo.svg" alt="קפה עתיד" width="200" height="60"></a>
+    <nav id="main-nav" aria-label="ניווט ראשי">
+      <ul>
+        <li><a href="index.html">בית</a></li>
+        <li><a href="menu.html">התפריט</a></li>
+        <li><a href="about.html">עלינו</a></li>
+        <li><a href="contact.html" aria-current="page">צרו קשר</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <h1>צרו קשר</h1>
+    <p>הרצל 42, תל אביב &nbsp;·&nbsp;
+       <a href="tel:+97231234567">03-1234567</a> &nbsp;·&nbsp;
+       <a href="mailto:hello@cafe-atid.co.il">hello@cafe-atid.co.il</a></p>
+    <p><a href="https://www.instagram.com/" target="_blank" rel="noopener">
+       אינסטגרם</a> (נפתח בלשונית חדשה)</p>
+
+    <div class="contact-layout">
+      <section>
+        <h2>איך מגיעים</h2>
+        <iframe title="מפה למיקום קפה עתיד, הרצל 42 תל אביב"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=34.76%2C32.06%2C34.79%2C32.08"
+                width="600" height="400" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </section>
+      <section>
+      <h2>הזמנת שולחן</h2>
+      <form action="/reserve" method="post" id="reserve-form">
+        <fieldset>
+          <legend>הפרטים שלכם</legend>
+
+          <p>
+            <label for="fullname">שם מלא</label><br>
+            <input type="text" id="fullname" name="fullname" required
+                   minlength="2" autocomplete="name" placeholder="ישראל ישראלי">
+          </p>
+
+          <p>
+            <label for="phone">טלפון</label><br>
+            <input type="tel" id="phone" name="phone" required
+                   pattern="0[0-9]{1,2}-?[0-9]{7}" autocomplete="tel"
+                   placeholder="052-1234567">
+            <small>פורמט: 052-1234567</small>
+          </p>
+
+          <p>
+            <label for="email">דוא&quot;ל</label><br>
+            <input type="email" id="email" name="email" autocomplete="email"
+                   placeholder="you@example.com">
+          </p>
+        </fieldset>
+
+        <fieldset>
+          <legend>ההזמנה</legend>
+
+          <p>
+            <label for="date">תאריך</label><br>
+            <input type="date" id="date" name="date" required>
+          </p>
+
+          <p>
+            <label for="time">שעה</label><br>
+            <input type="time" id="time" name="time" required min="07:00" max="20:00">
+          </p>
+
+          <p>
+            <label for="guests">מספר סועדים</label><br>
+            <input type="number" id="guests" name="guests" value="2" min="1" max="12">
+          </p>
+
+          <p>
+            <label for="area">איפה תעדיפו לשבת?</label><br>
+            <select id="area" name="area">
+              <option value="inside">בפנים</option>
+              <option value="outside">בחוץ</option>
+              <option value="upstairs">קומה שנייה (שקטה)</option>
+            </select>
+          </p>
+
+          <fieldset>
+            <legend>עישון</legend>
+            <label><input type="radio" name="smoking" value="no" checked> אזור ללא עישון</label><br>
+            <label><input type="radio" name="smoking" value="yes"> אזור מעשנים</label>
+          </fieldset>
+
+          <p>
+            <label for="notes">הערות</label><br>
+            <textarea id="notes" name="notes" rows="4" cols="40"
+                      placeholder="אלרגיות, כיסא תינוק, יום הולדת…"></textarea>
+          </p>
+
+          <p>
+            <label>
+              <input type="checkbox" name="newsletter" value="yes">
+              אשמח לקבל עדכון על תפריט עונתי
+            </label>
+          </p>
+
+          <p>
+            <label>
+              <input type="checkbox" name="terms" value="yes" required>
+              קראתי ואני מאשר/ת את תנאי ההזמנה
+            </label>
+          </p>
+        </fieldset>
+
+        <p>
+          <button type="submit">שליחת ההזמנה</button>
+          <button type="reset">ניקוי הטופס</button>
+        </p>
+      </form>
+      </section>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <p><small>&copy; 2026 קפה עתיד. כל הזכויות שמורות.</small></p>
+    <address>
+      הרצל 42, תל אביב &nbsp;·&nbsp;
+      <a href="tel:+97231234567">03-1234567</a> &nbsp;·&nbsp;
+      <a href="mailto:hello@cafe-atid.co.il">hello@cafe-atid.co.il</a>
+    </address>
+  </footer>
+
+</body>
+</html>

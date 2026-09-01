@@ -43,6 +43,37 @@ JavaScript הוא ה**התנהגות**: מה קורה כשלוחצים, מה מ�
 
 ---
 
+---
+
+## 🏗️ הפרויקט המתמשך – ☕ קפה עתיד
+
+**אחרי כל מודול JavaScript בונים בכיתה שלב באתר אחד ומתמשך.**
+כל תיקיית שלב היא עותק רץ של האתר באותו יום, עם README שמסביר
+מה נוסף, למה, ואיך זה נראה על המסך.
+
+</div>
+
+<div dir="rtl" align="right">
+
+| # | השלב | מה מוסיפים לאתר |
+|---|------|------------------|
+| 17 | [נתוני העסק במשתנים](../00-class-project/steps/step-17-js-variables/) | מבוא ומשתנים |
+| 18 | [פתוח או סגור עכשיו](../00-class-project/steps/step-18-js-conditions/) | אופרטורים ותנאים |
+| 19 | [הדפסת התפריט בלולאה](../00-class-project/steps/step-19-js-loops/) | לולאות |
+| 20 | [פונקציות עזר לחישוב מחיר](../00-class-project/steps/step-20-js-functions/) | פונקציות |
+| 21 | [סינון, מיון וסכום](../00-class-project/steps/step-21-js-arrays/) | מערכים |
+| 22 | [התפריט כאובייקטים](../00-class-project/steps/step-22-js-objects/) | אובייקטים |
+| 23 | [מחירים ותאריכים בפורמט נכון](../00-class-project/steps/step-23-js-strings-numbers/) | מחרוזות ומספרים |
+| 24 | [התפריט נבנה מהקוד](../00-class-project/steps/step-24-js-dom/) | DOM |
+| 25 | [סינון, חיפוש והזמנה](../00-class-project/steps/step-25-js-events/) | אירועים |
+| 26 | [ולידציה אמיתית לטופס](../00-class-project/steps/step-26-js-form-validation/) | טפסים וולידציה |
+| 27 | [פיצול הקוד למודולים](../00-class-project/steps/step-27-js-es6/) | ES6 ומודרני |
+| 28 | [התפריט מגיע מהשרת](../00-class-project/steps/step-28-js-fetch/) | אסינכרוני ו-Fetch |
+| 29 | [ההזמנה נשמרת בדפדפן](../00-class-project/steps/step-29-js-storage/) | אחסון בדפדפן |
+| 30 | [טיפול בשגיאות וליטוש אחרון](../00-class-project/steps/step-30-js-errors/) | שגיאות ודיבאג |
+
+**[🗺️ מפת הפרויקט המלאה](../00-class-project/)** · **[☕ האתר המוגמר](../00-class-project/final/)**
+
 ## 🎯 מה התלמיד יודע לעשות בסוף
 
 - לכתוב לוגיקה בסיסית: תנאים, לולאות, פונקציות, מבני נתונים.

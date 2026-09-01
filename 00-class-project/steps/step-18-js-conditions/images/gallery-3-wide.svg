@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" width="1000" height="400" role="img" aria-label="קלייה">
+  <rect width="1000" height="400" fill="#f3ded0"/>
+  <circle cx="500" cy="170" r="90" fill="#a8541f"/>
+  <text x="500" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" fill="#a8541f">קלייה (רחב)</text>
+</svg>

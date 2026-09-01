@@ -1,0 +1,434 @@
+/* ============================================================
+   קפה עתיד – גיליון העיצוב של הכיתה
+   נכתב מחדש בשלב 16 (CSS מודול 9 – CSS מודרני)
+
+   1. משתנים (Custom Properties)
+   2. מצב כהה
+   3. איפוס ובסיס
+   4. פריסה
+   5. כותרת וניווט
+   6. תוכן: כרטיסים, טבלאות, גלריה
+   7. טפסים
+   8. תנועה
+   9. מסכים קטנים
+   ============================================================ */
+
+/* ---------- 1. משתנים ---------- */
+:root {
+  /* צבע */
+  --brand-dark:  #4a2c17;
+  --brand:       #7b4b2a;
+  --accent:      #c9a227;
+  --surface:     #ffffff;
+  --bg:          #f5efe6;
+  --ink:         #2b2b2b;
+  --muted:       #6b6257;
+  --line:        #e0d5c5;
+
+  /* טיפוגרפיה – clamp: מינימום, רצוי, מקסימום */
+  --font-body: system-ui, "Segoe UI", Arial, sans-serif;
+  --font-head: Georgia, "Times New Roman", serif;
+  --size-h1: clamp(1.9rem, 1.2rem + 3vw, 3rem);
+  --size-h2: clamp(1.4rem, 1.1rem + 1.4vw, 1.75rem);
+
+  /* מרווח – סולם אחד לכל האתר */
+  --space-1: 6px;
+  --space-2: 12px;
+  --space-3: 20px;
+  --space-4: 32px;
+  --space-5: 48px;
+
+  --radius: 10px;
+  --radius-lg: 14px;
+  --shadow: 0 6px 18px rgb(74 44 23 / 15%);
+  --speed: 0.2s;
+}
+
+/* ---------- 2. מצב כהה ---------- */
+/* ברירת המחדל של המערכת */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --surface: #241a13;
+    --bg:      #17110c;
+    --ink:     #efe6da;
+    --muted:   #b4a795;
+    --line:    #3b2c20;
+    --brand-dark: #1e1610;
+    --brand:   #d8b98a;
+    --accent:  #e0b93f;
+  }
+}
+
+/* בחירה מפורשת של המשתמש (הכפתור נוסף בשלב 29) */
+:root[data-theme="dark"] {
+  --surface: #241a13;
+  --bg:      #17110c;
+  --ink:     #efe6da;
+  --muted:   #b4a795;
+  --line:    #3b2c20;
+  --brand-dark: #1e1610;
+  --brand:   #d8b98a;
+  --accent:  #e0b93f;
+}
+
+/* ---------- 3. איפוס ובסיס ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--ink);
+  background-color: var(--bg);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-head);
+  line-height: 1.25;
+  color: var(--brand-dark);
+}
+
+h1 { font-size: var(--size-h1); margin-block-end: 0.4em; }
+h2 { font-size: var(--size-h2); margin-block-start: 1.8em; }
+h3 { font-size: 1.25rem; color: var(--brand); }
+
+p { margin-block: 0 1em; }
+
+a { color: var(--brand); }
+a:hover { color: var(--accent); }
+
+small, .muted { color: var(--muted); font-size: 0.875rem; }
+
+::selection { background-color: var(--accent); color: #2b2b2b; }
+
+.price {
+  font-variant-numeric: tabular-nums;
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+/* ---------- 4. פריסה ---------- */
+/* margin-inline / padding-inline = "לצדדים", בלי לדעת אם המסמך RTL או LTR */
+main {
+  max-width: 1000px;
+  margin-inline: auto;
+  padding-inline: var(--space-3);
+  padding-block: var(--space-4) var(--space-5);
+}
+
+section { margin-block-end: var(--space-4); }
+
+/* ---------- 5. כותרת וניווט ---------- */
+.skip-link {
+  position: absolute;
+  inset-block-start: -100px;      /* "למעלה" בלי לכתוב top */
+  inset-inline-start: var(--space-2);
+  z-index: 100;
+  background-color: var(--accent);
+  color: #2b2b2b;
+  padding: 10px 16px;
+  border-end-end-radius: var(--radius);
+  border-end-start-radius: var(--radius);
+}
+
+.skip-link:focus { inset-block-start: 0; }
+
+.site-header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--brand-dark);
+}
+
+.site-header a { color: #f5efe6; }
+.logo { line-height: 0; }
+.logo img { width: 150px; height: auto; }
+
+#main-nav ul {
+  display: flex;
+  gap: var(--space-3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#main-nav a {
+  display: inline-block;
+  padding: var(--space-1) 4px;
+  text-decoration: none;
+}
+
+[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background-color: var(--brand-dark);
+  color: #f5efe6;
+}
+
+.site-footer a { color: #e8d5b7; }
+.site-footer p, .site-footer address { margin: 0; }
+
+/* ---------- 6. תוכן ---------- */
+.hero { position: relative; animation: fade-up 0.5s ease-out both; }
+.hero h1 { margin-block-start: var(--space-2); }
+
+.hero::after {
+  content: "נפתח ב-07:00";
+  position: absolute;
+  inset-block-start: var(--space-2);
+  inset-inline-end: var(--space-2);
+  background-color: var(--accent);
+  color: #2b2b2b;
+  font-size: 0.85rem;
+  padding: var(--space-1) var(--space-2);
+  border-radius: 999px;
+}
+
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+}
+
+blockquote {
+  margin: 0;
+  padding: var(--space-3);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--brand-dark);
+  background-color: var(--surface);
+  border-inline-start: 4px solid var(--accent);  /* "בצד ההתחלה" = ימין ב-RTL */
+  border-radius: var(--radius);
+}
+
+blockquote footer {
+  font-size: 0.9rem;
+  font-style: normal;
+  color: var(--muted);
+}
+
+.menu-cat ul,
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-cat li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-3);
+}
+
+.gallery figure { margin: 0; }
+.gallery figcaption {
+  padding-block-start: var(--space-1);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.table-wrap { overflow-x: auto; }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: var(--surface);
+}
+
+caption {
+  text-align: start;             /* "start" = ימין ב-RTL, שמאל ב-LTR */
+  padding-block-end: var(--space-1);
+  font-weight: bold;
+  color: var(--muted);
+}
+
+th, td {
+  border: 1px solid var(--line);
+  padding: 10px 14px;
+  text-align: start;
+}
+
+thead th { background-color: color-mix(in srgb, var(--accent) 30%, var(--surface)); }
+
+/* ---------- 7. טפסים ---------- */
+fieldset {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  margin: 0 0 var(--space-3);
+}
+
+legend { padding-inline: var(--space-1); font-weight: bold; color: var(--brand-dark); }
+
+input, select, textarea {
+  font: inherit;
+  width: 100%;
+  max-width: 380px;
+  padding: 10px 12px;
+  color: var(--ink);
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+input[type="checkbox"],
+input[type="radio"] { width: auto; }
+
+button {
+  font: inherit;
+  padding: 10px 22px;
+  border: 0;
+  border-radius: var(--radius);
+  background-color: var(--brand-dark);
+  color: #f5efe6;
+  cursor: pointer;
+}
+
+button:hover { background-color: var(--brand); }
+
+/* :has() – "פסקה שיש בתוכה שדה לא תקין". סלקטור שמסתכל על הילדים */
+p:has(input:invalid:not(:placeholder-shown)) label {
+  color: #b3261e;
+}
+
+.contact-layout > * { min-width: 0; }
+
+@media (min-width: 900px) {
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    align-items: start;
+  }
+}
+
+/* ---------- 8. תנועה ---------- */
+a, button, .menu-cat li {
+  transition: background-color var(--speed) ease,
+              color var(--speed) ease,
+              transform var(--speed) ease,
+              box-shadow var(--speed) ease;
+}
+
+.menu-cat li:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- 9. מסכים קטנים ---------- */
+@media (max-width: 699px) {
+  .site-header {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  #main-nav ul { justify-content: center; flex-wrap: wrap; gap: var(--space-1) var(--space-2); }
+
+  main { padding-inline: 14px; }
+
+  .hero::after { display: none; }
+
+  input, select, textarea { max-width: 100%; }
+
+  .site-footer { flex-direction: column; align-items: flex-start; }
+}
+
+
+/* ============================================================
+   שלב 24 · הכרטיסים שנבנים מ-JavaScript
+   ============================================================ */
+
+.menu-grid li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: transform var(--speed) ease, box-shadow var(--speed) ease;
+}
+
+.menu-grid li:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.menu-grid .item-note {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.open-status {
+  font-weight: bold;
+  padding: var(--space-1) var(--space-2);
+  border-radius: 999px;
+  display: inline-block;
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.open-status.is-open   { color: #1f7a4d; }
+.open-status.is-closed { color: #b3261e; }
+
+.loading,
+.empty { color: var(--muted); }
